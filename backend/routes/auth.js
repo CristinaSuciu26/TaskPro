@@ -1,7 +1,13 @@
 import express from "express";
-import { register, login } from "../controllers/authController.js";
+import  upload from "../middleware/multerConfig.js";
+import {
+  register,
+  login,
+  updateProfile,
+} from "../controllers/authController.js";
 import { validateRequest } from "../middleware/validateRequest.js";
 import { loginSchema, registerSchema } from "../middleware/validationSchema.js";
+
 
 const router = express.Router();
 /**
@@ -80,5 +86,36 @@ router.post("/register", validateRequest(registerSchema), register);
  */
 
 router.post("/login", validateRequest(loginSchema), login);
+
+/**
+ * @swagger
+ * /api/auth/profile:
+ *   post:
+ *     summary: Update user profile
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - image
+ *             properties:
+ *               image:
+ *                 type: string
+ *                 format: binary
+ *     responses:
+ *       200:
+ *         description: Update successful
+ *       400:
+ *         description: Invalid input
+ *       401:
+ *         description: Unauthorized
+ *       500:
+ *         description: Internal server error
+ */
+
+router.post("/profile", upload.single("image"), updateProfile);
 
 export default router;

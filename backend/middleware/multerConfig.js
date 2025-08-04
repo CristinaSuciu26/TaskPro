@@ -1,15 +1,23 @@
 import multer from "multer";
-import { CloudinaryStorage } from "multer-storage-cloudinary";
-import cloudinary from "./cloudinaryConfig.js";
+import path from "path";
+import fs from "fs";
 
-const storage = new CloudinaryStorage({
-  cloudinary: cloudinary,
-  params: {
-    folder: "taskpro", 
-    allowed_formats: ["jpg", "jpeg", "png"],
+const uploadDir = path.join(process.cwd(), "uploads");
+
+// Ensure uploads folder exists (create if missing)
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, uploadDir); 
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname));
   },
 });
 
-const parser = multer({ storage });
+const upload = multer({ storage });
 
-export default parser;
+export default upload;

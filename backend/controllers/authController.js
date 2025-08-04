@@ -1,6 +1,7 @@
 import User from "../models/User.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import { uploadImage } from "../middleware/uploadImage.js";
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -49,6 +50,20 @@ export const login = async (res, req) => {
       token,
       user: { id: user._id, name: user.name, email: user.email },
     });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+
+export const updateProfile = async (req, res) => {
+  try {
+    // Assuming file is uploaded via multipart/form-data and saved locally
+    const filePath = req.file.path;
+
+    console.log("File received:", req.file);
+    const imageUrl = await uploadImage(filePath);
+
+    res.status(200).json({ message: "Profile updated", imageUrl });
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
   }

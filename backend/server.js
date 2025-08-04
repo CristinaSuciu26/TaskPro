@@ -22,6 +22,7 @@ app.get("/error-test", (req, res) => {
   throw new Error("Test error");
 });
 
+
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
