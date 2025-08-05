@@ -5,11 +5,20 @@ import errorHandler from "./middleware/errorMiddleware.js";
 import swaggerUi from "swagger-ui-express";
 import swaggerSpec from "./swagger.js";
 import authRoutes from "./routes/auth.js";
+import mongoose from "mongoose";
 dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+mongoose
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("✅ MongoDB connected"))
+  .catch((error) => console.error("❌ MongoDB connection error:", error));
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
@@ -21,7 +30,6 @@ app.get("/", (req, res) => {
 app.get("/error-test", (req, res) => {
   throw new Error("Test error");
 });
-
 
 app.use(errorHandler);
 

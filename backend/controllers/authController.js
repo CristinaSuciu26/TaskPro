@@ -27,11 +27,11 @@ export const register = async (req, res) => {
       user: { id: user._id, name: user.name, email: user.email },
     });
   } catch (error) {
-    res.status(500).json({ message: "Server error", error: error, message });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
-export const login = async (res, req) => {
+export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -57,13 +57,51 @@ export const login = async (res, req) => {
 
 export const updateProfile = async (req, res) => {
   try {
-    // Assuming file is uploaded via multipart/form-data and saved locally
-    const filePath = req.file.path;
+    const userId = req.user.id;
+    const { name, password, email } = req.body;
+    const updates = {};
 
-    console.log("File received:", req.file);
-    const imageUrl = await uploadImage(filePath);
+    // update name
+    if (name) updates.name = name;
 
-    res.status(200).json({ message: "Profile updated", imageUrl });
+    // update email
+    if (email) updates.email = email;
+
+    // update password
+    if (password) {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      updates.password = hashedPassword;
+    }
+
+    // update image
+    if (req.file) {
+      const filePath = req.file.path;
+
+      // verify if the file exists locally
+      const fs = await import("fs");
+      if (!fs.existsSync(filePath)) {
+        return res.status(400).json({ message: "File not found on server" });
+      }
+
+      const imageUrl = await uploadImage(filePath);
+
+      updates.avatar = imageUrl;
+    }
+
+    // save the changes in DB
+    const updatedUser = await User.findByIdAndUpdate(userId, updates, {
+      new: true,
+    });
+
+    res.status(200).json({
+      message: "Profile updated",
+      user: {
+        id: updatedUser._id,
+        name: updatedUser.name,
+        email: updatedUser.email,
+        avatar: updatedUser.avatar,
+      },
+    });
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
   }

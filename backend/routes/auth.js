@@ -1,5 +1,5 @@
 import express from "express";
-import  upload from "../middleware/multerConfig.js";
+import upload from "../middleware/multerConfig.js";
 import {
   register,
   login,
@@ -7,7 +7,7 @@ import {
 } from "../controllers/authController.js";
 import { validateRequest } from "../middleware/validateRequest.js";
 import { loginSchema, registerSchema } from "../middleware/validationSchema.js";
-
+import { verifyToken } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 /**
@@ -49,7 +49,11 @@ const router = express.Router();
  *         description: Internal server error
  */
 
-router.post("/register", validateRequest(registerSchema), register);
+router.post(
+  "/register",
+  validateRequest(registerSchema),
+  register
+);
 /**
  * @swagger
  * /api/auth/login:
@@ -85,7 +89,7 @@ router.post("/register", validateRequest(registerSchema), register);
  *         description: Internal server error
  */
 
-router.post("/login", validateRequest(loginSchema), login);
+router.post("/login", validateRequest(loginSchema),  login);
 
 /**
  * @swagger
@@ -116,6 +120,6 @@ router.post("/login", validateRequest(loginSchema), login);
  *         description: Internal server error
  */
 
-router.post("/profile", upload.single("image"), updateProfile);
+router.post("/profile", upload.single("image"), verifyToken, updateProfile);
 
 export default router;
