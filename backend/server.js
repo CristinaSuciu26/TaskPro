@@ -5,6 +5,7 @@ import errorHandler from "./middleware/errorMiddleware.js";
 import swaggerUi from "swagger-ui-express";
 import swaggerSpec from "./swagger.js";
 import authRoutes from "./routes/auth.js";
+import dashboardRoutes from "./routes/dashboardRoutes.js";
 import mongoose from "mongoose";
 dotenv.config();
 
@@ -26,6 +27,8 @@ app.use("/api/auth", authRoutes);
 app.get("/", (req, res) => {
   res.send("Server is running ");
 });
+
+app.use("/api/dashboards", dashboardRoutes);
 
 app.get("/error-test", (req, res) => {
   throw new Error("Test error");
