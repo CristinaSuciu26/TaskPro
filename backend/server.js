@@ -7,6 +7,7 @@ import swaggerSpec from "./swagger.js";
 import authRoutes from "./routes/auth.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
 import columnRoutes from "./routes/columnRoutes.js";
+import cardRoutes from "./routes/cardController.js";
 import mongoose from "mongoose";
 dotenv.config();
 
@@ -31,6 +32,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/dashboards", dashboardRoutes);
 app.use("/api/columns", columnRoutes);
+app.use("/api/cards", cardRoutes);
 
 app.get("/error-test", (req, res) => {
   throw new Error("Test error");
