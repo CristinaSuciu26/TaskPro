@@ -12,6 +12,11 @@ const userSchema = new mongoose.Schema(
     },
     password: { type: String, required: true },
     avatar: { type: String },
+    theme: {
+      type: String,
+      enum: ["light", "violet", "dark"],
+      default: "light",
+    },
   },
   { timestamps: true }
 );
