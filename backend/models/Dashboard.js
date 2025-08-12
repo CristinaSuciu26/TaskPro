@@ -6,6 +6,10 @@ const dashboardSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    background: {
+      type: String,
+      default: "#ffffff",
+    },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

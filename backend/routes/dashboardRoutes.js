@@ -3,7 +3,9 @@ import {
   createDashboard,
   deleteDashboard,
   getDashboards,
+  updateDashboardBackground,
 } from "../controllers/dashboardController.js";
+import upload from "../middleware/multerConfig.js";
 import { verifyToken } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
@@ -82,5 +84,54 @@ router.get("/", verifyToken, getDashboards);
  *         description: Internal server error
  */
 router.delete("/:id", verifyToken, deleteDashboard);
+
+/**
+ * @swagger
+ * /api/dashboards/{id}/background:
+ *   put:
+ *     summary: Update dashboard background (color, URL, or uploaded image)
+ *     tags: [Dashboards]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Dashboard ID
+ *     requestBody:
+ *       required: false
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               background:
+ *                 type: string
+ *                 description: Background color or image URL
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               background:
+ *                 type: string
+ *               file:
+ *                 type: string
+ *                 format: binary
+ *     responses:
+ *       200:
+ *         description: Dashboard background updated successfully
+ *       404:
+ *         description: Dashboard not found
+ *       500:
+ *         description: Server error
+ */
+router.put(
+  "/:id/background",
+  verifyToken,
+  upload.single("file"),
+  updateDashboardBackground
+);
 
 export default router;
