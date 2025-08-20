@@ -4,12 +4,16 @@ export const updateTheme = async (req, res) => {
   try {
     const { theme } = req.body;
 
-    if (!["light", "violer", "dark"].includes(theme)) {
+    if (!["light", "violet", "dark"].includes(theme)) {
       return res.ststus(400).json({ message: "Invalid theme option" });
     }
 
     const userId = req.user.id;
-    const updateUser = User.findByIdAndUpdate(userId, { theme }, { new: true });
+    const updateUser = await User.findByIdAndUpdate(
+      userId,
+      { theme },
+      { new: true }
+    );
 
     res
       .status(200)
