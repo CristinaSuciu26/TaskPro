@@ -2,12 +2,12 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const API_URL = "http://localhost:5000/api/dashboards";
-const token = localStorage.getItem("token");
 
 export const fetchDashboards = createAsyncThunk(
   "dashboard/fetchDashboards",
   async (_, { rejectWithValue }) => {
     try {
+      const token = localStorage.getItem("token");
       const res = await axios.get(API_URL, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -26,6 +26,7 @@ export const addDashboard = createAsyncThunk(
   "dashboard/addDashboard",
   async (data, { rejectWithValue }) => {
     try {
+      const token = localStorage.getItem("token");
       const res = await axios.post(`${API_URL}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -44,6 +45,7 @@ export const deleteDashboard = createAsyncThunk(
   "dashboard/deleteDashboard",
   async (id, { rejectWithValue }) => {
     try {
+      const token = localStorage.getItem("token");
       await axios.delete(`${API_URL}/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -61,6 +63,7 @@ export const updateDashboardBackground = createAsyncThunk(
   "dashboard/updateBackground",
   async ({ id, background, file }, { rejectWithValue }) => {
     try {
+      const token = localStorage.getItem("token");
       // pt imagine (upload), folosim FormData
       let formData;
       let config = {
