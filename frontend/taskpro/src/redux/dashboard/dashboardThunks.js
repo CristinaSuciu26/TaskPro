@@ -26,7 +26,7 @@ export const addDashboard = createAsyncThunk(
   "dashboard/addDashboard",
   async (data, { rejectWithValue }) => {
     try {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("token"); 
       const res = await axios.post(`${API_URL}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
