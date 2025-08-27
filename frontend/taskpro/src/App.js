@@ -7,7 +7,7 @@ import {
 
 import "./App.css";
 import WelcomePage from "./pages/welcome/WelcomePage";
-import AuthPage from "./pages/AuthPage";
+import AuthPage from "./pages/authPage/AuthPage";
 import PrivateRoute from "./routes/PrivateRoute";
 import HomePage from "./pages/privatePages/HomePage";
 import Dashboard from "./pages/Dashboard";

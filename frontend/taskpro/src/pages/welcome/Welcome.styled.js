@@ -33,7 +33,9 @@ export const ParagraphWrapper = styled.div`
   font-size: 14px;
   padding: 20px;
   color: ${({ theme }) => theme.secondaryText};
-
+  @media (min-width: 375px) {
+    width: 350px;
+  }
   @media (min-width: 768px) {
     width: 500px;
   }
@@ -44,6 +46,7 @@ export const ButtonWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   font-size: 14px;
+  gap: 10px;
 `;
 
 export const RegisterButton = styled.button`
@@ -57,6 +60,12 @@ export const RegisterButton = styled.button`
   color: #fff;
   background-color: #161616;
   border-radius: 8px;
+
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: #45a049;
+  }
 `;
 
 export const LoginButton = styled.button`
@@ -69,4 +78,11 @@ export const LoginButton = styled.button`
   text-decoration: none;
   border-radius: 8px;
   color: ${({ theme }) => theme.text};
+
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: #45a049;
+    color: #fff;
+  }
 `;
