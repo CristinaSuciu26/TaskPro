@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "http://localhost:5000/api/auth";
 
 export const registerUser = createAsyncThunk(
   "auth/register",
@@ -10,7 +10,9 @@ export const registerUser = createAsyncThunk(
       const res = await axios.post(`${API_URL}/register`, formData);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      return thunkAPI.rejectWithValue(
+        error.response.data.message || "Registration failed"
+      );
     }
   }
 );
@@ -22,7 +24,9 @@ export const loginUser = createAsyncThunk(
       const res = await axios.post(`${API_URL}/login`, formData);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      return thunkAPI.rejectWithValue(
+        error.response.data.message || "Login failed"
+      );
     }
   }
 );
@@ -39,7 +43,9 @@ export const updateProfile = createAsyncThunk(
       });
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      return thunkAPI.rejectWithValue(
+        error.response.data.message || "Update profile failed"
+      );
     }
   }
 );

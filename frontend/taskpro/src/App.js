@@ -15,6 +15,8 @@ import { ThemeProvider } from "styled-components";
 import { themes } from "./themes/themes";
 import { useSelector } from "react-redux";
 import { GlobalStyles } from "./themes/globalStyles";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const themeName = useSelector((state) => state.theme.theme);
@@ -23,6 +25,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Router>
+        <ToastContainer position="top-right" autoClose={3000} />
         <Routes>
           <Route path="/" element={<Navigate to="/welcome" />} />
           <Route path="/welcome" element={<WelcomePage />} />

@@ -76,6 +76,6 @@ export const StyledNavLink = styled(NavLink)`
 export const ErrorMessageWrapper = styled(ErrorMessage)`
   height: 20px;
   color: red;
-  font-size: 14px;
+  font-size: 11px;
   padding: 5px;
 `;

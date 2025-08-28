@@ -1,9 +1,10 @@
 import * as Yup from "yup";
-import { Formik } from "formik";
+import { Form, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { registerUser } from "../../redux/auth/authThunks";
+import { toast } from "react-toastify";
 import {
   ErrorMessageWrapper,
   FormWrapper,
@@ -25,17 +26,23 @@ export default function RegisterForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { token, loading, error } = useSelector((state) => state.auth);
+  const { token, loading } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (token) {
-      navigate("/home");
+      navigate("/");
     }
   }, [token, navigate]);
 
-  const handleSubmit = (values) => {
-    dispatch(registerUser(values));
+  const handleSubmit = async (values) => {
+    try {
+      await dispatch(registerUser(values)).unwrap();
+      toast.success("Registered successfully!");
+    } catch (err) {
+      toast.error(err || "Registration failed");
+    }
   };
+
   return (
     <div>
       <RegisterWrapper>
@@ -48,28 +55,23 @@ export default function RegisterForm() {
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
-          <FormWrapper>
+          <FormWrapper as={Form}>
             <label htmlFor="name"></label>
             <Input type="text" name="name" placeholder="Name" />
             <ErrorMessageWrapper component="div" name="name" />
-
             <div>
               <label htmlFor="email"></label>
               <Input type="email" name="email" placeholder="E-mail" />
               <ErrorMessageWrapper component="div" name="email" />
             </div>
-
             <div>
               <label htmlFor="password"></label>
               <Input type="password" name="password" placeholder="Password" />
               <ErrorMessageWrapper component="div" name="password" />
             </div>
-
             <RegisterBtn type="submit" disabled={loading}>
               {loading ? "Registering..." : "Register Now"}
             </RegisterBtn>
-
-            {error && <div style={{ color: "red" }}>{error}</div>}
           </FormWrapper>
         </Formik>
       </RegisterWrapper>

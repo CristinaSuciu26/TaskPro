@@ -44,6 +44,7 @@ const authSlice = createSlice({
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.isLoggedIn = false;
+        state.loading = false;
         state.error = action.payload?.messege || "Register failed";
       })
 
