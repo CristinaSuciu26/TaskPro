@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import {
   ButtonWrapper,
   ContentWrapper,
@@ -12,6 +12,9 @@ import sprite from "../../assets/icons/sprite.svg";
 import welcomeImage from "../../assets/images/welcome.png";
 
 export default function WelcomePage() {
+  const token = localStorage.getItem("token");
+
+  if (token) return <Navigate to="/home" replace />;
   return (
     <div>
       <Wrapper>

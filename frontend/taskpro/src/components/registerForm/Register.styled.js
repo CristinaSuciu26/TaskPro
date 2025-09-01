@@ -41,6 +41,7 @@ export const Input = styled(Field)`
   padding: 14px 18px;
   background-color: transparent;
   border: 1px solid #bedbb0;
+  color: white;
 `;
 
 export const RegisterBtn = styled.button`
@@ -75,7 +76,7 @@ export const StyledNavLink = styled(NavLink)`
 `;
 export const ErrorMessageWrapper = styled(ErrorMessage)`
   height: 20px;
-  color: red;
+  color: rgb(255, 48, 64);
   font-size: 11px;
   padding: 5px;
 `;

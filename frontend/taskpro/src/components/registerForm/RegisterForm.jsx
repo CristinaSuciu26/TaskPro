@@ -30,7 +30,7 @@ export default function RegisterForm() {
 
   useEffect(() => {
     if (token) {
-      navigate("/");
+      navigate("/home");
     }
   }, [token, navigate]);
 
@@ -56,9 +56,11 @@ export default function RegisterForm() {
           onSubmit={handleSubmit}
         >
           <FormWrapper as={Form}>
-            <label htmlFor="name"></label>
-            <Input type="text" name="name" placeholder="Name" />
-            <ErrorMessageWrapper component="div" name="name" />
+            <div>
+              <label htmlFor="name"></label>
+              <Input type="text" name="name" placeholder="Name" />
+              <ErrorMessageWrapper component="div" name="name" />
+            </div>
             <div>
               <label htmlFor="email"></label>
               <Input type="email" name="email" placeholder="E-mail" />
