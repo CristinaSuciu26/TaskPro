@@ -42,6 +42,7 @@ export const Input = styled(Field)`
   background-color: transparent;
   border: 1px solid #bedbb0;
   color: white;
+  font-size: 14px;
 `;
 
 export const RegisterBtn = styled.button`
@@ -62,14 +63,13 @@ export const RegisterBtn = styled.button`
 export const LinkWrapper = styled.div`
   display: flex;
   gap: 14px;
-  margin-right: 124px;
+  margin-right: 110px;
   font-size: 18px;
   font-weight: 500;
 `;
 export const StyledNavLink = styled(NavLink)`
   text-decoration: none;
   color: grey;
-
   &.active {
     color: white; /* când e activ */
   }
@@ -79,4 +79,16 @@ export const ErrorMessageWrapper = styled(ErrorMessage)`
   color: rgb(255, 48, 64);
   font-size: 11px;
   padding: 5px;
+`;
+export const PasswordWrapper = styled.div`
+  position: relative;
+  align-items: center;
+
+ .toggle-eye {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    cursor: pointer;
+    color: #998f8f4d;
+  }
 `;

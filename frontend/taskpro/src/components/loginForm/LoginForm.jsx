@@ -2,7 +2,7 @@ import * as Yup from "yup";
 import { Formik, Form, Field } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { loginUser } from "../../redux/auth/authThunks";
 import { toast } from "react-toastify";
 import {
@@ -13,7 +13,9 @@ import {
   ErrorMessageWrapper,
   LinkWrapper,
   StyledNavLink,
+  PasswordWrapper,
 } from "./Login.styled";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email").required("Email is required"),
@@ -26,6 +28,7 @@ export default function LoginForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { token, loading } = useSelector((state) => state.auth);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     if (token) {
@@ -56,19 +59,28 @@ export default function LoginForm() {
       >
         <FormWrapper as={Form}>
           <div>
-            <Field as={Input} type="email" name="email" placeholder="E-mail" />
-            <ErrorMessageWrapper component="div" name="email" />
-          </div>
-
-          <div>
             <Field
               as={Input}
-              type="password"
-              name="password"
-              placeholder="Password"
+              type="email"
+              name="email"
+              placeholder="Enter your email"
             />
-            <ErrorMessageWrapper component="div" name="password" />
+            <ErrorMessageWrapper component="div" name="email" />
           </div>
+          <PasswordWrapper>
+            <div>
+              <Field
+                as={Input}
+                type={show ? "text" : "password"}
+                name="password"
+                placeholder="Enter your password"
+              />
+              <span className="toggle-eye" onClick={() => setShow(!show)}>
+                {show ? <FaEyeSlash /> : <FaEye />}
+              </span>
+              <ErrorMessageWrapper component="div" name="password" />
+            </div>
+          </PasswordWrapper>
 
           <LoginBtn type="submit" disabled={loading}>
             {loading ? "Logging in..." : "Log In Now"}

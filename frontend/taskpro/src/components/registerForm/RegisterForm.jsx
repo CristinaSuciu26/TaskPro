@@ -2,14 +2,16 @@ import * as Yup from "yup";
 import { Form, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { registerUser } from "../../redux/auth/authThunks";
 import { toast } from "react-toastify";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import {
   ErrorMessageWrapper,
   FormWrapper,
   Input,
   LinkWrapper,
+  PasswordWrapper,
   RegisterBtn,
   RegisterWrapper,
   StyledNavLink,
@@ -25,6 +27,7 @@ const validationSchema = Yup.object({
 export default function RegisterForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
 
   const { token, loading } = useSelector((state) => state.auth);
 
@@ -67,9 +70,18 @@ export default function RegisterForm() {
               <ErrorMessageWrapper component="div" name="email" />
             </div>
             <div>
-              <label htmlFor="password"></label>
-              <Input type="password" name="password" placeholder="Password" />
-              <ErrorMessageWrapper component="div" name="password" />
+              <PasswordWrapper>
+                <label htmlFor="password"></label>
+                <Input
+                  name="password"
+                  placeholder="Password"
+                  type={show ? "text" : "password"}
+                />
+                <ErrorMessageWrapper component="div" name="password" />
+                <span className="toggle-eye" onClick={() => setShow(!show)}>
+                  {show ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </PasswordWrapper>
             </div>
             <RegisterBtn type="submit" disabled={loading}>
               {loading ? "Registering..." : "Register Now"}
