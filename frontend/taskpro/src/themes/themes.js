@@ -1,6 +1,7 @@
 export const themes = {
   light: {
     background: "#ffffff",
+    backgroundSecondary: "#FCFCFC",
     text: "#161616",
     primary: "#BEDBB0",
     secondaryText: "#16161680",
@@ -11,7 +12,8 @@ export const themes = {
     labelWithoutPriority: "#1616164D",
   },
   dark: {
-    background: "#121212",
+    background: "#1F1F1F",
+    backgroundSecondary: "#161616",
     text: "#ffffff",
     primary: "#BEDBB0",
     secondaryText: "#FFFFFF80",
@@ -23,6 +25,7 @@ export const themes = {
   },
   violet: {
     background: "#ECEDFD",
+    backgroundSecondary: "#FCFCFC",
     text: "#161616",
     primary: "#5255BC",
     secondaryText: "#161616B2",

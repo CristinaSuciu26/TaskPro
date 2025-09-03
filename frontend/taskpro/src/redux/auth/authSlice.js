@@ -4,11 +4,12 @@ import { getUserFromToken, isTokenValid } from "../../utils/token.js";
 
 const storedToken = localStorage.getItem("token");
 const user = getUserFromToken(storedToken);
+const storedUser = JSON.parse(localStorage.getItem("user"));
 const isLoggedIn = !!user;
 
 const initialState = {
   token: isTokenValid(storedToken) ? storedToken : null,
-  user: user || null,
+  user: storedUser,
   isLoggedIn,
   loading: false,
   error: null,

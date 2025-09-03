@@ -84,7 +84,7 @@ export const PasswordWrapper = styled.div`
   position: relative;
   align-items: center;
 
- .toggle-eye {
+  .toggle-eye {
     position: absolute;
     right: 10px;
     top: 15px;
