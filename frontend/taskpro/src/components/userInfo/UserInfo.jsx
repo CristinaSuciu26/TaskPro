@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { UserImg, UserInfoWrapper } from "./UserInfo.styled";
+import { UserImg, UserInfoWrapper, UserName } from "./UserInfo.styled";
 import NoPicture from "../../assets/images/no-profile-picture.png";
 
 export default function UserInfo() {
@@ -7,7 +7,7 @@ export default function UserInfo() {
   return (
     <div>
       <UserInfoWrapper>
-        <span>{user?.name}</span>
+        <UserName>{user?.name}</UserName>
         <UserImg
           src={user?.avatarURL || NoPicture}
           alt={user?.name || "User"}

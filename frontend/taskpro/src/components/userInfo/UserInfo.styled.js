@@ -16,4 +16,5 @@ export const UserImg = styled.img`
 
 export const UserName = styled.span`
   color: ${({ theme }) => theme.text};
+  font-size: 14 px;
 `;
