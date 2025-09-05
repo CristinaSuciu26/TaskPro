@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/columns";
+const API_URL = "https://taskpro-backend-i4f0.onrender.com/api/columns";
 
 export const createColumn = createAsyncThunk(
   "columns/createColumn",

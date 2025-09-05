@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/dashboards";
+const API_URL = "https://taskpro-backend-i4f0.onrender.com/api/dashboards";
 
 export const fetchDashboards = createAsyncThunk(
   "dashboard/fetchDashboards",

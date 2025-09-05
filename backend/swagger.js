@@ -10,11 +10,11 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:5000", // schimbă în producție
+        url: "https://taskpro-backend-i4f0.onrender.com",
       },
     ],
   },
-  apis: ['./routes/**/*.js'],
+  apis: ["./routes/**/*.js"],
 };
 
 const swaggerSpec = swaggerJSDoc(options);
