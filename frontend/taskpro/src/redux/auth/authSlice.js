@@ -70,6 +70,7 @@ const authSlice = createSlice({
       // update profile
       .addCase(updateProfile.fulfilled, (state, action) => {
         state.user = action.payload.user;
+        localStorage.setItem("user", JSON.stringify(action.payload.user));
       });
   },
 });

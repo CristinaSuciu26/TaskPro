@@ -49,11 +49,7 @@ const router = express.Router();
  *         description: Internal server error
  */
 
-router.post(
-  "/register",
-  validateRequest(registerSchema),
-  register
-);
+router.post("/register", validateRequest(registerSchema), register);
 /**
  * @swagger
  * /api/auth/login:
@@ -89,12 +85,12 @@ router.post(
  *         description: Internal server error
  */
 
-router.post("/login", validateRequest(loginSchema),  login);
+router.post("/login", validateRequest(loginSchema), login);
 
 /**
  * @swagger
  * /api/auth/profile:
- *   post:
+ *   put:
  *     summary: Update user profile
  *     tags: [Auth]
  *     requestBody:
@@ -120,6 +116,6 @@ router.post("/login", validateRequest(loginSchema),  login);
  *         description: Internal server error
  */
 
-router.post("/profile", upload.single("image"), verifyToken, updateProfile);
+router.put("/profile", verifyToken, upload.single("image"), updateProfile);
 
 export default router;

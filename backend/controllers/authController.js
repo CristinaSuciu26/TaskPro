@@ -77,15 +77,15 @@ export const updateProfile = async (req, res) => {
     if (req.file) {
       const filePath = req.file.path;
 
+      const fileName = req.file.filename;
+      const host = req.protocol + "://" + req.get("host");
+      updates.image = `${host}/uploads/${fileName}`;
+
       // verify if the file exists locally
       const fs = await import("fs");
       if (!fs.existsSync(filePath)) {
         return res.status(400).json({ message: "File not found on server" });
       }
-
-      const imageUrl = await uploadImage(filePath);
-
-      updates.avatar = imageUrl;
     }
 
     // save the changes in DB
@@ -99,10 +99,11 @@ export const updateProfile = async (req, res) => {
         id: updatedUser._id,
         name: updatedUser.name,
         email: updatedUser.email,
-        avatar: updatedUser.avatar,
+        image: updatedUser.image,
       },
     });
   } catch (error) {
+    console.error("Update profile error:", error);
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };

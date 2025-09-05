@@ -38,8 +38,11 @@ export const updateProfile = createAsyncThunk(
       const state = thunkAPI.getState();
       const token = state.auth.token;
 
-      const res = axios.put(`${API_URL}/profile`, formData, {
-        headers: { Authorization: `Bearer${token}` },
+      const res = await axios.put(`${API_URL}/profile`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
       });
       return res.data;
     } catch (error) {

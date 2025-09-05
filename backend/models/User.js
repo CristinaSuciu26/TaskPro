@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema(
       trim: true,
     },
     password: { type: String, required: true },
-    avatar: { type: String },
+    image: { type: String },
     theme: {
       type: String,
       enum: ["light", "violet", "dark"],

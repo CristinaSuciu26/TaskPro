@@ -10,10 +10,17 @@ import columnRoutes from "./routes/columnRoutes.js";
 import cardRoutes from "./routes/cardRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import mongoose from "mongoose";
+import path from "path";
+
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "https://CristinaSuciu26.github.io"], // frontend local și live
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 mongoose
@@ -35,7 +42,7 @@ app.use("/api/dashboards", dashboardRoutes);
 app.use("/api/columns", columnRoutes);
 app.use("/api/cards", cardRoutes);
 app.use("/api/users", userRoutes);
-
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 app.get("/error-test", (req, res) => {
   throw new Error("Test error");
 });
