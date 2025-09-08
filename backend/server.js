@@ -17,7 +17,7 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://CristinaSuciu26.github.io"], // frontend local și live
+    origin: ["http://localhost:3000", "https://cristinasuciu26.github.io"], // frontend local și live
     credentials: true,
   })
 );
