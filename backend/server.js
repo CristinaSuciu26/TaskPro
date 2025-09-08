@@ -21,6 +21,13 @@ app.use(
     credentials: true,
   })
 );
+app.options(
+  "*",
+  cors({
+    origin: ["http://localhost:3000", "https://cristinasuciu26.github.io"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 mongoose
