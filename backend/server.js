@@ -15,16 +15,22 @@ import path from "path";
 dotenv.config();
 
 const app = express();
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://cristinasuciu26.github.io",
+];
+
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://cristinasuciu26.github.io"], // frontend local și live
+    origin: allowedOrigins,
     credentials: true,
   })
 );
+
 app.options(
   "*",
   cors({
-    origin: ["http://localhost:3000", "https://cristinasuciu26.github.io"],
+    origin: allowedOrigins,
     credentials: true,
   })
 );

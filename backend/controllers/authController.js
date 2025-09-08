@@ -1,7 +1,6 @@
 import User from "../models/User.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import { uploadImage } from "../middleware/uploadImage.js";
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
