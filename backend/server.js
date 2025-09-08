@@ -27,7 +27,7 @@ app.use(
   })
 );
 
-app.options("/api/*", cors({ origin: allowedOrigins, credentials: true }));
+app.options("/api/", cors({ origin: allowedOrigins, credentials: true }));
 
 app.use(express.json());
 
