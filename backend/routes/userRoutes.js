@@ -15,7 +15,7 @@ const router = express.Router();
  * /api/users/theme:
  *   put:
  *     summary: Update user theme
- *     tags: [Users]
+ *     tags: [Theme]
  *     security:
  *       - bearerAuth: []
  *     requestBody:
