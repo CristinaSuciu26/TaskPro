@@ -30,10 +30,18 @@ export default function ProfileEditModal({ user, onClose }) {
     image: null,
   });
 
+
+  const [preview, setPreview] = useState(user?.image || null);
+
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    if (name === "image") {
-      setFormData((prev) => ({ ...prev, image: files[0] }));
+    if (name === "image" && files && files[0]) {
+      const file = files[0];
+      setFormData((prev) => ({ ...prev, image: file }));
+
+
+      const imageUrl = URL.createObjectURL(file);
+      setPreview(imageUrl);
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
@@ -61,10 +69,7 @@ export default function ProfileEditModal({ user, onClose }) {
 
         <FormWrapper onSubmit={handleSubmit}>
           <ImageWrapper>
-            <UserImg
-              src={user?.image || NoPicture}
-              alt={user?.name || "User"}
-            />
+            <UserImg src={preview || NoPicture} alt={formData.name || "User"} />
 
             <ImageInput
               id="file-input"
@@ -72,6 +77,7 @@ export default function ProfileEditModal({ user, onClose }) {
               name="image"
               accept="image/*"
               onChange={handleChange}
+              style={{ display: "none" }}
             />
             <Label htmlFor="file-input">
               <Icon>
@@ -79,6 +85,7 @@ export default function ProfileEditModal({ user, onClose }) {
               </Icon>
             </Label>
           </ImageWrapper>
+
           <Input
             type="text"
             name="name"
