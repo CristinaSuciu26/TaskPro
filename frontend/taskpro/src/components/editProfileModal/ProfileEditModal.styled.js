@@ -41,7 +41,6 @@ export const UserImg = styled.img`
   border-radius: 8px;
   width: 68px;
   height: 68px;
-  margin-right: 32px;
   margin-top: 37px;
   margin-bottom: 10px;
 `;
@@ -105,7 +104,7 @@ export const Label = styled.label`
   border: none;
   cursor: pointer;
   position: absolute;
-  right: 52px;
+  right: 21px;
   top: 91px;
   &:hover {
     background-color: #9dc888;
