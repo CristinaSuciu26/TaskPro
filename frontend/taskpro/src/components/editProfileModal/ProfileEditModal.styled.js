@@ -6,8 +6,6 @@ export const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
   right: 0;
-  color: red;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,13 +14,18 @@ export const ModalOverlay = styled.div`
 `;
 
 export const ModalContent = styled.div`
-  width: 400px;
+  width: 335px;
   height: 440px;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.background};
   margin: 0 auto;
   position: relative;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  padding: 24px;
+
+  @media (min-width: 768px) {
+    width: 400px;
+  }
 `;
 export const CloseButton = styled.button`
   position: absolute;
@@ -32,4 +35,96 @@ export const CloseButton = styled.button`
   background: transparent;
   font-size: 20px;
   cursor: pointer;
+  color: ${({ theme }) => theme.text};
+`;
+export const UserImg = styled.img`
+  border-radius: 8px;
+  width: 68px;
+  height: 68px;
+  margin-right: 32px;
+  margin-top: 37px;
+  margin-bottom: 10px;
+`;
+
+export const FormWrapper = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+`;
+
+export const Input = styled.input`
+  width: 287px;
+  height: 49px;
+  background-color: transparent;
+  border: 1px solid #bedbb0;
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: 14px;
+  color: ${({ theme }) => theme.text};
+`;
+
+export const SaveButton = styled.button`
+  width: 287px;
+  height: 49px;
+  border-radius: 8px;
+  background-color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.buttonText};
+  cursor: pointer;
+  border: none;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: 500;
+  &:hover {
+    background-color: #9dc888;
+  }
+`;
+export const PasswordWrapper = styled.div`
+  position: relative;
+  align-items: center;
+
+  .toggle-eye {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    cursor: pointer;
+    color: #998f8f4d;
+  }
+`;
+
+export const ImageInput = styled.input`
+  display: none;
+`;
+
+export const Label = styled.label`
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  background-color: ${({ theme }) => theme.primary};
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 52px;
+  top: 91px;
+  &:hover {
+    background-color: #9dc888;
+  }
+`;
+
+export const Icon = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${({ theme }) => theme.buttonText};
+  margin-top: 5px;
+`;
+export const ImageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+`;
+export const ModalTitle = styled.h2`
+  font-size: 18px;
+  color: ${({ theme }) => theme.text};
 `;

@@ -11,6 +11,7 @@ export const UserImg = styled.img`
   border-radius: 8px;
   width: 40px;
   height: 40px;
+  cursor: pointer;
   margin-right: 32px;
 `;
 

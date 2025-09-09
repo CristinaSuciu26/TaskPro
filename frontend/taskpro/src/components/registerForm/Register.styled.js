@@ -71,7 +71,7 @@ export const StyledNavLink = styled(NavLink)`
   text-decoration: none;
   color: grey;
   &.active {
-    color: white; /* când e activ */
+    color: white; 
   }
 `;
 export const ErrorMessageWrapper = styled(ErrorMessage)`

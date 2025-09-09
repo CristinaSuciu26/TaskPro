@@ -3,12 +3,26 @@ import { useDispatch } from "react-redux";
 import { updateProfile } from "../../redux/auth/authThunks";
 import {
   CloseButton,
+  FormWrapper,
+  Icon,
+  ImageInput,
+  ImageWrapper,
+  Input,
+  Label,
   ModalContent,
   ModalOverlay,
+  ModalTitle,
+  PasswordWrapper,
+  SaveButton,
+  UserImg,
 } from "./ProfileEditModal.styled";
+import NoPicture from "../../assets/images/no-profile-picture.png";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FiPlus, FiX } from "react-icons/fi";
 
 export default function ProfileEditModal({ user, onClose }) {
   const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
   const [formData, setFormData] = useState({
     name: user?.name || "",
     email: user?.email || "",
@@ -40,40 +54,59 @@ export default function ProfileEditModal({ user, onClose }) {
   return (
     <ModalOverlay onClick={onClose}>
       <ModalContent onClick={(e) => e.stopPropagation()}>
-        <h2>Edit profile</h2>
-        <CloseButton onClick={onClose}>×</CloseButton>
+        <ModalTitle>Edit profile</ModalTitle>
+        <CloseButton onClick={onClose}>
+          <FiX strokeWidth={1.5} />
+        </CloseButton>
 
-        <form onSubmit={handleSubmit}>
-          <input
+        <FormWrapper onSubmit={handleSubmit}>
+          <ImageWrapper>
+            <UserImg
+              src={user?.image || NoPicture}
+              alt={user?.name || "User"}
+            />
+
+            <ImageInput
+              id="file-input"
+              type="file"
+              name="image"
+              accept="image/*"
+              onChange={handleChange}
+            />
+            <Label htmlFor="file-input">
+              <Icon>
+                <FiPlus size={14} />
+              </Icon>
+            </Label>
+          </ImageWrapper>
+          <Input
             type="text"
             name="name"
             value={formData.name}
             placeholder="Name"
             onChange={handleChange}
           />
-          <input
+          <Input
             type="email"
             name="email"
             value={formData.email}
             placeholder="Email"
             onChange={handleChange}
           />
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            placeholder="Password"
-            onChange={handleChange}
-          />
-          <input
-            type="file"
-            name="image"
-            accept="image/*"
-            onChange={handleChange}
-          />
-
-          <button type="submit">Save changes</button>
-        </form>
+          <PasswordWrapper>
+            <Input
+              type={show ? "text" : "password"}
+              name="password"
+              value={formData.password}
+              placeholder="Password"
+              onChange={handleChange}
+            />
+            <span className="toggle-eye" onClick={() => setShow(!show)}>
+              {show ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </PasswordWrapper>
+          <SaveButton type="submit">Save</SaveButton>
+        </FormWrapper>
       </ModalContent>
     </ModalOverlay>
   );
