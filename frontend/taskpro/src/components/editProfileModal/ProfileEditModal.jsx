@@ -19,17 +19,29 @@ import {
 import NoPicture from "../../assets/images/no-profile-picture.png";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FiPlus, FiX } from "react-icons/fi";
+import { toast } from "react-toastify";
+import * as Yup from "yup";
+
+const validationSchema = Yup.object({
+  name: Yup.string().required("Name is required"),
+  email: Yup.string().email("Invalid email").required("Email is required"),
+  password: Yup.string()
+    .transform((val) => (val === "" ? undefined : val))
+    .notRequired()
+    .min(6, "Password must be at least 6 characters"),
+});
 
 export default function ProfileEditModal({ user, onClose }) {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     name: user?.name || "",
     email: user?.email || "",
     password: "",
     image: null,
-  });
+  };
 
+  const [formData, setFormData] = useState(initialFormData);
 
   const [preview, setPreview] = useState(user?.image || null);
 
@@ -39,7 +51,6 @@ export default function ProfileEditModal({ user, onClose }) {
       const file = files[0];
       setFormData((prev) => ({ ...prev, image: file }));
 
-
       const imageUrl = URL.createObjectURL(file);
       setPreview(imageUrl);
     } else {
@@ -47,16 +58,43 @@ export default function ProfileEditModal({ user, onClose }) {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const payload = new FormData();
-    payload.append("name", formData.name);
-    payload.append("email", formData.email);
-    if (formData.password) payload.append("password", formData.password);
-    if (formData.image) payload.append("image", formData.image);
 
-    dispatch(updateProfile(payload));
-    onClose();
+    try {
+      await validationSchema.validate(formData, { abortEarly: false });
+
+      const isChanged =
+        formData.name !== initialFormData.name ||
+        formData.email !== initialFormData.email ||
+        formData.password !== "" ||
+        formData.image !== null;
+
+      if (!isChanged) {
+        toast.info("No changes to update.");
+        onClose();
+        return;
+      }
+
+      const payload = new FormData();
+      payload.append("name", formData.name);
+      payload.append("email", formData.email);
+      if (formData.password) payload.append("password", formData.password);
+      if (formData.image) payload.append("image", formData.image);
+
+      dispatch(updateProfile(payload));
+
+      toast.success("Updated successfully!");
+      onClose();
+    } catch (err) {
+      if (err.inner) {
+        err.inner.forEach((error) => {
+          toast.error(error.message);
+        });
+      } else {
+        toast.error("Validation failed");
+      }
+    }
   };
 
   return (

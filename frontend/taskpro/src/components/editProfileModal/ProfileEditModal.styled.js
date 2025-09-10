@@ -75,7 +75,7 @@ export const SaveButton = styled.button`
   transition: background-color 0.3s ease, transform 0.2s ease;
   font-weight: 500;
   &:hover {
-    background-color: #9dc888;
+    background-color: ${({ theme }) => theme.hoverColor};
   }
 `;
 export const PasswordWrapper = styled.div`
@@ -107,7 +107,7 @@ export const Label = styled.label`
   right: 21px;
   top: 91px;
   &:hover {
-    background-color: #9dc888;
+    background-color: ${({ theme }) => theme.hoverColor};
   }
 `;
 
