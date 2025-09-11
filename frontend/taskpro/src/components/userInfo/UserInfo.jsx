@@ -7,7 +7,7 @@ import { useState } from "react";
 export default function UserInfo() {
   const user = useSelector((state) => state.auth.user);
   const [open, setOpen] = useState(false);
-  
+
   return (
     <div>
       <UserInfoWrapper>

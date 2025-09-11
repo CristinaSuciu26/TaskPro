@@ -2,6 +2,9 @@ export const themes = {
   light: {
     background: "#ffffff",
     backgroundSecondary: "#FCFCFC",
+    sidebar: "#fff",
+    icon: "#1F1F1F",
+    logo: "#1F1F1F",
     hoverColor: "#9dc888",
     buttonText: "#161616",
     text: "#161616",
@@ -16,6 +19,9 @@ export const themes = {
   dark: {
     background: "#1F1F1F",
     backgroundSecondary: "#161616",
+    sidebar: "#121212",
+    icon: "#1F1F1F",
+    logo: "#ffffff",
     hoverColor: "#9dc888",
     buttonText: "#161616",
     text: "#ffffff",
@@ -30,6 +36,9 @@ export const themes = {
   violet: {
     background: "#ECEDFD",
     backgroundSecondary: "#FCFCFC",
+    sidebar: "#5255BC",
+    icon: "#ECEDFD",
+    logo: "#fff",
     buttonText: "#FCFCFC",
     hoverColor: "#7B7EDE",
     text: "#161616",
