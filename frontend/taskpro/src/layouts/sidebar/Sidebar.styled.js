@@ -18,7 +18,7 @@ export const SidebarContent = styled.div`
   z-index: 12;
   position: absolute;
   top: 0;
-
+  padding: 14px;
   @media (min-width: 768px) {
     width: 260px;
   }
@@ -32,4 +32,40 @@ export const MenuIcon = styled.div`
   top: 18px;
   left: 20px;
   color: ${({ theme }) => theme.text};
+`;
+
+export const CreateBoardWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+  gap: 14px;
+`;
+
+export const MyBoardsTitle = styled.h3`
+  font-size: 12px;
+  color:  ${({ theme }) => theme.secondaryText};
+`;
+export const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 77px;
+  font-size: 14px;
+  color: ${({ theme }) => theme.secondaryText};
+`;
+export const CreateBoardBtn = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 40px;
+  height: 36px;
+  border: none;
+  border-radius: 6px;
+  background-color: ${({ theme }) => theme.accent};
+  color: ${({ theme }) => theme.buttonText};
+
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  &:hover {
+    background-color: ${({ theme }) => theme.hoverColor};
+  }
 `;

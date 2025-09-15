@@ -56,7 +56,7 @@ export const Input = styled.input`
   width: 287px;
   height: 49px;
   background-color: transparent;
-  border: 1px solid #bedbb0;
+  border: 1px solid ${({ theme }) => theme.accent};;
   border-radius: 8px;
   padding: 14px 18px;
   font-size: 14px;
