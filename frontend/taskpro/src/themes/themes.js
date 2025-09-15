@@ -44,7 +44,7 @@ export const themes = {
     text: "#161616",
     primary: "#5255BC",
     secondaryText: "#FFFFFF",
-    accent: "#5255BC",
+    accent: "#B8BCFD",
     labelHighPriority: "#BEDBB0",
     labelMediumPriroity: "#E09CB5",
     labelLowPriority: "#8FA1D0",
