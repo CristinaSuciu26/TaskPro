@@ -9,6 +9,8 @@ import {
   ModalTitle,
   IconWrapper,
   IconTitle,
+  Icon,
+  StyledLabel,
 } from "./CreateBoardModal.styled";
 import sprite from "../../assets/icons/sprite.svg";
 
@@ -27,13 +29,11 @@ export default function CreateBoardModal({ onClose }) {
     }
 
     // Build request payload
-    const newBoard = {
-      title,
-      icon,
-      //   background,
-    };
-
-    console.log("Creating new board:", newBoard);
+    // const newBoard = {
+    //   title,
+    //   icon,
+    //   //   background,
+    // };
 
     // TODO: send request to server
     // await api.createBoard(newBoard);
@@ -63,7 +63,7 @@ export default function CreateBoardModal({ onClose }) {
           {error && <p style={{ color: "red" }}>{error}</p>}
           <IconTitle>Icons</IconTitle>
           <IconWrapper>
-            <label>
+            <StyledLabel selected={icon === "icon-1"}>
               <input
                 type="radio"
                 name="icons"
@@ -72,11 +72,13 @@ export default function CreateBoardModal({ onClose }) {
                 onChange={() => setIcon("icon-1")}
                 style={{ display: "none" }}
               />
-              <svg width="197" height="24">
-                <use xlinkHref={`${sprite}#icon1`} />
-              </svg>
-            </label>
-            <label>
+              <Icon>
+                <svg width="197" height="24">
+                  <use xlinkHref={`${sprite}#icon1`} />
+                </svg>
+              </Icon>
+            </StyledLabel>
+            <StyledLabel selected={icon === "icon-2"}>
               <input
                 type="radio"
                 name="icons"
@@ -85,11 +87,13 @@ export default function CreateBoardModal({ onClose }) {
                 onChange={() => setIcon("icon-2")}
                 style={{ display: "none" }}
               />
-              <svg width="197" height="24">
-                <use xlinkHref={`${sprite}#icon2`} />
-              </svg>
-            </label>
-            <label>
+              <Icon>
+                <svg width="197" height="24">
+                  <use xlinkHref={`${sprite}#icon2`} />
+                </svg>
+              </Icon>
+            </StyledLabel>
+            <StyledLabel selected={icon === "icon-3"}>
               <input
                 type="radio"
                 name="icons"
@@ -98,11 +102,14 @@ export default function CreateBoardModal({ onClose }) {
                 onChange={() => setIcon("icon-3")}
                 style={{ display: "none" }}
               />
-              <svg width="197" height="24">
-                <use xlinkHref={`${sprite}#icon3`} />
-              </svg>
-            </label>
-            <label>
+              <Icon>
+                {" "}
+                <svg width="197" height="24">
+                  <use xlinkHref={`${sprite}#icon3`} />
+                </svg>
+              </Icon>
+            </StyledLabel>
+            <StyledLabel selected={icon === "icon-4"}>
               <input
                 type="radio"
                 name="icons"
@@ -111,11 +118,14 @@ export default function CreateBoardModal({ onClose }) {
                 onChange={() => setIcon("icon-4")}
                 style={{ display: "none" }}
               />
-              <svg width="197" height="24">
-                <use xlinkHref={`${sprite}#icon4`} />
-              </svg>
-            </label>
-            <label>
+              <Icon>
+                {" "}
+                <svg width="197" height="24">
+                  <use xlinkHref={`${sprite}#icon4`} />
+                </svg>
+              </Icon>
+            </StyledLabel>
+            <StyledLabel selected={icon === "icon-5"}>
               <input
                 type="radio"
                 name="icons"
@@ -124,11 +134,13 @@ export default function CreateBoardModal({ onClose }) {
                 onChange={() => setIcon("icon-5")}
                 style={{ display: "none" }}
               />
-              <svg width="197" height="24">
-                <use xlinkHref={`${sprite}#icon5`} />
-              </svg>
-            </label>
-            <label>
+              <Icon>
+                <svg width="197" height="24">
+                  <use xlinkHref={`${sprite}#icon5`} />
+                </svg>
+              </Icon>
+            </StyledLabel>
+            <StyledLabel selected={icon === "icon-6"}>
               <input
                 type="radio"
                 name="icons"
@@ -137,11 +149,13 @@ export default function CreateBoardModal({ onClose }) {
                 onChange={() => setIcon("icon-6")}
                 style={{ display: "none" }}
               />
-              <svg width="197" height="24">
-                <use xlinkHref={`${sprite}#icon6`} />
-              </svg>
-            </label>
-            <label>
+              <Icon>
+                <svg width="197" height="24">
+                  <use xlinkHref={`${sprite}#icon6`} />
+                </svg>
+              </Icon>
+            </StyledLabel>
+            <StyledLabel selected={icon === "icon-7"}>
               <input
                 type="radio"
                 name="icons"
@@ -150,11 +164,13 @@ export default function CreateBoardModal({ onClose }) {
                 onChange={() => setIcon("icon-7")}
                 style={{ display: "none" }}
               />
-              <svg width="197" height="24">
-                <use xlinkHref={`${sprite}#icon7`} />
-              </svg>
-            </label>
-            <label>
+              <Icon>
+                <svg width="197" height="24">
+                  <use xlinkHref={`${sprite}#icon7`} />
+                </svg>
+              </Icon>
+            </StyledLabel>
+            <StyledLabel selected={icon === "icon-8"}>
               <input
                 type="radio"
                 name="icons"
@@ -163,10 +179,12 @@ export default function CreateBoardModal({ onClose }) {
                 onChange={() => setIcon("icon-8")}
                 style={{ display: "none" }}
               />
-              <svg width="197" height="24">
-                <use xlinkHref={`${sprite}#icon8`} />
-              </svg>
-            </label>
+              <Icon>
+                <svg width="197" height="24">
+                  <use xlinkHref={`${sprite}#icon8`} />
+                </svg>
+              </Icon>
+            </StyledLabel>
           </IconWrapper>
 
           {/* Backgrounds */}

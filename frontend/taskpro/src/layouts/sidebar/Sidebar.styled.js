@@ -44,11 +44,12 @@ export const CreateBoardWrapper = styled.div`
 
 export const MyBoardsTitle = styled.h3`
   font-size: 12px;
-  color:  ${({ theme }) => theme.secondaryText};
+  color: ${({ theme }) => theme.secondaryText};
 `;
 export const ButtonWrapper = styled.div`
   display: flex;
-  gap: 77px;
+  gap: 45px;
+  width: 85%;
   font-size: 14px;
   color: ${({ theme }) => theme.secondaryText};
 `;
@@ -68,4 +69,7 @@ export const CreateBoardBtn = styled.button`
   &:hover {
     background-color: ${({ theme }) => theme.hoverColor};
   }
+`;
+export const IconWrapper = styled.div`
+  margin-bottom: -20px;
 `;

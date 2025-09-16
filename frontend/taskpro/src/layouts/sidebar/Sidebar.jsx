@@ -8,6 +8,7 @@ import {
   MyBoardsTitle,
   SidebarContent,
   SidebarWrapper,
+  IconWrapper,
 } from "./Sidebar.styled";
 import { useEffect, useState } from "react";
 import { FiPlus } from "react-icons/fi";
@@ -46,10 +47,13 @@ export default function Sidebar() {
         <LogoComponent />
         <CreateBoardWrapper>
           <MyBoardsTitle> My boards</MyBoardsTitle>
+          <IconWrapper>
+            {" "}
+            <svg width="197" height="24">
+              <use xlinkHref={`${sprite}#icon-line`} />
+            </svg>
+          </IconWrapper>
 
-          <svg width="197" height="24">
-            <use xlinkHref={`${sprite}#icon-line`} />
-          </svg>
           <ButtonWrapper>
             Create a new board
             <CreateBoardBtn onClick={handleModal}>

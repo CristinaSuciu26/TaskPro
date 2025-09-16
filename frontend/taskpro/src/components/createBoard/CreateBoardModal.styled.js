@@ -24,7 +24,7 @@ export const ModalContent = styled.div`
   padding: 24px;
   z-index: 15;
   @media (min-width: 768px) {
-    width: 400px;
+    width: 350px;
   }
 `;
 
@@ -53,6 +53,10 @@ export const InputTitle = styled.input`
   font-size: 14px;
   margin-top: 24px;
   background-color: ${({ theme }) => theme.background};
+
+  @media (min-width: 768px) {
+    width: 302px;
+  }
 `;
 
 export const Form = styled.form`
@@ -68,8 +72,21 @@ export const IconWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 8px;
-  width: 80%;
+  gap: 5px;
+  width: 65%;
   margin-top: 14px;
   margin-bottom: 24px;
+`;
+export const Icon = styled.div`
+  cursor: pointer;
+
+  &:hover {
+    color: ${({ theme }) => theme.text};
+  }
+`;
+export const StyledLabel = styled.label`
+  border-radius: 8px;
+  cursor: pointer;
+  transform: ${({ selected }) => (selected ? "scale(1.2)" : "scale(1)")};
+  color: ${({ selected, theme }) => (selected ? theme.text : "#808080")};
 `;
