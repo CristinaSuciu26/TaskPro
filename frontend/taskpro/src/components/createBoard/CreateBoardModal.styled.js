@@ -105,6 +105,7 @@ export const Image = styled.img`
   height: 28px;
   border-radius: 6px;
   border: 1px solid transparent;
+  object-fit: cover;
   cursor: pointer;
   transform: ${({ selected }) => (selected ? "scale(1.2)" : "scale(1)")};
   transition: all 0.2s ease;
