@@ -53,7 +53,7 @@ export const InputTitle = styled.input`
   font-size: 14px;
   margin-top: 24px;
   background-color: ${({ theme }) => theme.background};
-
+  color: ${({ theme }) => theme.text};
   @media (min-width: 768px) {
     width: 302px;
   }
@@ -89,4 +89,63 @@ export const StyledLabel = styled.label`
   cursor: pointer;
   transform: ${({ selected }) => (selected ? "scale(1.2)" : "scale(1)")};
   color: ${({ selected, theme }) => (selected ? theme.text : "#808080")};
+`;
+export const BackgroundTitle = styled.span`
+  font-size: 14px;
+`;
+export const BackgroundWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 3px;
+  margin-top: 14px;
+`;
+
+export const Image = styled.img`
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transform: ${({ selected }) => (selected ? "scale(1.2)" : "scale(1)")};
+  transition: all 0.2s ease;
+  &:hover {
+    border-color: ${({ theme }) => theme.hoverColor};
+  }
+`;
+
+export const ButtonWraper = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  background-color: ${({ theme }) => theme.primary};
+  border-radius: 8px;
+  width: 287px;
+  height: 49px;
+  cursor: pointer;
+  color: ${({ theme }) => theme.icon};
+  font-size: 14px;
+  gap: 4px;
+  border: none;
+
+  transition: all 0.2s ease;
+  &:hover {
+    background-color: ${({ theme }) => theme.hoverColor};
+  }
+  @media (min-width: 768px) {
+    width: 302px;
+  }
+`;
+
+export const CreateButton = styled.div`
+  cursor: pointer;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background-color: ${({ theme }) => theme.modalButton};
+  color: ${({ theme }) => theme.iconButton};
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

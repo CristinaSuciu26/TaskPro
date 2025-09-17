@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FiX } from "react-icons/fi";
+import { FiX, FiPlus } from "react-icons/fi";
 import {
   CloseButton,
   Form,
@@ -11,20 +11,60 @@ import {
   IconTitle,
   Icon,
   StyledLabel,
+  BackgroundTitle,
+  BackgroundWrapper,
+  Image,
+  ButtonWraper,
+  CreateButton,
 } from "./CreateBoardModal.styled";
 import sprite from "../../assets/icons/sprite.svg";
+import bg1 from "../../assets/images/wallpaper1.png";
+import bg2 from "../../assets/images/wallpaper2.png";
+import bg3 from "../../assets/images/wallpaper3.png";
+import bg4 from "../../assets/images/wallpaper4.png";
+import bg5 from "../../assets/images/wallpaper5.png";
+import bg6 from "../../assets/images/wallpaper6.png";
+import bg7 from "../../assets/images/wallpaper7.png";
+import bg8 from "../../assets/images/wallpaper8.png";
+import bg9 from "../../assets/images/wallpaper9.png";
+import bg10 from "../../assets/images/wallpaper10.png";
+import bg11 from "../../assets/images/wallpaper11.png";
+import bg12 from "../../assets/images/wallpaper12.png";
+import bg13 from "../../assets/images/wallpaper13.png";
+import bg14 from "../../assets/images/wallpaper14.png";
+import bg15 from "../../assets/images/wallpaper15.png";
+import noBg from "../../assets/images/no-wallpaper.png";
+import { toast } from "react-toastify";
 
 export default function CreateBoardModal({ onClose }) {
   const [title, setTitle] = useState("");
-  const [icon, setIcon] = useState("icon-1"); // default first icon
-  //   const [background, setBackground] = useState("none"); // default "no background"
+  const [icon, setIcon] = useState("icon-1");
+  const [background, setBackground] = useState("none");
   const [error, setError] = useState("");
+
+  const backgrounds = [
+    bg1,
+    bg2,
+    bg3,
+    bg4,
+    bg5,
+    bg6,
+    bg7,
+    bg8,
+    bg9,
+    bg10,
+    bg11,
+    bg12,
+    bg13,
+    bg14,
+    bg15,
+  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!title.trim()) {
-      setError("Title is required");
+      toast.error("Title is required");
       return;
     }
 
@@ -60,7 +100,7 @@ export default function CreateBoardModal({ onClose }) {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          {error && <p style={{ color: "red" }}>{error}</p>}
+
           <IconTitle>Icons</IconTitle>
           <IconWrapper>
             <StyledLabel selected={icon === "icon-1"}>
@@ -188,35 +228,45 @@ export default function CreateBoardModal({ onClose }) {
           </IconWrapper>
 
           {/* Backgrounds */}
-          {/* <div>
-            <p>Select a background:</p>
+          <BackgroundTitle>Background</BackgroundTitle>
+          <BackgroundWrapper>
             <label>
               <input
                 type="radio"
                 name="background"
                 value="none"
                 checked={background === "none"}
+                style={{ display: "none" }}
                 onChange={() => setBackground("none")}
               />
-              No background
+              <Image src={noBg} alt={`no background`} width="50" height="50" />
             </label>
-            {["bg-1", "bg-2", "bg-3"].map((bg) => (
-              <label key={bg}>
+            {backgrounds.map((bg, idx) => (
+              <label key={idx}>
                 <input
                   type="radio"
                   name="background"
                   value={bg}
                   checked={background === bg}
+                  style={{ display: "none" }}
                   onChange={() => setBackground(bg)}
                 />
-                <svg width="24" height="24">
-                  <use xlinkHref={`${sprite}#${bg}`} />
-                </svg>
+                <Image
+                  selected={background === bg}
+                  src={bg}
+                  alt={`background-${idx}`}
+                  width="50"
+                  height="50"
+                />
               </label>
             ))}
-          </div> */}
-
-          <button type="submit">Create</button>
+          </BackgroundWrapper>
+          <ButtonWraper>
+            <CreateButton type="submit">
+              <FiPlus strokeWidth={1.5} />
+            </CreateButton>
+            Create
+          </ButtonWraper>
         </Form>
       </ModalContent>
     </ModalOverlay>
