@@ -3,10 +3,15 @@ import Dashboard from "../models/Dashboard.js";
 
 export const createDashboard = async (req, res) => {
   try {
-    const { title } = req.body;
+    const { title, icon, background } = req.body;
     const userId = req.user.id;
 
-    const dashboard = new Dashboard({ title, owner: userId });
+    const dashboard = new Dashboard({
+      title,
+      icon: icon || undefined,
+      background: background || undefined,
+      owner: userId,
+    });
     await dashboard.save();
 
     res.status(201).json({ message: "Dashboard created", dashboard });
@@ -48,7 +53,7 @@ export const updateDashboardBackground = async (req, res) => {
 
     // Update dashboard background
     const dashboard = await Dashboard.findOneAndUpdate(
-      { _id: req.params.id, owner: req.user.id }, 
+      { _id: req.params.id, owner: req.user.id },
       { background: backgroundUrl },
       { new: true }
     );

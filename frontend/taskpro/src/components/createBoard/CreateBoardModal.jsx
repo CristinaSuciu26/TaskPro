@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { FiX, FiPlus } from "react-icons/fi";
 import {
   CloseButton,
@@ -35,12 +36,13 @@ import bg14 from "../../assets/images/wallpaper14.png";
 import bg15 from "../../assets/images/wallpaper15.png";
 import noBg from "../../assets/images/no-wallpaper.png";
 import { toast } from "react-toastify";
+import { addDashboard } from "../../redux/dashboard/dashboardThunks";
 
 export default function CreateBoardModal({ onClose }) {
   const [title, setTitle] = useState("");
   const [icon, setIcon] = useState("icon-1");
   const [background, setBackground] = useState("none");
-  const [error, setError] = useState("");
+  const dispatch = useDispatch();
 
   const backgrounds = [
     bg1,
@@ -60,7 +62,7 @@ export default function CreateBoardModal({ onClose }) {
     bg15,
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!title.trim()) {
@@ -68,19 +70,19 @@ export default function CreateBoardModal({ onClose }) {
       return;
     }
 
-    // Build request payload
-    // const newBoard = {
-    //   title,
-    //   icon,
-    //   //   background,
-    // };
+    const newDashboard = {
+      title,
+      icon,
+      background,
+    };
 
-    // TODO: send request to server
-    // await api.createBoard(newBoard);
-
-    // Reset & close modal
-    setError("");
-    onClose();
+    try {
+      await dispatch(addDashboard(newDashboard)).unwrap();
+      toast.success("Created successfully!");
+      onClose();
+    } catch (err) {
+      toast.error(err || "Create dashboard failed");
+    }
   };
 
   return (

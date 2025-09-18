@@ -32,7 +32,7 @@ export const ParagraphWrapper = styled.div`
   font-weight: 400;
   font-size: 14px;
   padding: 20px;
-  color: ${({ theme }) => theme.secondaryText};
+  color: #161616;
   @media (min-width: 375px) {
     width: 350px;
   }

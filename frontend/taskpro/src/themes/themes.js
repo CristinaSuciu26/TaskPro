@@ -41,7 +41,7 @@ export const themes = {
     background: "#ECEDFD",
     backgroundSecondary: "#FCFCFC",
     sidebar: "#5255BC",
-    icon: "#ECEDFD",
+    icon: "#B8BCFD",
     logo: "#fff",
     iconButton: "#161616",
     modalButton: "#FFFFFF",
