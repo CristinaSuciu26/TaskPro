@@ -73,3 +73,48 @@ export const CreateBoardBtn = styled.button`
 export const IconWrapper = styled.div`
   margin-bottom: -20px;
 `;
+
+export const DashboardListWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  margin-top: 25px;
+  max-height: 175px;
+  overflow: scroll;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+export const DashboardList = styled.ul`
+  width: 190px;
+`;
+export const DashboardListItems = styled.li`
+  width: 100%;
+  height: 61px;
+  display: flex;
+  font-size: 14px;
+  cursor: pointer;
+  color: ${({ theme }) => theme.secondaryText};
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.4s ease;
+  &:hover {
+    box-shadow: 0 4px 0px -2px ${({ theme }) => theme.accent};
+    border-radius: 5px;
+  }
+`;
+export const IconContainer = styled.div`
+  display: flex;
+  margin-left: 88px;
+  gap: 5px;
+`;
+export const Icon = styled.svg`
+  color: ${({ theme }) => theme.secondaryText};
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.accent};
+    transform: scale(1.2);
+  }
+`;

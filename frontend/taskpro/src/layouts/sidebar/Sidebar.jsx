@@ -9,6 +9,11 @@ import {
   SidebarContent,
   SidebarWrapper,
   IconWrapper,
+  DashboardListWrapper,
+  DashboardList,
+  DashboardListItems,
+  IconContainer,
+  Icon,
 } from "./Sidebar.styled";
 import { useEffect, useState } from "react";
 import { FiPlus } from "react-icons/fi";
@@ -48,7 +53,6 @@ export default function Sidebar() {
         <CreateBoardWrapper>
           <MyBoardsTitle> My boards</MyBoardsTitle>
           <IconWrapper>
-            {" "}
             <svg width="197" height="24">
               <use xlinkHref={`${sprite}#icon-line`} />
             </svg>
@@ -64,6 +68,80 @@ export default function Sidebar() {
             <use xlinkHref={`${sprite}#icon-line`} />
           </svg>
         </CreateBoardWrapper>
+        <DashboardListWrapper>
+          <DashboardList>
+            <DashboardListItems>
+              <svg width="16" height="16">
+                <use xlinkHref={`${sprite}#icon1`} />
+              </svg>
+              <span style={{ marginBottom: "-3px" }}>Title</span>
+              <IconContainer>
+                <Icon width="16" height="16">
+                  <use xlinkHref={`${sprite}#edit-icon`} />
+                </Icon>
+                <Icon width="16" height="16">
+                  <use xlinkHref={`${sprite}#trash-icon`} />
+                </Icon>
+              </IconContainer>
+            </DashboardListItems>
+            <DashboardListItems>
+              <svg width="16" height="16">
+                <use xlinkHref={`${sprite}#icon1`} />
+              </svg>
+              <span style={{ marginBottom: "-3px" }}>Title</span>
+              <IconContainer>
+                <Icon width="16" height="16">
+                  <use xlinkHref={`${sprite}#edit-icon`} />
+                </Icon>
+                <Icon width="16" height="16">
+                  <use xlinkHref={`${sprite}#trash-icon`} />
+                </Icon>
+              </IconContainer>
+            </DashboardListItems>
+            <DashboardListItems>
+              <svg width="16" height="16">
+                <use xlinkHref={`${sprite}#icon1`} />
+              </svg>
+              <span style={{ marginBottom: "-3px" }}>Title</span>
+              <IconContainer>
+                <Icon width="16" height="16">
+                  <use xlinkHref={`${sprite}#edit-icon`} />
+                </Icon>
+                <Icon width="16" height="16">
+                  <use xlinkHref={`${sprite}#trash-icon`} />
+                </Icon>
+              </IconContainer>
+            </DashboardListItems>
+            <DashboardListItems>
+              <svg width="16" height="16">
+                <use xlinkHref={`${sprite}#icon1`} />
+              </svg>
+              <span style={{ marginBottom: "-3px" }}>Title</span>
+              <IconContainer>
+                <Icon width="16" height="16">
+                  <use xlinkHref={`${sprite}#edit-icon`} />
+                </Icon>
+                <Icon width="16" height="16">
+                  <use xlinkHref={`${sprite}#trash-icon`} />
+                </Icon>
+              </IconContainer>
+            </DashboardListItems>
+            <DashboardListItems>
+              <Icon width="16" height="16">
+                <use xlinkHref={`${sprite}#icon1`} />
+              </Icon>
+              <span style={{ marginBottom: "-3px" }}>Title</span>
+              <IconContainer>
+                <Icon width="16" height="16">
+                  <use xlinkHref={`${sprite}#edit-icon`} />
+                </Icon>
+                <Icon width="16" height="16">
+                  <use xlinkHref={`${sprite}#trash-icon`} />
+                </Icon>
+              </IconContainer>
+            </DashboardListItems>
+          </DashboardList>
+        </DashboardListWrapper>
       </SidebarContent>
       {openModal && (
         <CreateBoardModal
