@@ -14,13 +14,23 @@ import {
   DashboardListItems,
   IconContainer,
   Icon,
+  Title,
 } from "./Sidebar.styled";
+import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import CreateBoardModal from "../../components/createBoard/CreateBoardModal";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  deleteDashboard,
+  fetchDashboards,
+} from "../../redux/dashboard/dashboardThunks";
 
 export default function Sidebar() {
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+  const dashboards = useSelector((state) => state.dashboard.dashboards);
+  console.log("dashboards in store:", dashboards);
 
   const [openModal, setOpenModal] = useState(false);
   useEffect(() => {
@@ -35,6 +45,19 @@ export default function Sidebar() {
     };
   }, [open]);
 
+  useEffect(() => {
+    dispatch(fetchDashboards());
+  }, [dispatch]);
+
+  const handleDelete = async (id) => {
+    try {
+      await dispatch(deleteDashboard(id)).unwrap();
+
+      toast.success("Dashboard deleted!");
+    } catch (err) {
+      toast.error(err || "Delete failed");
+    }
+  };
   const handleModal = () => {
     setOpenModal(true);
   };
@@ -70,76 +93,26 @@ export default function Sidebar() {
         </CreateBoardWrapper>
         <DashboardListWrapper>
           <DashboardList>
-            <DashboardListItems>
-              <svg width="16" height="16">
-                <use xlinkHref={`${sprite}#icon1`} />
-              </svg>
-              <span style={{ marginBottom: "-3px" }}>Title</span>
-              <IconContainer>
-                <Icon width="16" height="16">
-                  <use xlinkHref={`${sprite}#edit-icon`} />
-                </Icon>
-                <Icon width="16" height="16">
-                  <use xlinkHref={`${sprite}#trash-icon`} />
-                </Icon>
-              </IconContainer>
-            </DashboardListItems>
-            <DashboardListItems>
-              <svg width="16" height="16">
-                <use xlinkHref={`${sprite}#icon1`} />
-              </svg>
-              <span style={{ marginBottom: "-3px" }}>Title</span>
-              <IconContainer>
-                <Icon width="16" height="16">
-                  <use xlinkHref={`${sprite}#edit-icon`} />
-                </Icon>
-                <Icon width="16" height="16">
-                  <use xlinkHref={`${sprite}#trash-icon`} />
-                </Icon>
-              </IconContainer>
-            </DashboardListItems>
-            <DashboardListItems>
-              <svg width="16" height="16">
-                <use xlinkHref={`${sprite}#icon1`} />
-              </svg>
-              <span style={{ marginBottom: "-3px" }}>Title</span>
-              <IconContainer>
-                <Icon width="16" height="16">
-                  <use xlinkHref={`${sprite}#edit-icon`} />
-                </Icon>
-                <Icon width="16" height="16">
-                  <use xlinkHref={`${sprite}#trash-icon`} />
-                </Icon>
-              </IconContainer>
-            </DashboardListItems>
-            <DashboardListItems>
-              <svg width="16" height="16">
-                <use xlinkHref={`${sprite}#icon1`} />
-              </svg>
-              <span style={{ marginBottom: "-3px" }}>Title</span>
-              <IconContainer>
-                <Icon width="16" height="16">
-                  <use xlinkHref={`${sprite}#edit-icon`} />
-                </Icon>
-                <Icon width="16" height="16">
-                  <use xlinkHref={`${sprite}#trash-icon`} />
-                </Icon>
-              </IconContainer>
-            </DashboardListItems>
-            <DashboardListItems>
-              <Icon width="16" height="16">
-                <use xlinkHref={`${sprite}#icon1`} />
-              </Icon>
-              <span style={{ marginBottom: "-3px" }}>Title</span>
-              <IconContainer>
-                <Icon width="16" height="16">
-                  <use xlinkHref={`${sprite}#edit-icon`} />
-                </Icon>
-                <Icon width="16" height="16">
-                  <use xlinkHref={`${sprite}#trash-icon`} />
-                </Icon>
-              </IconContainer>
-            </DashboardListItems>
+            {dashboards?.map((board) => (
+              <DashboardListItems key={board._id}>
+                <svg width="19" height="18">
+                  <use xlinkHref={`${sprite}#${board.icon}`} />
+                </svg>
+                <Title>{board.title}</Title>
+                <IconContainer>
+                  <Icon width="16" height="16">
+                    <use xlinkHref={`${sprite}#edit-icon`} />
+                  </Icon>
+                  <Icon
+                    width="16"
+                    height="16"
+                    onClick={() => handleDelete(board._id)}
+                  >
+                    <use xlinkHref={`${sprite}#trash-icon`} />
+                  </Icon>
+                </IconContainer>
+              </DashboardListItems>
+            ))}
           </DashboardList>
         </DashboardListWrapper>
       </SidebarContent>
@@ -147,7 +120,6 @@ export default function Sidebar() {
         <CreateBoardModal
           onClose={() => {
             setOpenModal(false);
-            setOpen(false);
           }}
         />
       )}

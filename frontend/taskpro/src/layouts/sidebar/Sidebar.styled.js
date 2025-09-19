@@ -78,7 +78,7 @@ export const DashboardListWrapper = styled.div`
   display: flex;
   width: 100%;
   margin-top: 25px;
-  max-height: 175px;
+  max-height: 190px;
   overflow: scroll;
   overflow-x: hidden;
   &::-webkit-scrollbar {
@@ -89,13 +89,13 @@ export const DashboardList = styled.ul`
   width: 190px;
 `;
 export const DashboardListItems = styled.li`
-  width: 100%;
+  width: 120%;
   height: 61px;
   display: flex;
   font-size: 14px;
   cursor: pointer;
   color: ${({ theme }) => theme.secondaryText};
-  gap: 5px;
+  gap: 15px;
   align-items: center;
   justify-content: center;
   transition: box-shadow 0.4s ease;
@@ -117,4 +117,14 @@ export const Icon = styled.svg`
     color: ${({ theme }) => theme.accent};
     transform: scale(1.2);
   }
+`;
+export const Title = styled.span`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-bottom: 3px;
+  white-space: nowrap;
+  width: 60px;
+  display: inline-block;
+  vertical-align: middle;
 `;

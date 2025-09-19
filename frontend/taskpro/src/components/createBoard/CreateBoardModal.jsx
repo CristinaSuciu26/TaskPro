@@ -78,7 +78,9 @@ export default function CreateBoardModal({ onClose }) {
 
     try {
       await dispatch(addDashboard(newDashboard)).unwrap();
+
       toast.success("Created successfully!");
+      console.log("succes");
       onClose();
     } catch (err) {
       toast.error(err || "Create dashboard failed");
@@ -116,7 +118,7 @@ export default function CreateBoardModal({ onClose }) {
               />
               <Icon>
                 <svg width="197" height="24">
-                  <use xlinkHref={`${sprite}#icon1`} />
+                  <use xlinkHref={`${sprite}#icon-1`} />
                 </svg>
               </Icon>
             </StyledLabel>
@@ -131,7 +133,7 @@ export default function CreateBoardModal({ onClose }) {
               />
               <Icon>
                 <svg width="197" height="24">
-                  <use xlinkHref={`${sprite}#icon2`} />
+                  <use xlinkHref={`${sprite}#icon-2`} />
                 </svg>
               </Icon>
             </StyledLabel>
@@ -147,7 +149,7 @@ export default function CreateBoardModal({ onClose }) {
               <Icon>
                 {" "}
                 <svg width="197" height="24">
-                  <use xlinkHref={`${sprite}#icon3`} />
+                  <use xlinkHref={`${sprite}#icon-3`} />
                 </svg>
               </Icon>
             </StyledLabel>
@@ -163,7 +165,7 @@ export default function CreateBoardModal({ onClose }) {
               <Icon>
                 {" "}
                 <svg width="197" height="24">
-                  <use xlinkHref={`${sprite}#icon4`} />
+                  <use xlinkHref={`${sprite}#icon-4`} />
                 </svg>
               </Icon>
             </StyledLabel>
@@ -178,7 +180,7 @@ export default function CreateBoardModal({ onClose }) {
               />
               <Icon>
                 <svg width="197" height="24">
-                  <use xlinkHref={`${sprite}#icon5`} />
+                  <use xlinkHref={`${sprite}#icon-5`} />
                 </svg>
               </Icon>
             </StyledLabel>
@@ -193,7 +195,7 @@ export default function CreateBoardModal({ onClose }) {
               />
               <Icon>
                 <svg width="197" height="24">
-                  <use xlinkHref={`${sprite}#icon6`} />
+                  <use xlinkHref={`${sprite}#icon-6`} />
                 </svg>
               </Icon>
             </StyledLabel>
@@ -208,7 +210,7 @@ export default function CreateBoardModal({ onClose }) {
               />
               <Icon>
                 <svg width="197" height="24">
-                  <use xlinkHref={`${sprite}#icon7`} />
+                  <use xlinkHref={`${sprite}#icon-7`} />
                 </svg>
               </Icon>
             </StyledLabel>
@@ -223,7 +225,7 @@ export default function CreateBoardModal({ onClose }) {
               />
               <Icon>
                 <svg width="197" height="24">
-                  <use xlinkHref={`${sprite}#icon8`} />
+                  <use xlinkHref={`${sprite}#icon-8`} />
                 </svg>
               </Icon>
             </StyledLabel>

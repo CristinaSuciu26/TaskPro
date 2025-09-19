@@ -24,7 +24,7 @@ const dashboardSlice = createSlice({
       })
       .addCase(fetchDashboards.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.dashboards = action.payload.dashboard; 
+        state.dashboards = action.payload;
       })
       .addCase(fetchDashboards.rejected, (state, action) => {
         state.status = "failed";
