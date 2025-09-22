@@ -26,7 +26,7 @@ export const addDashboard = createAsyncThunk(
   "dashboard/addDashboard",
   async (data, { rejectWithValue }) => {
     try {
-      const token = localStorage.getItem("token"); 
+      const token = localStorage.getItem("token");
       const res = await axios.post(`${API_URL}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -61,33 +61,28 @@ export const deleteDashboard = createAsyncThunk(
 );
 export const updateDashboardBackground = createAsyncThunk(
   "dashboard/updateBackground",
-  async ({ id, background, file }, { rejectWithValue }) => {
+  async ({ id, title, icon, background, file }, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem("token");
-      // pt imagine (upload), folosim FormData
-      let formData;
-      let config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
+      let config = { headers: { Authorization: `Bearer ${token}` } };
+      let data;
 
       if (file) {
-        formData = new FormData();
-        formData.append("background", file);
+        data = new FormData();
+        data.append("file", file);
+        if (title) data.append("title", title);
+        if (icon) data.append("icon", icon);
+        if (background) data.append("background", background);
         config.headers["Content-Type"] = "multipart/form-data";
+      } else {
+        data = { title, icon, background };
       }
 
-      const res = await axios.put(
-        `${API_URL}/${id}`,
-        file ? formData : { background }, // fie file, fie string URL
-        config
-      );
-
+      const res = await axios.put(`${API_URL}/${id}/background`, data, config);
       return res.data.dashboard;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data?.message || "Failed to update background"
+        error.response?.data?.message || "Failed to update"
       );
     }
   }

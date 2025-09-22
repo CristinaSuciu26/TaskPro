@@ -43,18 +43,22 @@ export const deleteDashboard = async (req, res) => {
 
 export const updateDashboardBackground = async (req, res) => {
   try {
-    const { background } = req.body;
+    const { background, icon, title } = req.body;
     let backgroundUrl = background;
 
-    // If user uploads a file, upload it to Cloudinary
+    // Dacă a fost încărcat fișier, urcă-l pe Cloudinary
     if (req.file) {
       backgroundUrl = await uploadImage(req.file.path);
     }
 
-    // Update dashboard background
+    const updates = {};
+    if (backgroundUrl) updates.background = backgroundUrl;
+    if (icon) updates.icon = icon;
+    if (title) updates.title = title;
+
     const dashboard = await Dashboard.findOneAndUpdate(
       { _id: req.params.id, owner: req.user.id },
-      { background: backgroundUrl },
+      updates,
       { new: true }
     );
 
@@ -63,7 +67,7 @@ export const updateDashboardBackground = async (req, res) => {
     }
 
     res.status(200).json({
-      message: "Dashboard background updated",
+      message: "Dashboard updated successfully",
       dashboard,
     });
   } catch (error) {

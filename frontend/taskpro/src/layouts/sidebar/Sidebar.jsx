@@ -17,7 +17,7 @@ import {
   Title,
 } from "./Sidebar.styled";
 import { toast } from "react-toastify";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import CreateBoardModal from "../../components/createBoard/CreateBoardModal";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,14 +25,16 @@ import {
   deleteDashboard,
   fetchDashboards,
 } from "../../redux/dashboard/dashboardThunks";
+import EditBoardModal from "../../components/editBoard/EditBoardModal";
 
 export default function Sidebar() {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const dashboards = useSelector((state) => state.dashboard.dashboards);
-  console.log("dashboards in store:", dashboards);
-
+  const [openEditModal, setOpenEditModal] = useState(false);
+  const [selectedBoard, setSelectedBoard] = useState(null);
   const [openModal, setOpenModal] = useState(false);
+
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
@@ -46,21 +48,31 @@ export default function Sidebar() {
   }, [open]);
 
   useEffect(() => {
-    dispatch(fetchDashboards());
-  }, [dispatch]);
-
-  const handleDelete = async (id) => {
-    try {
-      await dispatch(deleteDashboard(id)).unwrap();
-
-      toast.success("Dashboard deleted!");
-    } catch (err) {
-      toast.error(err || "Delete failed");
+    if (!dashboards || dashboards.length === 0) {
+      dispatch(fetchDashboards());
     }
-  };
+  }, [dispatch, dashboards]);
+
+  const handleDelete = useCallback(
+    async (id) => {
+      try {
+        await dispatch(deleteDashboard(id)).unwrap();
+        toast.success("Dashboard deleted!");
+      } catch (err) {
+        toast.error(err || "Delete failed");
+      }
+    },
+    [dispatch]
+  );
+
   const handleModal = () => {
     setOpenModal(true);
   };
+
+  const handleEditModal = useCallback((board) => {
+    setSelectedBoard(board);
+    setOpenEditModal(true);
+  }, []);
 
   return (
     <div>
@@ -94,15 +106,20 @@ export default function Sidebar() {
         <DashboardListWrapper>
           <DashboardList>
             {dashboards?.map((board) => (
-              <DashboardListItems key={board._id}>
+              <DashboardListItems key={`${board._id}-${board.icon}`}>
                 <svg width="19" height="18">
                   <use xlinkHref={`${sprite}#${board.icon}`} />
                 </svg>
                 <Title>{board.title}</Title>
                 <IconContainer>
-                  <Icon width="16" height="16">
+                  <Icon
+                    width="16"
+                    height="16"
+                    onClick={() => handleEditModal(board)}
+                  >
                     <use xlinkHref={`${sprite}#edit-icon`} />
                   </Icon>
+
                   <Icon
                     width="16"
                     height="16"
@@ -121,6 +138,12 @@ export default function Sidebar() {
           onClose={() => {
             setOpenModal(false);
           }}
+        />
+      )}
+      {openEditModal && selectedBoard && (
+        <EditBoardModal
+          onClose={() => setOpenEditModal(false)}
+          board={selectedBoard}
         />
       )}
     </div>
