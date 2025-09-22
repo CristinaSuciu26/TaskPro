@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { FiX, FiPlus } from "react-icons/fi";
 import {
@@ -43,11 +43,6 @@ export default function EditBoardModal({ onClose, board }) {
   const [icon, setIcon] = useState(board?.icon || "");
   const [background, setBackground] = useState(board?.background || "");
   const dispatch = useDispatch();
-  useEffect(() => {
-    setTitle(board?.title || "");
-    setIcon(board?.icon || "");
-    setBackground(board?.background || "");
-  }, [board]);
 
   const backgrounds = [
     bg1,
@@ -81,11 +76,7 @@ export default function EditBoardModal({ onClose, board }) {
       icon,
       background,
     };
-    console.log(board._id);
-    console.log(title);
-    console.log(icon);
-    console.log(background);
-
+ 
     try {
       await dispatch(updateDashboardBackground(updateDashboard)).unwrap();
 
