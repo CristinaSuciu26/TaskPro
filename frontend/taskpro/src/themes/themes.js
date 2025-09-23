@@ -2,6 +2,7 @@ export const themes = {
   light: {
     background: "#ffffff",
     backgroundSecondary: "#FCFCFC",
+    needHelp: "#F6F6F7",
     sidebar: "#fff",
     icon: "#1F1F1F",
     logo: "#1F1F1F",
@@ -21,6 +22,7 @@ export const themes = {
   dark: {
     background: "#1F1F1F",
     backgroundSecondary: "#161616",
+    needHelp: "#1F1F1F",
     sidebar: "#121212",
     icon: "#1F1F1F",
     logo: "#ffffff",
@@ -40,6 +42,7 @@ export const themes = {
   violet: {
     background: "#ECEDFD",
     backgroundSecondary: "#FCFCFC",
+    needHelp: "#ECEDFD66",
     sidebar: "#5255BC",
     icon: "#B8BCFD",
     logo: "#fff",

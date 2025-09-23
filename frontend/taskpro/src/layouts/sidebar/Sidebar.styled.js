@@ -39,7 +39,8 @@ export const CreateBoardWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: baseline;
-  gap: 14px;
+  gap: 9px;
+  margin-top: -33px;
 `;
 
 export const MyBoardsTitle = styled.h3`
@@ -49,9 +50,15 @@ export const MyBoardsTitle = styled.h3`
 export const ButtonWrapper = styled.div`
   display: flex;
   gap: 45px;
-  width: 85%;
+  width: 100%;
   font-size: 14px;
+  margin-top: 13px;
+
   color: ${({ theme }) => theme.secondaryText};
+`;
+
+export const ButtonText = styled.span`
+  width: 60%;
 `;
 export const CreateBoardBtn = styled.button`
   display: flex;
@@ -77,8 +84,7 @@ export const IconWrapper = styled.div`
 export const DashboardListWrapper = styled.div`
   display: flex;
   width: 100%;
-  margin-top: 25px;
-  max-height: 190px;
+  max-height: 135px;
   overflow: scroll;
   overflow-x: hidden;
   &::-webkit-scrollbar {
@@ -89,8 +95,8 @@ export const DashboardList = styled.ul`
   width: 190px;
 `;
 export const DashboardListItems = styled.li`
-  width: 120%;
-  height: 61px;
+  width: 100%;
+  height: 50px;
   display: flex;
   font-size: 14px;
   cursor: pointer;
@@ -103,10 +109,13 @@ export const DashboardListItems = styled.li`
     box-shadow: 0 4px 0px -2px ${({ theme }) => theme.accent};
     border-radius: 5px;
   }
+  @media (min-width: 768px) {
+    width: 111%;
+  }
 `;
 export const IconContainer = styled.div`
   display: flex;
-  margin-left: 88px;
+  margin-left: 18px;
   gap: 5px;
 `;
 export const Icon = styled.svg`
@@ -122,9 +131,57 @@ export const Title = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
   overflow: hidden;
-  margin-bottom: 3px;
+  margin-bottom: -3px;
   white-space: nowrap;
-  width: 60px;
+  width: 100px;
   display: inline-block;
   vertical-align: middle;
+`;
+
+export const NeedHelp = styled.div`
+  width: 197px;
+  height: 200px;
+  border-radius: 8px;
+  margin-top: 30px;
+  background-color: ${({ theme }) => theme.needHelp};
+  color: ${({ theme }) => theme.text};
+  font-weight: 400;
+  padding: 14px;
+
+  @media (min-width: 768px) {
+    width: 212px;
+    height: 230px;
+    margin-left: 8px;
+  }
+`;
+
+export const NeedHelpImg = styled.img`
+  width: 54px;
+  height: 72px;
+`;
+
+export const NeedHelpParagraph = styled.p`
+  font-size: 12px;
+  @media (min-width: 768px) {
+    font-size: 14px;
+  }
+`;
+export const NeedHelpSpan = styled.span`
+  color: ${({ theme }) => theme.primary};
+`;
+
+export const NeedHelpButton = styled.button`
+  border: none;
+  display: flex;
+  gap: 8px;
+  cursor: pointer;
+  align-items: center;
+  margin-top: 5px;
+  background-color: transparent;
+`;
+
+export const NeedHelpWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 `;

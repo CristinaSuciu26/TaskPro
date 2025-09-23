@@ -15,6 +15,13 @@ import {
   IconContainer,
   Icon,
   Title,
+  NeedHelp,
+  ButtonText,
+  NeedHelpImg,
+  NeedHelpParagraph,
+  NeedHelpButton,
+  NeedHelpWrapper,
+  NeedHelpSpan,
 } from "./Sidebar.styled";
 import { toast } from "react-toastify";
 import { useCallback, useEffect, useState } from "react";
@@ -26,6 +33,7 @@ import {
   fetchDashboards,
 } from "../../redux/dashboard/dashboardThunks";
 import EditBoardModal from "../../components/editBoard/EditBoardModal";
+import needHelpImg from "../../assets/images/needhelp.png";
 
 export default function Sidebar() {
   const [open, setOpen] = useState(false);
@@ -88,13 +96,14 @@ export default function Sidebar() {
         <CreateBoardWrapper>
           <MyBoardsTitle> My boards</MyBoardsTitle>
           <IconWrapper>
-            <svg width="197" height="24">
+            <svg width="197" height="10">
               <use xlinkHref={`${sprite}#icon-line`} />
             </svg>
           </IconWrapper>
 
           <ButtonWrapper>
-            Create a new board
+            <ButtonText> Create a new board</ButtonText>
+
             <CreateBoardBtn onClick={handleModal}>
               <FiPlus size={14} />
             </CreateBoardBtn>
@@ -132,6 +141,23 @@ export default function Sidebar() {
             ))}
           </DashboardList>
         </DashboardListWrapper>
+
+        <NeedHelp>
+          <NeedHelpWrapper>
+            <NeedHelpImg src={needHelpImg} alt="need help" />
+            <NeedHelpParagraph>
+              If you need help with <NeedHelpSpan>TaskPro</NeedHelpSpan>, check
+              out our support resources or reach out to our customer support
+              team.
+              <NeedHelpButton>
+                <Icon width="19" height="19">
+                  <use xlinkHref={`${sprite}#icon-help`} />
+                </Icon>
+                Need help?
+              </NeedHelpButton>
+            </NeedHelpParagraph>
+          </NeedHelpWrapper>
+        </NeedHelp>
       </SidebarContent>
       {openModal && (
         <CreateBoardModal
