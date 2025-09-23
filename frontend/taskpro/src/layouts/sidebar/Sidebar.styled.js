@@ -178,6 +178,7 @@ export const NeedHelpButton = styled.button`
   align-items: center;
   margin-top: 5px;
   background-color: transparent;
+  color: ${({ theme }) => theme.text};
 `;
 
 export const NeedHelpWrapper = styled.div`
