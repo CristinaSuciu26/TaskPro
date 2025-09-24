@@ -34,12 +34,14 @@ import {
 } from "../../redux/dashboard/dashboardThunks";
 import EditBoardModal from "../../components/editBoard/EditBoardModal";
 import needHelpImg from "../../assets/images/needhelp.png";
+import { HelpModal } from "../../components/helpModal/HelpModal";
 
 export default function Sidebar() {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const dashboards = useSelector((state) => state.dashboard.dashboards);
   const [openEditModal, setOpenEditModal] = useState(false);
+  const [openHelpModal, setOpenHelpModal] = useState(false);
   const [selectedBoard, setSelectedBoard] = useState(null);
   const [openModal, setOpenModal] = useState(false);
 
@@ -73,6 +75,9 @@ export default function Sidebar() {
     [dispatch]
   );
 
+  const handleHelpModal = () => {
+    setOpenHelpModal(true);
+  };
   const handleModal = () => {
     setOpenModal(true);
   };
@@ -149,7 +154,7 @@ export default function Sidebar() {
               If you need help with <NeedHelpSpan>TaskPro</NeedHelpSpan>, check
               out our support resources or reach out to our customer support
               team.
-              <NeedHelpButton>
+              <NeedHelpButton onClick={handleHelpModal}>
                 <Icon width="19" height="19">
                   <use xlinkHref={`${sprite}#icon-help`} />
                 </Icon>
@@ -172,6 +177,8 @@ export default function Sidebar() {
           board={selectedBoard}
         />
       )}
+
+      {openHelpModal && <HelpModal onClose={() => setOpenHelpModal(false)} />}
     </div>
   );
 }

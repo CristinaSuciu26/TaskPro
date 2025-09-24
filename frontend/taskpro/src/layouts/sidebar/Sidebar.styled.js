@@ -162,6 +162,7 @@ export const NeedHelpImg = styled.img`
 
 export const NeedHelpParagraph = styled.p`
   font-size: 12px;
+  font-weight: 400;
   @media (min-width: 768px) {
     font-size: 14px;
   }
@@ -176,7 +177,7 @@ export const NeedHelpButton = styled.button`
   gap: 8px;
   cursor: pointer;
   align-items: center;
-  margin-top: 5px;
+  margin-top: 10px;
   background-color: transparent;
   color: ${({ theme }) => theme.text};
 `;
@@ -185,4 +186,5 @@ export const NeedHelpWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
+  margin-top: -15px;
 `;
