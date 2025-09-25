@@ -22,6 +22,7 @@ import {
   NeedHelpButton,
   NeedHelpWrapper,
   NeedHelpSpan,
+  LogoutButton,
 } from "./Sidebar.styled";
 import { toast } from "react-toastify";
 import { useCallback, useEffect, useState } from "react";
@@ -35,10 +36,13 @@ import {
 import EditBoardModal from "../../components/editBoard/EditBoardModal";
 import needHelpImg from "../../assets/images/needhelp.png";
 import { HelpModal } from "../../components/helpModal/HelpModal";
+import { logout } from "../../redux/auth/authSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function Sidebar() {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const dashboards = useSelector((state) => state.dashboard.dashboards);
   const [openEditModal, setOpenEditModal] = useState(false);
   const [openHelpModal, setOpenHelpModal] = useState(false);
@@ -46,12 +50,24 @@ export default function Sidebar() {
   const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
-    if (open) {
+    const handleResize = () => {
+      if (window.innerWidth >= 1240) {
+        setOpen(true);
+      } else {
+        setOpen(false);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (open && window.innerWidth < 1240) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
-
     return () => {
       document.body.style.overflow = "auto";
     };
@@ -62,6 +78,11 @@ export default function Sidebar() {
       dispatch(fetchDashboards());
     }
   }, [dispatch, dashboards]);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/welcome");
+  };
 
   const handleDelete = useCallback(
     async (id) => {
@@ -163,6 +184,13 @@ export default function Sidebar() {
             </NeedHelpParagraph>
           </NeedHelpWrapper>
         </NeedHelp>
+
+        <LogoutButton onClick={handleLogout}>
+          <Icon width="28" height="28">
+            <use xlinkHref={`${sprite}#logout-icon`} />
+          </Icon>
+          Log out
+        </LogoutButton>
       </SidebarContent>
       {openModal && (
         <CreateBoardModal

@@ -7,11 +7,14 @@ export const SidebarWrapper = styled.div`
   position: absolute;
   top: 0;
   z-index: 11;
+  @media (min-width: 1240px) {
+    display: none;
+  }
 `;
 
 export const SidebarContent = styled.div`
   width: 225px;
-  height: 100vw;
+  height: 770px;
   background-color: ${({ theme }) => theme.sidebar};
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
   transition: transform 0.5s ease-in-out;
@@ -21,6 +24,9 @@ export const SidebarContent = styled.div`
   padding: 14px;
   @media (min-width: 768px) {
     width: 260px;
+  }
+
+  @media (min-width: 1440px) {
   }
 `;
 
@@ -32,6 +38,10 @@ export const MenuIcon = styled.div`
   top: 18px;
   left: 20px;
   color: ${({ theme }) => theme.text};
+
+  @media (min-width: 1240px) {
+    display: none;
+  }
 `;
 
 export const CreateBoardWrapper = styled.div`
@@ -40,7 +50,7 @@ export const CreateBoardWrapper = styled.div`
   justify-content: center;
   align-items: baseline;
   gap: 9px;
-  margin-top: -33px;
+  margin-top: -15px;
 `;
 
 export const MyBoardsTitle = styled.h3`
@@ -84,7 +94,7 @@ export const IconWrapper = styled.div`
 export const DashboardListWrapper = styled.div`
   display: flex;
   width: 100%;
-  max-height: 135px;
+  max-height: 101px;
   overflow: scroll;
   overflow-x: hidden;
   &::-webkit-scrollbar {
@@ -142,7 +152,7 @@ export const NeedHelp = styled.div`
   width: 197px;
   height: 200px;
   border-radius: 8px;
-  margin-top: 30px;
+  margin-top: 40px;
   background-color: ${({ theme }) => theme.needHelp};
   color: ${({ theme }) => theme.text};
   font-weight: 400;
@@ -151,7 +161,7 @@ export const NeedHelp = styled.div`
   @media (min-width: 768px) {
     width: 212px;
     height: 230px;
-    margin-left: 8px;
+    margin-top: 30px;
   }
 `;
 
@@ -187,4 +197,19 @@ export const NeedHelpWrapper = styled.div`
   flex-direction: column;
   gap: 5px;
   margin-top: -15px;
+`;
+export const LogoutButton = styled.button`
+  background-color: transparent;
+  border: none;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  cursor: pointer;
+  color: ${({ theme }) => theme.logo};
+  margin-top: 24px;
+  font-size: 14px;
+
+  @media (min-width: 1240px) {
+    margin-top: 15px;
+  }
 `;
