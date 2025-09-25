@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const LogoWrapper = styled.div`
   display: flex;
   gap: 8px;
+  margin-top: 10px;
   margin-bottom: 60px;
   color: ${({ theme }) => theme.icon};
 `;

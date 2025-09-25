@@ -23,6 +23,7 @@ import {
   NeedHelpWrapper,
   NeedHelpSpan,
   LogoutButton,
+  ActiveBoard,
 } from "./Sidebar.styled";
 import { toast } from "react-toastify";
 import { useCallback, useEffect, useState } from "react";
@@ -41,6 +42,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Sidebar() {
   const [open, setOpen] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const dashboards = useSelector((state) => state.dashboard.dashboards);
@@ -48,6 +50,7 @@ export default function Sidebar() {
   const [openHelpModal, setOpenHelpModal] = useState(false);
   const [selectedBoard, setSelectedBoard] = useState(null);
   const [openModal, setOpenModal] = useState(false);
+  const [activeBoardId, setActiveBoardId] = useState(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -141,7 +144,10 @@ export default function Sidebar() {
         <DashboardListWrapper>
           <DashboardList>
             {dashboards?.map((board) => (
-              <DashboardListItems key={`${board._id}-${board.icon}`}>
+              <DashboardListItems
+                key={`${board._id}-${board.icon}`}
+                onClick={() => setActiveBoardId(board._id)}
+              >
                 <svg width="19" height="18">
                   <use xlinkHref={`${sprite}#${board.icon}`} />
                 </svg>
@@ -163,6 +169,9 @@ export default function Sidebar() {
                     <use xlinkHref={`${sprite}#trash-icon`} />
                   </Icon>
                 </IconContainer>
+                <ActiveBoard
+                  selected={activeBoardId === board._id}
+                ></ActiveBoard>
               </DashboardListItems>
             ))}
           </DashboardList>

@@ -5,7 +5,7 @@ import MainDashboard from "../../components/MainDashboard.jsx";
 export default function ScreensPage() {
   return (
     <div>
-      <h1>Screens page</h1>
+      {/* <h1>Screens page</h1> */}
       <HeaderDashboard />
       <Filters />
       <MainDashboard />

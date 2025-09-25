@@ -21,12 +21,9 @@ export const SidebarContent = styled.div`
   z-index: 12;
   position: absolute;
   top: 0;
-  padding: 14px;
+  padding: 10px;
   @media (min-width: 768px) {
     width: 260px;
-  }
-
-  @media (min-width: 1440px) {
   }
 `;
 
@@ -59,7 +56,7 @@ export const MyBoardsTitle = styled.h3`
 `;
 export const ButtonWrapper = styled.div`
   display: flex;
-  gap: 45px;
+  gap: 75px;
   width: 100%;
   font-size: 14px;
   margin-top: 13px;
@@ -68,7 +65,10 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const ButtonText = styled.span`
-  width: 60%;
+  width: 45%;
+  @media (min-width: 768px) {
+    width: 35%;
+  }
 `;
 export const CreateBoardBtn = styled.button`
   display: flex;
@@ -94,6 +94,7 @@ export const IconWrapper = styled.div`
 export const DashboardListWrapper = styled.div`
   display: flex;
   width: 100%;
+  height: 101px;
   max-height: 101px;
   overflow: scroll;
   overflow-x: hidden;
@@ -102,7 +103,7 @@ export const DashboardListWrapper = styled.div`
   }
 `;
 export const DashboardList = styled.ul`
-  width: 190px;
+  width: 100%;
 `;
 export const DashboardListItems = styled.li`
   width: 100%;
@@ -111,18 +112,20 @@ export const DashboardListItems = styled.li`
   font-size: 14px;
   cursor: pointer;
   color: ${({ theme }) => theme.secondaryText};
-  gap: 15px;
+  padding-left: 3px;
+  gap: 5px;
   align-items: center;
-  justify-content: center;
-  transition: box-shadow 0.4s ease;
-  &:hover {
-    box-shadow: 0 4px 0px -2px ${({ theme }) => theme.accent};
-    border-radius: 5px;
-  }
-  @media (min-width: 768px) {
-    width: 111%;
-  }
 `;
+
+export const ActiveBoard = styled.span`
+width: 3px;
+height: 42px;
+border-radius: 3px;
+margin-left: 6px;
+
+   background-color: ${({ selected, theme }) =>
+     selected ? theme.hoverColor : "rgba(0,0,0,0.1)"};
+  }`;
 export const IconContainer = styled.div`
   display: flex;
   margin-left: 18px;

@@ -4,7 +4,6 @@ export const HeaderWrapper = styled.div`
   background-color: ${({ theme }) => theme.backgroundSecondary};
   width: 100%;
   height: 68px;
-
   display: flex;
   flex-direction: row;
   justify-content: end;
