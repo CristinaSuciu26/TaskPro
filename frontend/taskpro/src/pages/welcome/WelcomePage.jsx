@@ -2,6 +2,7 @@ import { Link, Navigate } from "react-router-dom";
 import {
   ButtonWrapper,
   ContentWrapper,
+  Icon,
   LoginButton,
   ParagraphWrapper,
   RegisterButton,
@@ -22,10 +23,14 @@ export default function WelcomePage() {
           <img src={`${welcomeImage}`} alt="welcome img"></img>
 
           <TitleWrapper>
-            <svg width="24" height="24">
-              <use xlinkHref={`${sprite}#icon-logo`} />
-            </svg>
-            <span>Task Pro</span>
+            <Icon>
+              {" "}
+              <svg width="38" height="38">
+                <use xlinkHref={`${sprite}#icon-logo`} />
+              </svg>
+            </Icon>
+
+            <h3>Task Pro</h3>
           </TitleWrapper>
 
           <ParagraphWrapper>

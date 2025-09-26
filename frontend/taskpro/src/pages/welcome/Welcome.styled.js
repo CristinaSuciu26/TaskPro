@@ -20,18 +20,27 @@ export const ContentWrapper = styled.div`
   align-items: center;
   gap: 15px;
 `;
-
+export const Icon = styled.div`
+  color: #161616;
+`;
 export const TitleWrapper = styled.div`
   display: flex;
   gap: 15px;
   align-items: center;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 100%;
+
+  @media (min-width: 768px) {
+    font-size: 40px;
+  }
 `;
 
 export const ParagraphWrapper = styled.div`
   text-align: center;
-  font-weight: 400;
   font-size: 14px;
   padding: 20px;
+  line-height: 18px;
   color: #161616;
   @media (min-width: 375px) {
     width: 350px;

@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const LogoWrapper = styled.div`
   display: flex;
   gap: 8px;
+  padding-top: 10px;
+  padding-left: 10px;
   margin-top: 10px;
   margin-bottom: 60px;
   color: ${({ theme }) => theme.icon};

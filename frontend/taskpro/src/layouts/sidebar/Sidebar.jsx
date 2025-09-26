@@ -23,7 +23,7 @@ import {
   NeedHelpWrapper,
   NeedHelpSpan,
   LogoutButton,
-  ActiveBoard,
+  BoardWrapper,
 } from "./Sidebar.styled";
 import { toast } from "react-toastify";
 import { useCallback, useEffect, useState } from "react";
@@ -148,30 +148,29 @@ export default function Sidebar() {
                 key={`${board._id}-${board.icon}`}
                 onClick={() => setActiveBoardId(board._id)}
               >
-                <svg width="19" height="18">
-                  <use xlinkHref={`${sprite}#${board.icon}`} />
-                </svg>
-                <Title>{board.title}</Title>
-                <IconContainer>
-                  <Icon
-                    width="16"
-                    height="16"
-                    onClick={() => handleEditModal(board)}
-                  >
-                    <use xlinkHref={`${sprite}#edit-icon`} />
-                  </Icon>
+                <BoardWrapper selected={activeBoardId === board._id}>
+                  <svg width="19" height="18">
+                    <use xlinkHref={`${sprite}#${board.icon}`} />
+                  </svg>
+                  <Title>{board.title}</Title>
+                  <IconContainer>
+                    <Icon
+                      width="16"
+                      height="16"
+                      onClick={() => handleEditModal(board)}
+                    >
+                      <use xlinkHref={`${sprite}#edit-icon`} />
+                    </Icon>
 
-                  <Icon
-                    width="16"
-                    height="16"
-                    onClick={() => handleDelete(board._id)}
-                  >
-                    <use xlinkHref={`${sprite}#trash-icon`} />
-                  </Icon>
-                </IconContainer>
-                <ActiveBoard
-                  selected={activeBoardId === board._id}
-                ></ActiveBoard>
+                    <Icon
+                      width="16"
+                      height="16"
+                      onClick={() => handleDelete(board._id)}
+                    >
+                      <use xlinkHref={`${sprite}#trash-icon`} />
+                    </Icon>
+                  </IconContainer>
+                </BoardWrapper>
               </DashboardListItems>
             ))}
           </DashboardList>

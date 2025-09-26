@@ -14,14 +14,14 @@ export const SidebarWrapper = styled.div`
 
 export const SidebarContent = styled.div`
   width: 225px;
-  height: 770px;
+  height: 100vh;
   background-color: ${({ theme }) => theme.sidebar};
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
   transition: transform 0.5s ease-in-out;
   z-index: 12;
   position: absolute;
   top: 0;
-  padding: 10px;
+  // padding: 10px;
   @media (min-width: 768px) {
     width: 260px;
   }
@@ -47,6 +47,8 @@ export const CreateBoardWrapper = styled.div`
   justify-content: center;
   align-items: baseline;
   gap: 9px;
+  padding-left: 10px;
+  padding-right: 10px;
   margin-top: -15px;
 `;
 
@@ -94,6 +96,7 @@ export const IconWrapper = styled.div`
 export const DashboardListWrapper = styled.div`
   display: flex;
   width: 100%;
+
   height: 101px;
   max-height: 101px;
   overflow: scroll;
@@ -104,6 +107,9 @@ export const DashboardListWrapper = styled.div`
 `;
 export const DashboardList = styled.ul`
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 `;
 export const DashboardListItems = styled.li`
   width: 100%;
@@ -112,20 +118,24 @@ export const DashboardListItems = styled.li`
   font-size: 14px;
   cursor: pointer;
   color: ${({ theme }) => theme.secondaryText};
-  padding-left: 3px;
+
   gap: 5px;
-  align-items: center;
 `;
 
-export const ActiveBoard = styled.span`
-width: 3px;
-height: 42px;
-border-radius: 3px;
-margin-left: 6px;
+export const BoardWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-right: 3px solid red;
+  height: 50px;
+  justify-content: space-evenly;
+  border-right: ${({ selected, theme }) =>
+    selected ? `3px solid ${theme.hoverColor}` : "3px solid rgba(0,0,0,0.1)"};
+  background-color: ${({ selected, theme }) =>
+    selected ? theme.needHelp : "3px solid rgba(0,0,0,0.1)"};
+`;
 
-   background-color: ${({ selected, theme }) =>
-     selected ? theme.hoverColor : "rgba(0,0,0,0.1)"};
-  }`;
 export const IconContainer = styled.div`
   display: flex;
   margin-left: 18px;
@@ -156,6 +166,7 @@ export const NeedHelp = styled.div`
   height: 200px;
   border-radius: 8px;
   margin-top: 40px;
+  margin-left: 10px;
   background-color: ${({ theme }) => theme.needHelp};
   color: ${({ theme }) => theme.text};
   font-weight: 400;
@@ -163,7 +174,7 @@ export const NeedHelp = styled.div`
 
   @media (min-width: 768px) {
     width: 212px;
-    height: 230px;
+    height: 220px;
     margin-top: 30px;
   }
 `;
@@ -176,8 +187,10 @@ export const NeedHelpImg = styled.img`
 export const NeedHelpParagraph = styled.p`
   font-size: 12px;
   font-weight: 400;
+  width: 112%;
   @media (min-width: 768px) {
     font-size: 14px;
+    width: 106%;
   }
 `;
 export const NeedHelpSpan = styled.span`
@@ -190,6 +203,7 @@ export const NeedHelpButton = styled.button`
   gap: 8px;
   cursor: pointer;
   align-items: center;
+
   margin-top: 10px;
   background-color: transparent;
   color: ${({ theme }) => theme.text};
@@ -211,7 +225,7 @@ export const LogoutButton = styled.button`
   color: ${({ theme }) => theme.logo};
   margin-top: 24px;
   font-size: 14px;
-
+  margin-left: 10px;
   @media (min-width: 1240px) {
     margin-top: 15px;
   }

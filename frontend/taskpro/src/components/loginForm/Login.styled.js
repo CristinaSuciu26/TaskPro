@@ -13,7 +13,7 @@ export const LoginWrapper = styled.div`
   align-items: center;
   gap: 14px;
   border-radius: 8px;
-
+  font-weight: 500;
   /* de la 768px */
   @media (min-width: 768px) {
     width: 424px;

@@ -13,14 +13,15 @@ export const RegisterWrapper = styled.div`
   align-items: center;
   gap: 14px;
   border-radius: 8px;
+  font-weight: 500;
 
-  /* de la 768px */
+
   @media (min-width: 768px) {
     width: 424px;
     height: 395px;
   }
 
-  /* de la 1440px */
+
   @media (min-width: 1440px) {
     font-size: 32px;
   }
