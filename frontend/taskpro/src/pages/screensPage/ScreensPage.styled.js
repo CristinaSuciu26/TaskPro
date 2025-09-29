@@ -1,0 +1,43 @@
+import styled from "styled-components";
+
+export const ScreensPageContent = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ theme }) => theme.background};
+  width: 100%;
+  height: 88vh;
+`;
+
+export const ParagraphWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+
+  @media (min-width: 1268px) {
+    margin-left: 190px;
+  }
+`;
+export const Paragraph = styled.p`
+  font-size: 12px;
+  font-weight: 400;
+  text-align: center;
+  width: 100%;
+  color: ${({ theme }) => theme.text};
+  @media (min-width: 768px) {
+    font-size: 14px;
+    width: 50%;
+  }
+  @media (min-width: 1268px) {
+    font-size: 14px;
+    width: 43%;
+  }
+`;
+export const BoardButton = styled.button`
+  border: none;
+  background-color: transparent;
+  padding-right: 3px;
+  cursor: pointer;
+  color: ${({ theme }) => theme.primary};
+`;

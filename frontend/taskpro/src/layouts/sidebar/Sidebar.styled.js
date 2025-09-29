@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SidebarWrapper = styled.div`
   width: 100vw;
-  height: 100vw;
+  height: 100vh;
   background: rgba(114, 110, 110, 0.5);
   position: absolute;
   top: 0;
@@ -21,7 +21,6 @@ export const SidebarContent = styled.div`
   z-index: 12;
   position: absolute;
   top: 0;
-  // padding: 10px;
   @media (min-width: 768px) {
     width: 260px;
   }
