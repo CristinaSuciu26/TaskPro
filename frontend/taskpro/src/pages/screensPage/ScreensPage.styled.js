@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const ScreensPageContent = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
+  flex-direction: column;
   background-color: ${({ theme }) => theme.background};
   width: 100%;
   height: 88vh;
@@ -14,9 +14,9 @@ export const ParagraphWrapper = styled.div`
   align-items: center;
   justify-content: center;
   padding: 20px;
-
+  margin-top: 177px;
   @media (min-width: 1268px) {
-    margin-left: 190px;
+    margin-left: 150px;
   }
 `;
 export const Paragraph = styled.p`

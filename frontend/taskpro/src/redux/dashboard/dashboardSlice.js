@@ -8,6 +8,7 @@ import {
 
 const initialState = {
   dashboards: [],
+  selectedDashboardId: null,
   status: "idle",
   error: null,
 };
@@ -15,7 +16,11 @@ const initialState = {
 const dashboardSlice = createSlice({
   name: "dashboard",
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedDashboardId(state, action) {
+      state.selectedDashboardId = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       // FETCH
@@ -78,5 +83,5 @@ const dashboardSlice = createSlice({
       });
   },
 });
-
+export const { setSelectedDashboardId } = dashboardSlice.actions;
 export default dashboardSlice.reducer;

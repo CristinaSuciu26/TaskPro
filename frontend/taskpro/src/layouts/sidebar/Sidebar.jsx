@@ -39,18 +39,20 @@ import needHelpImg from "../../assets/images/needhelp.png";
 import { HelpModal } from "../../components/helpModal/HelpModal";
 import { logout } from "../../redux/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-
+import { setSelectedDashboardId } from "../../redux/dashboard/dashboardSlice";
 export default function Sidebar() {
   const [open, setOpen] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const dashboards = useSelector((state) => state.dashboard.dashboards);
+  const selectedId = useSelector(
+    (state) => state.dashboard.selectedDashboardId
+  );
   const [openEditModal, setOpenEditModal] = useState(false);
   const [openHelpModal, setOpenHelpModal] = useState(false);
   const [selectedBoard, setSelectedBoard] = useState(null);
   const [openModal, setOpenModal] = useState(false);
-  const [activeBoardId, setActiveBoardId] = useState(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -146,9 +148,9 @@ export default function Sidebar() {
             {dashboards?.map((board) => (
               <DashboardListItems
                 key={`${board._id}-${board.icon}`}
-                onClick={() => setActiveBoardId(board._id)}
+                onClick={() => dispatch(setSelectedDashboardId(board._id))}
               >
-                <BoardWrapper selected={activeBoardId === board._id}>
+                <BoardWrapper selected={selectedId === board._id}>
                   <svg width="19" height="18">
                     <use xlinkHref={`${sprite}#${board.icon}`} />
                   </svg>
@@ -157,7 +159,10 @@ export default function Sidebar() {
                     <Icon
                       width="16"
                       height="16"
-                      onClick={() => handleEditModal(board)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleEditModal(board);
+                      }}
                     >
                       <use xlinkHref={`${sprite}#edit-icon`} />
                     </Icon>
@@ -165,7 +170,10 @@ export default function Sidebar() {
                     <Icon
                       width="16"
                       height="16"
-                      onClick={() => handleDelete(board._id)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDelete(board._id);
+                      }}
                     >
                       <use xlinkHref={`${sprite}#trash-icon`} />
                     </Icon>
