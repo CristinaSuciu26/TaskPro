@@ -21,6 +21,10 @@ export const SidebarContent = styled.div`
   z-index: 12;
   position: absolute;
   top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   @media (min-width: 768px) {
     width: 260px;
   }
@@ -112,7 +116,7 @@ export const DashboardList = styled.ul`
 `;
 export const DashboardListItems = styled.li`
   width: 100%;
-  height: 50px;
+  height: 150px;
   display: flex;
   font-size: 14px;
   cursor: pointer;

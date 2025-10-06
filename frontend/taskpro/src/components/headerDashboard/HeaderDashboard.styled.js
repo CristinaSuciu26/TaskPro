@@ -1,16 +1,20 @@
 import styled from "styled-components";
 
-export const Header = styled.div`
-  font-size: 14px;
+export const SelectedBoard = styled.div`
   display: flex;
-  gap: 160px;
-  padding: 20px;
-
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-size: 14px;
+  margin-top: 12px;
+  padding-left: 23px;
+  padding-right: 31px;
+  color: ${({ theme }) => theme.text};
   @media (min-width: 768px) {
     font-size: 18px;
-    justify-content: space-between;
-    gap: 587px;
   }
 
-  
+  @media (min-width: 1240px) {
+    padding-left: 280px;
+  }
 `;

@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const FiltersWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 2px;
+`;
+
 export const Icon = styled.div`
   cursor: pointer;
   display: flex;
@@ -13,15 +19,10 @@ export const Icon = styled.div`
 export const FilterButton = styled.button`
   font-size: 14px;
   border: none;
+  color: ${({ theme }) => theme.text};
   background-color: transparent;
-
+  cursor: pointer;
   @media (min-width: 768px) {
-    font-size: 18px;
-  }
-`;
-export const ButtonWrapper = styled.div`
-  margin-top: -3px;
-  @media (min-width: 768px) {
-  margin-top: -7px;
+    font-size: 14px;
   }
 `;

@@ -8,7 +8,13 @@ export const ScreensPageContent = styled.div`
   width: 100%;
   height: 88vh;
 `;
-
+export const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  margin-top: 12px;
+  padding-right: 31px;
+`;
 export const ParagraphWrapper = styled.div`
   display: flex;
   align-items: center;
