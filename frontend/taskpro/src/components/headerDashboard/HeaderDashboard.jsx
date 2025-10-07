@@ -1,4 +1,4 @@
-import { SelectedBoard } from "./HeaderDashboard.styled";
+import { BoardName, SelectedBoard } from "./HeaderDashboard.styled";
 import Filters from "../filters/Filters.jsx";
 import { useSelector } from "react-redux";
 
@@ -12,7 +12,7 @@ export default function HeaderDashboard() {
 
   return (
     <SelectedBoard>
-      <span>{selectedBoard?.title || "Niciun board"}</span>
+      <BoardName>{selectedBoard?.title || "Niciun board"}</BoardName>
       <Filters />
     </SelectedBoard>
   );

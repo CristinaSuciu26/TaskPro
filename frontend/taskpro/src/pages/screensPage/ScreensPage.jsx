@@ -22,15 +22,34 @@ export default function ScreensPage() {
   );
 
   return (
-    <ScreensPageContent>
+    <ScreensPageContent
+      style={{
+        backgroundImage:
+          selectedBoard?.background && selectedBoard.background !== "none"
+            ? `url(${selectedBoard.background})`
+            : "none",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        transition: "background-image 0.3s ease-in-out",
+      }}
+    >
       {selectedBoard ? (
-        <HeaderDashboard />
+        <HeaderDashboard
+          style={{
+            color: "red",
+          }}
+        />
       ) : (
         <ContentWrapper>
-          <Filters />
+          <Filters
+            style={{
+              color: "red",
+            }}
+          />
           <ParagraphWrapper>
             <Paragraph>
-              Before starting your project, it is essential{" "}
+              Before starting your project, it is essential
               <BoardButton onClick={() => setOpenModal(true)}>
                 to create a board
               </BoardButton>
