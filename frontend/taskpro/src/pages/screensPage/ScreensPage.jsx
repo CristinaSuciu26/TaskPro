@@ -49,7 +49,7 @@ export default function ScreensPage() {
           />
           <ParagraphWrapper>
             <Paragraph>
-              Before starting your project, it is essential
+              Before starting your project, it is essential&nbsp;
               <BoardButton onClick={() => setOpenModal(true)}>
                 to create a board
               </BoardButton>

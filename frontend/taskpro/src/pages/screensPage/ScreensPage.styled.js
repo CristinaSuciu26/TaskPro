@@ -5,8 +5,8 @@ export const ScreensPageContent = styled.div`
   align-items: center;
   flex-direction: column;
   background-color: ${({ theme }) => theme.background};
+  height: 100vh;
   width: 100%;
-  height: 88vh;
 `;
 export const ContentWrapper = styled.div`
   display: flex;

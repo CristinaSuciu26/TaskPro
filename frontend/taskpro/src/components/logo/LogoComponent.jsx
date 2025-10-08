@@ -5,7 +5,7 @@ export default function LogoComponent() {
   return (
     <div>
       <LogoWrapper>
-        <svg width="24" height="24">
+        <svg width="32" height="32">
           <use xlinkHref={`${sprite}#icon-logo`} />
         </svg>
         <LogoText>Task Pro</LogoText>

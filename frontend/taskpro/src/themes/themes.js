@@ -52,7 +52,7 @@ export const themes = {
     hoverColor: "#7B7EDE",
     text: "#161616",
     primary: "#5255BC",
-    secondaryText: "#FFFFFF",
+    secondaryText: "rgba(255, 255, 255, 0.5)",
     accent: "#B8BCFD",
     labelHighPriority: "#BEDBB0",
     labelMediumPriroity: "#E09CB5",

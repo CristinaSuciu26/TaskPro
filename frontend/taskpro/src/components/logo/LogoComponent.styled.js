@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 export const LogoWrapper = styled.div`
   display: flex;
+  align-items: center;
   gap: 8px;
-  padding-top: 10px;
   padding-left: 10px;
-  margin-top: 10px;
+  margin-top: 24px;
   margin-bottom: 60px;
   color: ${({ theme }) => theme.icon};
 `;

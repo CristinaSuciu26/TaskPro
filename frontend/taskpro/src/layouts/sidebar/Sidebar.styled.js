@@ -14,7 +14,18 @@ export const SidebarWrapper = styled.div`
 
 export const SidebarContent = styled.div`
   width: 225px;
-  height: 100vh;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #c9c9c9ff;
+    border-radius: 10px;
+    height: 5px;
+  }
   background-color: ${({ theme }) => theme.sidebar};
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
   transition: transform 0.5s ease-in-out;
@@ -23,7 +34,6 @@ export const SidebarContent = styled.div`
   top: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 
   @media (min-width: 768px) {
     width: 260px;
@@ -52,7 +62,6 @@ export const CreateBoardWrapper = styled.div`
   gap: 9px;
   padding-left: 10px;
   padding-right: 10px;
-  margin-top: -15px;
 `;
 
 export const MyBoardsTitle = styled.h3`
@@ -64,9 +73,8 @@ export const ButtonWrapper = styled.div`
   gap: 75px;
   width: 100%;
   font-size: 14px;
-  margin-top: 13px;
 
-  color: ${({ theme }) => theme.secondaryText};
+  color: ${({ theme }) => theme.logo};
 `;
 
 export const ButtonText = styled.span`
@@ -92,31 +100,40 @@ export const CreateBoardBtn = styled.button`
     background-color: ${({ theme }) => theme.hoverColor};
   }
 `;
-export const IconWrapper = styled.div`
-  margin-bottom: -20px;
-`;
 
 export const DashboardListWrapper = styled.div`
   display: flex;
   width: 100%;
-
-  height: 101px;
-  max-height: 101px;
+  margin-top: 40px;
+`;
+export const DashboardList = styled.ul`
+  width: 100%;
+  height: 150px;
+  max-height: 150px;
   overflow: scroll;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   &::-webkit-scrollbar {
     display: none;
   }
 `;
-export const DashboardList = styled.ul`
+
+export const NoBoards = styled.div`
   width: 100%;
+  height: 150px;
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  align-items: center;
+  background-color: ${({ theme }) => theme.needHelp};
+  color: ${({ theme }) => theme.text};
+  font-weight: 400;
+  font-size: 14px;
+  padding: 14px;
 `;
 export const DashboardListItems = styled.li`
   width: 100%;
-  height: 150px;
+  height: 61px;
   display: flex;
   font-size: 14px;
   cursor: pointer;
@@ -166,7 +183,7 @@ export const Title = styled.span`
 
 export const NeedHelp = styled.div`
   width: 197px;
-  height: 200px;
+  height: 238px;
   border-radius: 8px;
   margin-top: 40px;
   margin-left: 10px;
@@ -177,8 +194,7 @@ export const NeedHelp = styled.div`
 
   @media (min-width: 768px) {
     width: 212px;
-    height: 220px;
-    margin-top: 30px;
+    height: 272px;
   }
 `;
 
@@ -207,7 +223,7 @@ export const NeedHelpButton = styled.button`
   cursor: pointer;
   align-items: center;
 
-  margin-top: 10px;
+  margin-top: 18px;
   background-color: transparent;
   color: ${({ theme }) => theme.text};
 `;
@@ -215,8 +231,7 @@ export const NeedHelpButton = styled.button`
 export const NeedHelpWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  margin-top: -15px;
+  gap: 15px;
 `;
 export const LogoutButton = styled.button`
   background-color: transparent;
@@ -227,9 +242,7 @@ export const LogoutButton = styled.button`
   cursor: pointer;
   color: ${({ theme }) => theme.logo};
   margin-top: 24px;
+  margin-bottom: 24px;
   font-size: 14px;
   margin-left: 10px;
-  @media (min-width: 1240px) {
-    margin-top: 15px;
-  }
 `;
