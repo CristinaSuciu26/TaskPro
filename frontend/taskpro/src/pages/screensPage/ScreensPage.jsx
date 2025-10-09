@@ -10,7 +10,6 @@ import {
 } from "./ScreensPage.styled.js";
 import CreateBoardModal from "../../components/createBoard/CreateBoardModal.jsx";
 import { useSelector } from "react-redux";
-import Filters from "../../components/filters/Filters.jsx";
 
 export default function ScreensPage() {
   const [openModal, setOpenModal] = useState(false);
@@ -35,18 +34,9 @@ export default function ScreensPage() {
       }}
     >
       {selectedBoard ? (
-        <HeaderDashboard
-          style={{
-            color: "red",
-          }}
-        />
+        <HeaderDashboard />
       ) : (
         <ContentWrapper>
-          <Filters
-            style={{
-              color: "red",
-            }}
-          />
           <ParagraphWrapper>
             <Paragraph>
               Before starting your project, it is essential&nbsp;

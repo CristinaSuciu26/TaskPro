@@ -5,8 +5,9 @@ export const ScreensPageContent = styled.div`
   align-items: center;
   flex-direction: column;
   background-color: ${({ theme }) => theme.background};
-  height: 100vh;
+  height: 100dvh;
   width: 100%;
+  overflow-y: hidden;
 `;
 export const ContentWrapper = styled.div`
   display: flex;
@@ -22,7 +23,7 @@ export const ParagraphWrapper = styled.div`
   padding: 20px;
   margin-top: 177px;
   @media (min-width: 1268px) {
-    margin-left: 150px;
+    margin-left: 170px;
   }
 `;
 export const Paragraph = styled.p`

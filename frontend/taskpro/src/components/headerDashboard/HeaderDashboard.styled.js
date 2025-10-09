@@ -20,10 +20,10 @@ export const SelectedBoard = styled.div`
 `;
 
 export const BoardName = styled.span`
-  background: rgba(255, 255, 255, 0);
-  backdrop-filter: blur(10px);
+  background: ${({ theme }) => theme.boardOverlay};
+  backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(10px);
   padding: 10px;
   border-radius: 5px;
-  color: ${({ theme }) => theme.text};
+  color: white;
 `;

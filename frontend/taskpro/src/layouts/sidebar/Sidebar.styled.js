@@ -14,7 +14,10 @@ export const SidebarWrapper = styled.div`
 
 export const SidebarContent = styled.div`
   width: 225px;
-  overflow-x: hidden;
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow-y: scroll;
+
   &::-webkit-scrollbar {
     width: 3px;
   }
@@ -121,15 +124,20 @@ export const DashboardList = styled.ul`
 `;
 
 export const NoBoards = styled.div`
-  width: 100%;
+  width: 197px;
   height: 150px;
-  display: flex;
-  align-items: center;
+  border-radius: 8px;
+  margin-left: 10px;
+  font-weight: 400;
+  padding: 14px;
+  font-size: 12px;
   background-color: ${({ theme }) => theme.needHelp};
   color: ${({ theme }) => theme.text};
-  font-weight: 400;
-  font-size: 14px;
-  padding: 14px;
+
+  @media (min-width: 768px) {
+    width: 213px;
+    font-size: 14px;
+  }
 `;
 export const DashboardListItems = styled.li`
   width: 100%;

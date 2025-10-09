@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const FiltersWrapper = styled.div`
-  background: rgba(255, 255, 255, 0);
-  backdrop-filter: blur(10px);
+  background: ${({ theme }) => theme.boardOverlay};
+  backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(10px);
   padding: 10px;
   border-radius: 5px;
@@ -16,7 +16,7 @@ export const Icon = styled.div`
   display: flex;
   flex-direction: row;
   gap: 8px;
-  color: ${({ theme }) => theme.text};
+  color: white;
   &:hover {
     color: ${({ theme }) => theme.accent};
   }
@@ -25,7 +25,7 @@ export const Icon = styled.div`
 export const FilterButton = styled.button`
   font-size: 14px;
   border: none;
-  color: ${({ theme }) => theme.text};
+  color: white;
   background-color: transparent;
   cursor: pointer;
   @media (min-width: 768px) {
