@@ -8,13 +8,21 @@ export const ScreensPageContent = styled.div`
   height: 100dvh;
   width: 100%;
   overflow-y: hidden;
+  @media (min-width: 768px) {
+    align-items: inherit;
+  }
 `;
 export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: end;
   margin-top: 12px;
-  padding-right: 31px;
+  // padding-right: 31px;
+  gap: 26px;
+  @media (min-width: 768px) {
+    align-items: flex-start;
+    padding: 20px;
+  }
 `;
 export const ParagraphWrapper = styled.div`
   display: flex;

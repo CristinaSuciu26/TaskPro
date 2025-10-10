@@ -1,6 +1,6 @@
 import { useState } from "react";
 import HeaderDashboard from "../../components/headerDashboard/HeaderDashboard.jsx";
-import MainDashboard from "../../components/MainDashboard.jsx";
+import MainDashboard from "../../components/mainDashboard/MainDashboard.jsx";
 import {
   BoardButton,
   ContentWrapper,
@@ -21,37 +21,44 @@ export default function ScreensPage() {
   );
 
   return (
-    <ScreensPageContent
-      style={{
-        backgroundImage:
-          selectedBoard?.background && selectedBoard.background !== "none"
-            ? `url(${selectedBoard.background})`
-            : "none",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        transition: "background-image 0.3s ease-in-out",
-      }}
-    >
+    <>
       {selectedBoard ? (
-        <HeaderDashboard />
+        <ScreensPageContent
+          style={{
+            backgroundImage:
+              selectedBoard?.background && selectedBoard.background !== "none"
+                ? `url(${selectedBoard.background})`
+                : "none",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            transition: "background-image 0.3s ease-in-out",
+          }}
+        >
+          {" "}
+          <ContentWrapper>
+            <HeaderDashboard />
+            <MainDashboard />
+          </ContentWrapper>
+        </ScreensPageContent>
       ) : (
-        <ContentWrapper>
-          <ParagraphWrapper>
-            <Paragraph>
-              Before starting your project, it is essential&nbsp;
-              <BoardButton onClick={() => setOpenModal(true)}>
-                to create a board
-              </BoardButton>
-              to visualize and track all the necessary tasks and milestones.
-              This board serves as a powerful tool to organize the workflow and
-              ensure effective collaboration among team members.
-            </Paragraph>
-          </ParagraphWrapper>
-        </ContentWrapper>
+        <ScreensPageContent>
+          <ContentWrapper>
+            <ParagraphWrapper>
+              <Paragraph>
+                Before starting your project, it is essential&nbsp;
+                <BoardButton onClick={() => setOpenModal(true)}>
+                  to create a board
+                </BoardButton>
+                to visualize and track all the necessary tasks and milestones.
+                This board serves as a powerful tool to organize the workflow
+                and ensure effective collaboration among team members.
+              </Paragraph>
+            </ParagraphWrapper>
+          </ContentWrapper>
+        </ScreensPageContent>
       )}
 
-      <MainDashboard />
       {openModal && (
         <CreateBoardModal
           onClose={() => {
@@ -59,6 +66,6 @@ export default function ScreensPage() {
           }}
         />
       )}
-    </ScreensPageContent>
+    </>
   );
 }
