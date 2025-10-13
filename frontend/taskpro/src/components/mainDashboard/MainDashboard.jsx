@@ -5,17 +5,29 @@ import {
   DashboardWrapper,
 } from "./MainDashboard.styled";
 import { FiPlus } from "react-icons/fi";
+import AddColumnModal from "../addColumnModal/AddColumnModal";
 
 export default function MainDashboard() {
-  return (
-    <DashboardWrapper>
-      <ButtonWrapper>
-        <AddButton>
-          <FiPlus strokeWidth={1.5} />
-        </AddButton>
+  const [showModal, setShowModal] = useState(false);
 
-        <span>Add another column</span>
-      </ButtonWrapper>
-    </DashboardWrapper>
+  return (
+    <>
+      <DashboardWrapper onClick={() => setShowModal(true)}>
+        <ButtonWrapper>
+          <AddButton>
+            <FiPlus strokeWidth={1.5} />
+          </AddButton>
+
+          <span>Add another column</span>
+        </ButtonWrapper>
+      </DashboardWrapper>
+      {showModal && (
+        <AddColumnModal
+          onClose={() => {
+            setShowModal(false);
+          }}
+        />
+      )}
+    </>
   );
 }

@@ -4,13 +4,11 @@ export const DashboardWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  //   position: absolute;
-  //   top: 173px;
   width: 334px;
   height: 56px;
   border-radius: 8px;
   cursor: pointer;
-  background-color: ${({ theme }) => theme.background};
+  background-color: ${({ theme }) => theme.backgroundSecondary};
   transition: all 0.2s ease;
   &:hover {
     background-color: ${({ theme }) => theme.hoverColor};
@@ -21,7 +19,6 @@ export const DashboardWrapper = styled.div`
     font-size: 24px;
   }
 
-  /* de la 1440px */
   @media (min-width: 1240px) {
     margin-left: 278px;
   }
