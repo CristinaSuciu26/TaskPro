@@ -20,7 +20,8 @@ export default function AddColumnModal({ onClose }) {
   const [title, setTitle] = useState("");
   const { dashboardId } = useParams();
 
-  const createColumns = async () => {
+  const createColumns = async (e) => {
+    e.preventDefault();
     const columnData = { title, dashboardId };
     if (!title) {
       toast.error("Title is required");
@@ -30,6 +31,7 @@ export default function AddColumnModal({ onClose }) {
       await dispatch(createColumn(columnData));
 
       toast.success("Created successfully!");
+      onClose();
     } catch (error) {
       toast.error(error || "Create column failed");
     }

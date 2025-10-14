@@ -24,6 +24,7 @@ export const ContentWrapper = styled.div`
     padding: 20px;
   }
 `;
+
 export const ParagraphWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -32,6 +33,18 @@ export const ParagraphWrapper = styled.div`
   margin-top: 177px;
   @media (min-width: 1268px) {
     margin-left: 170px;
+  }
+`;
+export const ColumnWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  height: auto;
+  margin-top: 10px;
+  width: 100%;
+  gap: 34px;
+  flex-wrap: wrap;
+  @media (min-width: 1268px) {
+    margin-left: 280px;
   }
 `;
 export const Paragraph = styled.p`
