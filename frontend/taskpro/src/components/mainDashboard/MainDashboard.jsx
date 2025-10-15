@@ -11,8 +11,12 @@ import sprite from "../../assets/icons/sprite.svg";
 import { FiPlus } from "react-icons/fi";
 import AddColumnModal from "../addColumnModal/AddColumnModal";
 import { useDispatch, useSelector } from "react-redux";
-import { getColumnsByDashboard } from "../../redux/column/columnThunks";
+import {
+  deleteColumn,
+  getColumnsByDashboard,
+} from "../../redux/column/columnThunks";
 import EditColumnModal from "../editColumn/EditColumnModal";
+import { toast } from "react-toastify";
 
 export default function MainDashboard() {
   const [showModal, setShowModal] = useState(false);
@@ -37,9 +41,15 @@ export default function MainDashboard() {
   const handleEditModal = (col) => {
     setShowEditModal(true);
     setSelectedColumn(col);
-    console.log("Editing column:", col);
   };
-  console.log("Columns:", columns);
+  const handleDeleteColumn = async (id) => {
+    try {
+      await dispatch(deleteColumn(id)).unwrap();
+      toast.success("Deleted successfully!");
+    } catch (error) {
+      toast.error(error || "Delete column failed");
+    }
+  };
 
   return (
     <>
@@ -52,7 +62,11 @@ export default function MainDashboard() {
               <svg width="24" height="24" onClick={() => handleEditModal(col)}>
                 <use xlinkHref={`${sprite}#edit-icon`} />
               </svg>
-              <svg width="24" height="24">
+              <svg
+                width="24"
+                height="24"
+                onClick={() => handleDeleteColumn(col._id)}
+              >
                 <use xlinkHref={`${sprite}#trash-icon`} />
               </svg>
             </IconsWrapper>
