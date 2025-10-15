@@ -26,8 +26,9 @@ export const DashboardWrapper = styled.div`
 `;
 export const ColumnWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding: 10px;
   width: 334px;
   font-size: 14px;
   height: 56px;
@@ -39,6 +40,11 @@ export const ColumnWrapper = styled.div`
     background-color: ${({ theme }) => theme.hoverColor};
     color: white;
   }
+`;
+
+export const IconsWrapper = styled.div`
+  display: flex;
+  margin-top: 5px;
 `;
 export const ColumnContainer = styled.div`
   // background-color: pink;

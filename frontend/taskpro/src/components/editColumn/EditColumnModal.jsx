@@ -7,40 +7,40 @@ import {
   ModalTitle,
   Input,
   Icon,
-} from "./AddColumnModal.styled";
+} from "./EditColumnModal.styled";
 import { FiPlus, FiX } from "react-icons/fi";
 import { toast } from "react-toastify";
-import { useDispatch, useSelector } from "react-redux";
-import { createColumn } from "../../redux/column/columnThunks";
+import { useDispatch } from "react-redux";
+import { updateColumn } from "../../redux/column/columnThunks";
 import { useState } from "react";
 
-export default function AddColumnModal({ onClose }) {
+export default function EditColumnModal({ onClose, column }) {
   const dispatch = useDispatch();
-  const [title, setTitle] = useState("");
-  const selectedDashboardId = useSelector(
-    (state) => state.dashboard.selectedDashboardId
-  );
+  const [currentTitle, setCurrentTitle] = useState(column?.title || "");
 
-  const createColumns = async (e) => {
+  const updateColumns = async (e) => {
     e.preventDefault();
-    const columnData = { title, dashboardId: selectedDashboardId };
-    if (!title) {
+    const columnData = {
+      id: column._id,
+      title: currentTitle,
+    };
+    if (!currentTitle) {
       toast.error("Title is required");
       return;
     }
     try {
-      await dispatch(createColumn(columnData));
+      await dispatch(updateColumn(columnData)).unwrap();
 
-      toast.success("Created successfully!");
+      toast.success("Edited successfully!");
       onClose();
     } catch (error) {
-      toast.error(error || "Create column failed");
+      toast.error(error || "Edit column failed");
     }
   };
   return (
     <ModalOverlay>
       <ModalContent>
-        <ModalTitle>Add column</ModalTitle>
+        <ModalTitle>Edit column</ModalTitle>
         <CloseButton onClick={onClose}>
           <FiX strokeWidth={1.5} />
         </CloseButton>
@@ -49,10 +49,10 @@ export default function AddColumnModal({ onClose }) {
             type="text"
             name="name"
             placeholder="Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            value={currentTitle}
+            onChange={(e) => setCurrentTitle(e.target.value)}
           />
-          <AddButton type="submit" onClick={createColumns}>
+          <AddButton type="submit" onClick={updateColumns}>
             <Icon>
               <FiPlus strokeWidth={1.5} />
             </Icon>

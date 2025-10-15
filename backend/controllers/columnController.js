@@ -27,7 +27,11 @@ export const updateColumn = async (req, res) => {
     const { id } = req.params;
     const { title } = req.body;
 
-    const updated = Column.findByIdAndUpdate(id, { title }, { new: true });
+    const updated = await Column.findByIdAndUpdate(
+      id,
+      { title },
+      { new: true }
+    );
 
     res.status(200).json({ message: "Column updated:", column: updated });
   } catch (error) {

@@ -39,7 +39,7 @@ export const getColumnsByDashboard = createAsyncThunk(
 );
 
 export const updateColumn = createAsyncThunk(
-  "solumns/updateColumns",
+  "columns/updateColumns",
   async ({ id, title }, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem("token");
@@ -47,7 +47,7 @@ export const updateColumn = createAsyncThunk(
         `${API_URL}/${id}`,
         { title },
         {
-          headers: { Authorization: `Bearer: ${token}` },
+          headers: { Authorization: `Bearer ${token}` },
         }
       );
       return res.data.column;
