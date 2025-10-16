@@ -40,7 +40,6 @@ export default function ScreensPage() {
           <ContentWrapper>
             <HeaderDashboard />
             <ColumnWrapper>
-              {" "}
               <MainDashboard />
             </ColumnWrapper>
           </ContentWrapper>

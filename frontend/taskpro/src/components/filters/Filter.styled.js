@@ -4,7 +4,10 @@ export const FiltersWrapper = styled.div`
   background: ${({ theme }) => theme.boardOverlay};
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(10px);
-  padding: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   border-radius: 5px;
   display: flex;
   align-items: center;

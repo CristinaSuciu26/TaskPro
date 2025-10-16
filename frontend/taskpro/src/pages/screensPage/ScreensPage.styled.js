@@ -16,12 +16,10 @@ export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: end;
-  margin-top: 12px;
-  // padding-right: 31px;
   gap: 26px;
   @media (min-width: 768px) {
     align-items: flex-start;
-    padding: 20px;
+    margin-right: 20px;
   }
 `;
 

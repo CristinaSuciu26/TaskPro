@@ -58,7 +58,6 @@ export default function MainDashboard() {
           <ColumnWrapper>
             <h3>{col.title}</h3>
             <IconsWrapper>
-              {" "}
               <svg width="24" height="24" onClick={() => handleEditModal(col)}>
                 <use xlinkHref={`${sprite}#edit-icon`} />
               </svg>
