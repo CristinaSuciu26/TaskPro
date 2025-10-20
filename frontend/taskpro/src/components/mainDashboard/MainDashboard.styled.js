@@ -18,17 +18,18 @@ export const DashboardWrapper = styled.div`
 
   @media (min-width: 768px) {
     font-size: 24px;
+    margin-left: 20px;
   }
 
   @media (min-width: 1240px) {
-    // margin-left: 278px;
+    margin-left: -15px;
   }
 `;
 export const ColumnWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 20px;
   width: 334px;
   font-size: 14px;
   height: 56px;
@@ -48,10 +49,10 @@ export const IconsWrapper = styled.div`
 `;
 export const ColumnContainer = styled.div`
   // background-color: pink;
-  height: 410px;
-  width: 400px;
-  max-height: 400px;
-  overflow-x: hidden;
+  // height: 410px;
+  // width: 400px;
+  // max-height: 400px;
+  // overflow-x: hidden;
   display: flex;
   // justify-content: center;
 

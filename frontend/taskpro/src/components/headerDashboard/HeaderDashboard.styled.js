@@ -2,17 +2,21 @@ import styled from "styled-components";
 
 export const SelectedBoard = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 100%;
+
+  justify-content: space-between;
   font-size: 14px;
   margin-top: 12px;
+
   @media (min-width: 768px) {
     font-size: 18px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   @media (min-width: 1240px) {
-    padding-left: 280px;
+    width: 79%;
+    margin-left: 275px;
   }
 `;
 

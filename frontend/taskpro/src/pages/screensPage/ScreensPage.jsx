@@ -3,11 +3,13 @@ import HeaderDashboard from "../../components/headerDashboard/HeaderDashboard.js
 import MainDashboard from "../../components/mainDashboard/MainDashboard.jsx";
 import {
   BoardButton,
+  ColumnContent,
   ColumnWrapper,
   ContentWrapper,
   Paragraph,
   ParagraphWrapper,
   ScreensPageContent,
+  SidebarSpace,
 } from "./ScreensPage.styled.js";
 import CreateBoardModal from "../../components/createBoard/CreateBoardModal.jsx";
 import { useSelector } from "react-redux";
@@ -36,18 +38,22 @@ export default function ScreensPage() {
             transition: "background-image 0.3s ease-in-out",
           }}
         >
-          {" "}
           <ContentWrapper>
             <HeaderDashboard />
-            <ColumnWrapper>
-              <MainDashboard />
-            </ColumnWrapper>
+
+            <ColumnContent>
+              <ColumnWrapper>
+                <SidebarSpace />
+                <MainDashboard />
+              </ColumnWrapper>
+            </ColumnContent>
           </ContentWrapper>
         </ScreensPageContent>
       ) : (
         <ScreensPageContent>
           <ContentWrapper>
             <ParagraphWrapper>
+              <SidebarSpace />
               <Paragraph>
                 Before starting your project, it is essential&nbsp;
                 <BoardButton onClick={() => setOpenModal(true)}>

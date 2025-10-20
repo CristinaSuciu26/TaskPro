@@ -10,7 +10,6 @@ import WelcomePage from "./pages/welcome/WelcomePage";
 import AuthPage from "./pages/authPage/AuthPage";
 import PrivateRoute from "./routes/PrivateRoute";
 import HomePage from "./pages/privatePages/homePage/HomePage";
-// import Dashboard from "./pages/Dashboard";
 import { ThemeProvider } from "styled-components";
 import { themes } from "./themes/themes";
 import { useSelector } from "react-redux";

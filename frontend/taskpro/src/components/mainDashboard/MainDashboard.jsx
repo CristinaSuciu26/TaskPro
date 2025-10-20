@@ -79,6 +79,7 @@ export default function MainDashboard() {
           </ButtonWrapper> */}
         </ColumnContainer>
       ))}
+
       <ColumnContainer>
         <DashboardWrapper onClick={() => setShowModal(true)}>
           <ButtonWrapper>
@@ -90,6 +91,7 @@ export default function MainDashboard() {
           </ButtonWrapper>
         </DashboardWrapper>
       </ColumnContainer>
+
       {showModal && (
         <AddColumnModal
           onClose={() => {
