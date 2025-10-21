@@ -2,26 +2,41 @@ import styled from "styled-components";
 
 export const ScreensPageContent = styled.div`
   display: flex;
-  align-items: center;
   flex-direction: column;
   background-color: ${({ theme }) => theme.background};
   height: 100dvh;
   width: 100%;
-  overflow-y: hidden;
-  overflow-x: scroll;
+  overflow: hidden;
   @media (min-width: 768px) {
     align-items: inherit;
   }
 `;
 export const ContentWrapper = styled.div`
-  // display: flex;
-  // flex-direction: column;
-  // align-items: end;
-  // gap: 26px;
-  // @media (min-width: 768px) {
-  //   align-items: flex-start;
-  //   margin-right: 20px;
-  // }
+  width: 100%;
+  height: 100vh;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  // background-color: yellow;
+  padding-left: 21px;
+
+  &::-webkit-scrollbar {
+    width: 2px;
+    height: 7px;
+    cursor: pointer;
+  }
+  &::-webkit-scrollbar-track {
+    background: ${({ theme }) => theme.accent};
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.hoverColor};
+    border-radius: 10px;
+    height: 5px;
+  }
+
+  @media (min-width: 1240px) {
+    margin-left: 250px;
+    padding-left: 25px;
+  }
 `;
 
 export const ParagraphWrapper = styled.div`
@@ -29,6 +44,10 @@ export const ParagraphWrapper = styled.div`
   align-items: center;
   justify-content: center;
   padding: 25px;
+
+  @media (min-width: 1240px) {
+    padding-left: 90px;
+  }
   margin-top: 177px;
 `;
 export const Paragraph = styled.p`
@@ -43,50 +62,18 @@ export const Paragraph = styled.p`
   }
 `;
 
-export const SidebarSpace = styled.div`
-  width: 280px;
-  display: none;
-  @media (min-width: 1168px) {
-    display: flex;
-  }
-`;
-
 export const ColumnContent = styled.div`
   width: 100%;
-  height: 100%;
+  // height: 100%;
   margin-top: 10px;
+  display: flex;
+  gap: 34px;
+  // background-color: orange;
 
   // @media (min-width: 768px) {
   //
   // }
   // @media (min-width: 1268px) {
-
-  // }
-
-  // &::-webkit-scrollbar {
-  //   width: 2px;
-  //   height: 7px;
-  //   cursor: pointer;
-  // }
-  // &::-webkit-scrollbar-track {
-  //   background: ${({ theme }) => theme.accent};
-  // }
-  // &::-webkit-scrollbar-thumb {
-  //   background: ${({ theme }) => theme.hoverColor};
-  //   border-radius: 10px;
-  //   height: 5px;
-  // }
-`;
-export const ColumnWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  gap: 34px;
-
-  @media (min-width: 768px) {
-  }
-  @media (min-width: 1268px) {
-  }
 `;
 
 export const BoardButton = styled.button`

@@ -18,11 +18,11 @@ export const DashboardWrapper = styled.div`
 
   @media (min-width: 768px) {
     font-size: 24px;
-    margin-left: 20px;
+    // margin-left: 20px;
   }
 
   @media (min-width: 1240px) {
-    margin-left: -15px;
+    // margin-left: -15px;
   }
 `;
 export const ColumnWrapper = styled.div`

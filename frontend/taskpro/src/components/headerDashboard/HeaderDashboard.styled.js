@@ -3,19 +3,21 @@ import styled from "styled-components";
 export const SelectedBoard = styled.div`
   display: flex;
   align-items: center;
-
+  gap: 176px;
   justify-content: space-between;
   font-size: 14px;
   margin-top: 12px;
-
+  padding-left: 20px;
+  padding-right: 30px;
   @media (min-width: 768px) {
     font-size: 18px;
-    padding-left: 20px;
+
     padding-right: 20px;
   }
 
   @media (min-width: 1240px) {
     width: 79%;
+    padding-left: 0px;
     margin-left: 275px;
   }
 `;
