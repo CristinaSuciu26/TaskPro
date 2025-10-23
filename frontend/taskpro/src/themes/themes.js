@@ -1,6 +1,8 @@
 export const themes = {
   light: {
     background: "#F6F6F7",
+    scrollbarTrack: "#FFFF",
+    scrollbarThumb: "#E8E8E8",
     backgroundSecondary: "#FCFCFC",
     addColumnBtn: "#161616",
     addColumnIcon: "#FFF",
@@ -24,6 +26,8 @@ export const themes = {
   },
   dark: {
     background: "#1F1F1F",
+    scrollbarTrack: "rgba(255, 255, 255, 0.1)",
+    scrollbarThumb: "#161616",
     backgroundSecondary: "#161616",
     needHelp: "#1F1F1F",
     addColumnBtn: "#FFFFFF",
@@ -47,6 +51,8 @@ export const themes = {
   },
   violet: {
     background: "#ECEDFD",
+    scrollbarTrack: "#FFFFFF",
+    scrollbarThumb: "#B8BCFD",
     backgroundSecondary: "#FCFCFC",
     addColumnBtn: "#5255BC",
     addColumnIcon: "#FFF",

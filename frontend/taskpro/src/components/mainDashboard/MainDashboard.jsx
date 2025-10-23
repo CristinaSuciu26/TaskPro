@@ -3,6 +3,7 @@ import {
   AddButton,
   ButtonWrapper,
   ColumnContainer,
+  ColumnContent,
   ColumnWrapper,
   DashboardWrapper,
   IconsWrapper,
@@ -53,58 +54,64 @@ export default function MainDashboard() {
 
   return (
     <>
-      {columns.map((col) => (
-        <ColumnContainer key={col._id}>
-          <ColumnWrapper>
-            <h3>{col.title}</h3>
-            <IconsWrapper>
-              <svg width="24" height="24" onClick={() => handleEditModal(col)}>
-                <use xlinkHref={`${sprite}#edit-icon`} />
-              </svg>
-              <svg
-                width="24"
-                height="24"
-                onClick={() => handleDeleteColumn(col._id)}
-              >
-                <use xlinkHref={`${sprite}#trash-icon`} />
-              </svg>
-            </IconsWrapper>
-          </ColumnWrapper>
-          {/* <ButtonWrapper>
+      <ColumnContent>
+        {columns.map((col) => (
+          <ColumnContainer key={col._id}>
+            <ColumnWrapper>
+              <h3>{col.title}</h3>
+              <IconsWrapper>
+                <svg
+                  width="24"
+                  height="24"
+                  onClick={() => handleEditModal(col)}
+                >
+                  <use xlinkHref={`${sprite}#edit-icon`} />
+                </svg>
+                <svg
+                  width="24"
+                  height="24"
+                  onClick={() => handleDeleteColumn(col._id)}
+                >
+                  <use xlinkHref={`${sprite}#trash-icon`} />
+                </svg>
+              </IconsWrapper>
+            </ColumnWrapper>
+            {/* <ButtonWrapper>
             <AddButton>
               <FiPlus strokeWidth={1.5} />
             </AddButton>
 
             <span>Add another card</span>
           </ButtonWrapper> */}
+          </ColumnContainer>
+        ))}
+
+        <ColumnContainer>
+          <DashboardWrapper onClick={() => setShowModal(true)}>
+            <ButtonWrapper>
+              <AddButton>
+                <FiPlus strokeWidth={1.5} />
+              </AddButton>
+
+              <span>Add another column</span>
+            </ButtonWrapper>
+          </DashboardWrapper>
         </ColumnContainer>
-      ))}
 
-      <ColumnContainer>
-        <DashboardWrapper onClick={() => setShowModal(true)}>
-          <ButtonWrapper>
-            <AddButton>
-              <FiPlus strokeWidth={1.5} />
-            </AddButton>
-
-            <span>Add another column</span>
-          </ButtonWrapper>
-        </DashboardWrapper>
-      </ColumnContainer>
-
-      {showModal && (
-        <AddColumnModal
-          onClose={() => {
-            setShowModal(false);
-          }}
-        />
-      )}
-      {showEditModal && selectedColumn && (
-        <EditColumnModal
-          onClose={() => setShowEditModal(false)}
-          column={selectedColumn}
-        />
-      )}
+        {showModal && (
+          <AddColumnModal
+            onClose={() => {
+              setShowModal(false);
+            }}
+          />
+        )}
+        {showEditModal && selectedColumn && (
+          <EditColumnModal
+            onClose={() => setShowEditModal(false)}
+            column={selectedColumn}
+          />
+        )}
+      </ColumnContent>
     </>
   );
 }

@@ -6,7 +6,8 @@ export const SelectedBoard = styled.div`
   gap: 176px;
   justify-content: space-between;
   font-size: 14px;
-  margin-top: 12px;
+  margin-top: 10px;
+  margin-bottom: 12px;
   padding-left: 20px;
   padding-right: 30px;
   @media (min-width: 768px) {
@@ -17,8 +18,7 @@ export const SelectedBoard = styled.div`
 
   @media (min-width: 1240px) {
     width: 79%;
-    padding-left: 0px;
-    margin-left: 275px;
+    padding-right: 0px;
   }
 `;
 

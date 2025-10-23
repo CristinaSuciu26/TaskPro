@@ -47,26 +47,11 @@ export const IconsWrapper = styled.div`
   display: flex;
   margin-top: 5px;
 `;
-export const ColumnContainer = styled.div`
-  // background-color: pink;
-  // height: 410px;
-  // width: 400px;
-  // max-height: 400px;
-  // overflow-x: hidden;
+export const ColumnContainer = styled.div``;
+export const ColumnContent = styled.div`
   display: flex;
-  // justify-content: center;
-
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-  &::-webkit-scrollbar-track {
-    background: #e8e8e8;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: #c9c9c9ff;
-    border-radius: 10px;
-    height: 5px;
-  }
+  gap: 34px;
+  height: 450px;
 `;
 export const AddButton = styled.button`
   width: 28px;

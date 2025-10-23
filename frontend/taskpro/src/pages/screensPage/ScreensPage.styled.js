@@ -10,32 +10,35 @@ export const ScreensPageContent = styled.div`
   @media (min-width: 768px) {
     align-items: inherit;
   }
-`;
-export const ContentWrapper = styled.div`
-  width: 100%;
-  height: 100vh;
-  overflow-y: hidden;
-  overflow-x: scroll;
-  // background-color: yellow;
-  padding-left: 21px;
-
-  &::-webkit-scrollbar {
-    width: 2px;
-    height: 7px;
-    cursor: pointer;
-  }
-  &::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.accent};
-  }
-  &::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => theme.hoverColor};
-    border-radius: 10px;
-    height: 5px;
-  }
 
   @media (min-width: 1240px) {
     margin-left: 250px;
     padding-left: 25px;
+  }
+`;
+
+export const ContentWrapper = styled.div`
+  width: 100%;
+  height: 519px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding-left: 21px;
+  &::-webkit-scrollbar {
+    max-width: 40px;
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: ${({ theme }) => theme.scrollbarTrack};
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.scrollbarThumb};
+    border-radius: 10px;
+    min-height: 40px;
+    min-width: 40px;
   }
 `;
 
@@ -60,20 +63,6 @@ export const Paragraph = styled.p`
     font-size: 14px;
     width: 50%;
   }
-`;
-
-export const ColumnContent = styled.div`
-  width: 100%;
-  // height: 100%;
-  margin-top: 10px;
-  display: flex;
-  gap: 34px;
-  // background-color: orange;
-
-  // @media (min-width: 768px) {
-  //
-  // }
-  // @media (min-width: 1268px) {
 `;
 
 export const BoardButton = styled.button`

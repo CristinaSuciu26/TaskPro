@@ -3,7 +3,6 @@ import HeaderDashboard from "../../components/headerDashboard/HeaderDashboard.js
 import MainDashboard from "../../components/mainDashboard/MainDashboard.jsx";
 import {
   BoardButton,
-  ColumnContent,
   ContentWrapper,
   Paragraph,
   ParagraphWrapper,
@@ -39,9 +38,7 @@ export default function ScreensPage() {
           <HeaderDashboard />
 
           <ContentWrapper>
-            <ColumnContent>
-              <MainDashboard />
-            </ColumnContent>
+            <MainDashboard />
           </ContentWrapper>
         </ScreensPageContent>
       ) : (
