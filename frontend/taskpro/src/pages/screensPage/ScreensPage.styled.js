@@ -49,7 +49,7 @@ export const ParagraphWrapper = styled.div`
   padding: 25px;
 
   @media (min-width: 1240px) {
-    padding-left: 90px;
+    padding-right: 310px;
   }
   margin-top: 177px;
 `;
