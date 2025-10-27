@@ -17,31 +17,6 @@ export const ScreensPageContent = styled.div`
   }
 `;
 
-export const ContentWrapper = styled.div`
-  width: 100%;
-  height: 519px;
-  overflow-y: hidden;
-  overflow-x: scroll;
-  padding-left: 21px;
-  &::-webkit-scrollbar {
-    max-width: 40px;
-    width: 8px;
-    height: 8px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.scrollbarTrack};
-    border-radius: 10px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.scrollbarThumb};
-    border-radius: 10px;
-    min-height: 40px;
-    min-width: 40px;
-  }
-`;
-
 export const ParagraphWrapper = styled.div`
   display: flex;
   align-items: center;

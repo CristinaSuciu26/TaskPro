@@ -2,11 +2,14 @@ import { useEffect, useMemo, useState } from "react";
 import {
   AddButton,
   ButtonWrapper,
+  CardWrapper,
+  Card,
   ColumnContainer,
   ColumnContent,
   ColumnWrapper,
   DashboardWrapper,
   IconsWrapper,
+  AnotherCradButtonWrapper,
 } from "./MainDashboard.styled";
 import sprite from "../../assets/icons/sprite.svg";
 import { FiPlus } from "react-icons/fi";
@@ -76,13 +79,18 @@ export default function MainDashboard() {
                 </svg>
               </IconsWrapper>
             </ColumnWrapper>
-            {/* <ButtonWrapper>
-            <AddButton>
-              <FiPlus strokeWidth={1.5} />
-            </AddButton>
+            <CardWrapper>
+              <Card></Card>
+              <Card></Card>
+              <Card></Card>
+            </CardWrapper>
+            <AnotherCradButtonWrapper>
+              <AddButton>
+                <FiPlus strokeWidth={1.5} />
+              </AddButton>
 
-            <span>Add another card</span>
-          </ButtonWrapper> */}
+              <span>Add another card</span>
+            </AnotherCradButtonWrapper>
           </ColumnContainer>
         ))}
 

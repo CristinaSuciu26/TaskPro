@@ -22,10 +22,10 @@ export const SidebarContent = styled.div`
     width: 3px;
   }
   &::-webkit-scrollbar-track {
-    background: transparent;
+    background: ${({ theme }) => theme.scrollbarTrack};
   }
   &::-webkit-scrollbar-thumb {
-    background: #c9c9c9ff;
+    background-color: ${({ theme }) => theme.scrollbarThumb};
     border-radius: 10px;
     height: 5px;
   }
