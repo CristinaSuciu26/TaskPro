@@ -14,38 +14,66 @@ import {
 import sprite from "../../assets/icons/sprite.svg";
 import { FiPlus } from "react-icons/fi";
 import AddColumnModal from "../addColumnModal/AddColumnModal";
+import EditColumnModal from "../editColumn/EditColumnModal";
+import AddCardModal from "../addCardModal/AddCardModal";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteColumn,
   getColumnsByDashboard,
 } from "../../redux/column/columnThunks";
-import EditColumnModal from "../editColumn/EditColumnModal";
+import { getCardsByColumn, updateCard } from "../../redux/card/cardThunks";
 import { toast } from "react-toastify";
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 
 export default function MainDashboard() {
-  const [showModal, setShowModal] = useState(false);
+  const [showColumnModal, setShowColumnModal] = useState(false);
+  const [showCreateCardModal, setShowCreateCardModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedColumn, setSelectedColumn] = useState(null);
+
   const dispatch = useDispatch();
   const selectedDashboardId = useSelector(
     (state) => state.dashboard.selectedDashboardId
   );
-  const allColumns = useSelector((state) => state.column.columnsByDashboard);
-  const columns = useMemo(() => {
-    return allColumns?.[selectedDashboardId] ?? [];
-  }, [allColumns, selectedDashboardId]);
+  const allColumns = useSelector(
+    (state) => state.column.columnsByDashboard || {}
+  );
+  const cardsByColumn = useSelector((state) => state.card.cardsByColumn || {});
 
-  // 🔹 fetch columns when component mounts or dashboardId changes
+  const columns = useMemo(
+    () => allColumns?.[selectedDashboardId] ?? [],
+    [allColumns, selectedDashboardId]
+  );
+
+  // Refetch columns when dashboard changes
   useEffect(() => {
     if (selectedDashboardId) {
       dispatch(getColumnsByDashboard(selectedDashboardId));
     }
   }, [dispatch, selectedDashboardId]);
 
+  // Fetch cards for each column
+  useEffect(() => {
+    columns.forEach((col) => {
+      dispatch(getCardsByColumn(col._id));
+    });
+  }, [columns, dispatch]);
+
+  // Combine columns + cards
+  const localColumns = useMemo(() => {
+    return columns.map((col) => ({
+      ...col,
+      cards: cardsByColumn[col._id] || [],
+    }));
+  }, [columns, cardsByColumn]);
+
+  // Edit column
   const handleEditModal = (col) => {
     setShowEditModal(true);
     setSelectedColumn(col);
   };
+
+  // Delete column
   const handleDeleteColumn = async (id) => {
     try {
       await dispatch(deleteColumn(id)).unwrap();
@@ -55,71 +83,149 @@ export default function MainDashboard() {
     }
   };
 
+  // Drag & Drop
+  const handleDragEnd = async (result) => {
+    const { source, destination, draggableId } = result;
+    if (!destination) return;
+    if (
+      source.droppableId === destination.droppableId &&
+      source.index === destination.index
+    )
+      return;
+
+    const sourceColId = source.droppableId;
+    const destColId = destination.droppableId;
+
+    const sourceCards = Array.from(cardsByColumn[sourceColId]);
+    const destCards =
+      sourceColId === destColId
+        ? sourceCards
+        : Array.from(cardsByColumn[destColId] || []);
+
+    const [movedCard] = sourceCards.splice(source.index, 1);
+    destCards.splice(destination.index, 0, movedCard);
+
+    try {
+      // Update card in backend
+      await dispatch(
+        updateCard({
+          id: movedCard._id,
+          updates: { columnId: destColId, order: destination.index },
+        })
+      ).unwrap();
+
+      // Refetch affected columns
+      dispatch(getCardsByColumn(sourceColId));
+      if (sourceColId !== destColId) dispatch(getCardsByColumn(destColId));
+    } catch (error) {
+      toast.error("Failed to move card");
+    }
+  };
+
   return (
     <>
-      <ColumnContent>
-        {columns.map((col) => (
-          <ColumnContainer key={col._id}>
-            <ColumnWrapper>
-              <h3>{col.title}</h3>
-              <IconsWrapper>
-                <svg
-                  width="24"
-                  height="24"
-                  onClick={() => handleEditModal(col)}
-                >
-                  <use xlinkHref={`${sprite}#edit-icon`} />
-                </svg>
-                <svg
-                  width="24"
-                  height="24"
-                  onClick={() => handleDeleteColumn(col._id)}
-                >
-                  <use xlinkHref={`${sprite}#trash-icon`} />
-                </svg>
-              </IconsWrapper>
-            </ColumnWrapper>
-            <CardWrapper>
-              <Card></Card>
-              <Card></Card>
-              <Card></Card>
-            </CardWrapper>
-            <AnotherCradButtonWrapper>
-              <AddButton>
-                <FiPlus strokeWidth={1.5} />
-              </AddButton>
+      <DragDropContext onDragEnd={handleDragEnd}>
+        <ColumnContent>
+          {localColumns.map((col) => (
+            <ColumnContainer key={col._id}>
+              <ColumnWrapper>
+                <h3>{col.title}</h3>
+                <IconsWrapper>
+                  <svg
+                    width="24"
+                    height="24"
+                    onClick={() => handleEditModal(col)}
+                  >
+                    <use xlinkHref={`${sprite}#edit-icon`} />
+                  </svg>
+                  <svg
+                    width="24"
+                    height="24"
+                    onClick={() => handleDeleteColumn(col._id)}
+                  >
+                    <use xlinkHref={`${sprite}#trash-icon`} />
+                  </svg>
+                </IconsWrapper>
+              </ColumnWrapper>
 
-              <span>Add another card</span>
-            </AnotherCradButtonWrapper>
+              <Droppable droppableId={col._id}>
+                {(provided) => (
+                  <CardWrapper
+                    ref={provided.innerRef}
+                    {...provided.droppableProps}
+                    style={{
+                      ...provided.droppableProps.style,
+                    }}
+                  >
+                    {col.cards.map((card, index) => (
+                      <Draggable
+                        key={card._id}
+                        draggableId={card._id}
+                        index={index}
+                      >
+                        {(provided) => (
+                          <Card
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            style={{
+                              ...provided.draggableProps.style,
+                            }}
+                          >
+                            {card.title}
+                          </Card>
+                        )}
+                      </Draggable>
+                    ))}
+                    {provided.placeholder}
+                  </CardWrapper>
+                )}
+              </Droppable>
+
+              <AnotherCradButtonWrapper>
+                <AddButton
+                  onClick={() => {
+                    setSelectedColumn(col);
+                    setShowCreateCardModal(true);
+                  }}
+                >
+                  <FiPlus strokeWidth={1.5} />
+                </AddButton>
+                <span>Add another card</span>
+              </AnotherCradButtonWrapper>
+            </ColumnContainer>
+          ))}
+
+          {/* Add column button */}
+          <ColumnContainer>
+            <DashboardWrapper onClick={() => setShowColumnModal(true)}>
+              <ButtonWrapper>
+                <AddButton>
+                  <FiPlus strokeWidth={1.5} />
+                </AddButton>
+                <span>Add another column</span>
+              </ButtonWrapper>
+            </DashboardWrapper>
           </ColumnContainer>
-        ))}
+        </ColumnContent>
+      </DragDropContext>
 
-        <ColumnContainer>
-          <DashboardWrapper onClick={() => setShowModal(true)}>
-            <ButtonWrapper>
-              <AddButton>
-                <FiPlus strokeWidth={1.5} />
-              </AddButton>
-
-              <span>Add another column</span>
-            </ButtonWrapper>
-          </DashboardWrapper>
-        </ColumnContainer>
-
-        {showModal && (
-          <AddColumnModal
-            onClose={() => {
-              setShowModal(false);
-            }}
-          />
-        )}
-        {showEditModal && selectedColumn && (
-          <EditColumnModal
-            onClose={() => setShowEditModal(false)}
-            column={selectedColumn}
-          />
-        )}
-      </ColumnContent>
+      {/* Modals */}
+      {showColumnModal && (
+        <AddColumnModal onClose={() => setShowColumnModal(false)} />
+      )}
+      {showCreateCardModal && selectedColumn && (
+        <AddCardModal
+          onClose={() => setShowCreateCardModal(false)}
+          columnId={selectedColumn._id}
+        />
+      )}
+      {showEditModal && selectedColumn && (
+        <EditColumnModal
+          onClose={() => setShowEditModal(false)}
+          column={selectedColumn}
+        />
+      )}
     </>
   );
 }

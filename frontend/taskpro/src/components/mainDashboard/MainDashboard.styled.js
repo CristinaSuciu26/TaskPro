@@ -49,7 +49,7 @@ export const CardWrapper = styled.div`
   flex-direction: column;
   margin-top: 14px;
   height: calc(100vh - 275px);
-  width: 335px;
+  width: 345px;
   overflow-y: auto;
   overflow-x: hidden;
 
@@ -74,7 +74,7 @@ export const CardWrapper = styled.div`
   }
 `;
 export const Card = styled.div`
-  width: 325px;
+  width: 334px;
   height: 154px;
   display: flex;
   flex-shrink: 0;
