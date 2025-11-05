@@ -15,7 +15,7 @@ export const ModalOverlay = styled.div`
 
 export const ModalContent = styled.div`
   width: 335px;
-  height: 221px;
+  height: 522px;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.background};
   margin: 0 auto;
@@ -55,7 +55,16 @@ export const Input = styled.input`
   font-size: 14px;
   color: ${({ theme }) => theme.text};
 `;
-
+export const Textarea = styled.textarea`
+  width: 287px;
+  height: 154px;
+  background-color: transparent;
+  border: 1px solid ${({ theme }) => theme.accent};
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: 14px;
+  color: ${({ theme }) => theme.text};
+`;
 export const AddButton = styled.button`
   width: 287px;
   height: 49px;
@@ -93,4 +102,95 @@ export const ModalTitle = styled.h2`
   font-size: 18px;
   margin-bottom: 28px;
   color: ${({ theme }) => theme.text};
+`;
+
+export const LabelContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 220px;
+  gap: 4px;
+`;
+export const ColorWrapper = styled.div`
+  display: flex;
+  gap: 8px;
+  margin-left: 13px;
+`;
+export const LabelTitle = styled.span`
+  color: ${({ theme }) => theme.text};
+  font-size: 12px;
+`;
+export const InputButton = styled.input`
+  position: absolute;
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  pointer-events: none;
+`;
+
+export const LabelColorLow = styled.label`
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: ${({ theme }) => theme.labelLowPriority};
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  ${InputButton}:checked + & {
+    transform: scale(1);
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.accent};
+  }
+`;
+export const LabelColorHigh = styled.label`
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: ${({ theme }) => theme.labelHighPriority};
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  ${InputButton}:checked + & {
+    transform: scale(1);
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.accent};
+  }
+`;
+export const LabelColorMedium = styled.label`
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: ${({ theme }) => theme.labelMediumPriroity};
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  ${InputButton}:checked + & {
+    transform: scale(1);
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.accent};
+  }
+`;
+export const LabelColorWithoutPriority = styled.label`
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: ${({ theme }) => theme.labelWithoutPriority};
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  ${InputButton}:checked + & {
+    transform: scale(1);
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.accent};
+  }
+`;
+export const DeadlineContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-right: 40px;
+  margin-top: 14px;
+
+`;
+export const DeadlineTitle = styled.span`
+  color: ${({ theme }) => theme.text};
+  font-size: 12px;
+  margin-left: 40px;
 `;

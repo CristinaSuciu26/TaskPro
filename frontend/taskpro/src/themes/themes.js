@@ -22,7 +22,7 @@ export const themes = {
     labelHighPriority: "#BEDBB0",
     labelMediumPriroity: "#E09CB5",
     labelLowPriority: "#8FA1D0",
-    labelWithoutPriority: "#1616164D",
+    labelWithoutPriority: "#807c7c4d",
   },
   dark: {
     background: "#1F1F1F",
@@ -47,7 +47,7 @@ export const themes = {
     labelHighPriority: "#BEDBB0",
     labelMediumPriroity: "#E09CB5",
     labelLowPriority: "#8FA1D0",
-    labelWithoutPriority: "#1616164D",
+    labelWithoutPriority: "#807c7c4d",
   },
   violet: {
     background: "#ECEDFD",
@@ -72,6 +72,6 @@ export const themes = {
     labelHighPriority: "#BEDBB0",
     labelMediumPriroity: "#E09CB5",
     labelLowPriority: "#8FA1D0",
-    labelWithoutPriority: "#1616164D",
+    labelWithoutPriority: "#807c7c4d",
   },
 };

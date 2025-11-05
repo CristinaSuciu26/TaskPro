@@ -182,13 +182,13 @@ export default function MainDashboard() {
                 )}
               </Droppable>
 
-              <AnotherCradButtonWrapper>
-                <AddButton
-                  onClick={() => {
-                    setSelectedColumn(col);
-                    setShowCreateCardModal(true);
-                  }}
-                >
+              <AnotherCradButtonWrapper
+                onClick={() => {
+                  setSelectedColumn(col);
+                  setShowCreateCardModal(true);
+                }}
+              >
+                <AddButton>
                   <FiPlus strokeWidth={1.5} />
                 </AddButton>
                 <span>Add another card</span>
