@@ -73,6 +73,34 @@ export const CardWrapper = styled.div`
     min-width: 40px;
   }
 `;
+export const CardContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-left: 24px;
+  padding-top: 14px;
+  gap: 8px;
+`;
+export const CardTitle = styled.h3`
+  font-size: 14px;
+  font-weight: 600;
+  color: ${({ theme }) => theme.text};
+`;
+export const DescriptionCard = styled.p`
+  font-size: 12px;
+  font-weight: 400;
+  color: ${({ theme }) => theme.secondaryText};
+  width: 100%;
+  max-width: 280px;
+  margin-bottom: 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-break: break-word;
+`;
+
 export const Card = styled.div`
   width: 334px;
   height: 154px;

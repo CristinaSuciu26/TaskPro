@@ -187,7 +187,6 @@ export const DeadlineContainer = styled.div`
   flex-direction: column;
   margin-right: 40px;
   margin-top: 14px;
-
 `;
 export const DeadlineTitle = styled.span`
   color: ${({ theme }) => theme.text};

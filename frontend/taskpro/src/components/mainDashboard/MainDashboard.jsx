@@ -10,6 +10,9 @@ import {
   DashboardWrapper,
   IconsWrapper,
   AnotherCradButtonWrapper,
+  CardTitle,
+  DescriptionCard,
+  CardContent,
 } from "./MainDashboard.styled";
 import sprite from "../../assets/icons/sprite.svg";
 import { FiPlus } from "react-icons/fi";
@@ -21,7 +24,11 @@ import {
   deleteColumn,
   getColumnsByDashboard,
 } from "../../redux/column/columnThunks";
-import { getCardsByColumn, updateCard } from "../../redux/card/cardThunks";
+import {
+  deleteCard,
+  getCardsByColumn,
+  updateCard,
+} from "../../redux/card/cardThunks";
 import { toast } from "react-toastify";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 
@@ -83,6 +90,15 @@ export default function MainDashboard() {
     }
   };
 
+  // Delete card
+  const handleDeleteCard = async (id) => {
+    try {
+      await dispatch(deleteCard(id)).unwrap();
+      toast.success("Deleted successfully!");
+    } catch (error) {
+      toast.error(error || "Delete column failed");
+    }
+  };
   // Drag & Drop
   const handleDragEnd = async (result) => {
     const { source, destination, draggableId } = result;
@@ -172,7 +188,39 @@ export default function MainDashboard() {
                               ...provided.draggableProps.style,
                             }}
                           >
-                            {card.title}
+                            <CardContent>
+                              <CardTitle> {card.title}</CardTitle>
+                              <DescriptionCard>
+                                {" "}
+                                {card.description}
+                              </DescriptionCard>
+                              <svg height="14">
+                                <use xlinkHref={`${sprite}#card-line`} />
+                              </svg>
+                              <IconsWrapper>
+                                <svg
+                                  width="24"
+                                  height="24"
+                                  // onClick={() => handleEditModal(col)}
+                                >
+                                  <use xlinkHref={`${sprite}#status-icon`} />
+                                </svg>
+                                <svg
+                                  width="24"
+                                  height="24"
+                                  // onClick={() => handleEditModal(col)}
+                                >
+                                  <use xlinkHref={`${sprite}#edit-icon`} />
+                                </svg>
+                                <svg
+                                  width="24"
+                                  height="24"
+                                  onClick={() => handleDeleteCard(card._id)}
+                                >
+                                  <use xlinkHref={`${sprite}#trash-icon`} />
+                                </svg>
+                              </IconsWrapper>
+                            </CardContent>
                           </Card>
                         )}
                       </Draggable>

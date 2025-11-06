@@ -17,7 +17,6 @@ import {
   LabelColorHigh,
   LabelColorWithoutPriority,
   DeadlineContainer,
-  StyledDateInput,
   DeadlineTitle,
 } from "./AddCardModal.styled";
 import { FiPlus, FiX } from "react-icons/fi";
@@ -50,7 +49,7 @@ export default function AddCardModal({ onClose, columnId }) {
       title,
       description,
       columnId,
-      order: cardsInColumn.length, // adaugă la final
+      order: cardsInColumn.length, 
     };
 
     try {
@@ -153,8 +152,7 @@ export default function AddCardModal({ onClose, columnId }) {
                     sx: {
                       "& .MuiPaper-root": {
                         marginRight: 65,
-                        backgroundColor: theme.background,
-                        color: theme.text,
+                        backgroundColor: "white",
                         borderRadius: 2,
                         borderColor: theme.accent,
                         boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
