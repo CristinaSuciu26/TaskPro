@@ -69,7 +69,7 @@ export const CreateBoardWrapper = styled.div`
 
 export const MyBoardsTitle = styled.h3`
   font-size: 12px;
-  color: ${({ theme }) => theme.secondaryText};
+  color: ${({ theme }) => theme.sidebarText};
 `;
 export const ButtonWrapper = styled.div`
   display: flex;
@@ -145,7 +145,7 @@ export const DashboardListItems = styled.li`
   display: flex;
   font-size: 14px;
   cursor: pointer;
-  color: ${({ theme }) => theme.secondaryText};
+  color: ${({ theme }) => theme.sidebarText};
 
   gap: 5px;
 `;
@@ -170,7 +170,7 @@ export const IconContainer = styled.div`
   gap: 5px;
 `;
 export const Icon = styled.svg`
-  color: ${({ theme }) => theme.secondaryText};
+  color: ${({ theme }) => theme.sidebarText};
   transition: all 0.2s ease;
 
   &:hover {

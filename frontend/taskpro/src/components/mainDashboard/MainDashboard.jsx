@@ -31,12 +31,15 @@ import {
 } from "../../redux/card/cardThunks";
 import { toast } from "react-toastify";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+import EditCardModal from "../editCardModal/EditCardModal";
 
 export default function MainDashboard() {
   const [showColumnModal, setShowColumnModal] = useState(false);
   const [showCreateCardModal, setShowCreateCardModal] = useState(false);
+  const [showEditCardModal, setshowEditCardModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedColumn, setSelectedColumn] = useState(null);
+  const [selectedCard, setSelectedCard] = useState(null);
 
   const dispatch = useDispatch();
   const selectedDashboardId = useSelector(
@@ -90,6 +93,11 @@ export default function MainDashboard() {
     }
   };
 
+  // Edit card
+  const handleEditCardModal = (card, columnId) => {
+    setSelectedCard({ ...card, columnId });
+    setshowEditCardModal(true);
+  };
   // Delete card
   const handleDeleteCard = async (id) => {
     try {
@@ -101,7 +109,7 @@ export default function MainDashboard() {
   };
   // Drag & Drop
   const handleDragEnd = async (result) => {
-    const { source, destination, draggableId } = result;
+    const { source, destination } = result;
     if (!destination) return;
     if (
       source.droppableId === destination.droppableId &&
@@ -202,13 +210,17 @@ export default function MainDashboard() {
                                   width="24"
                                   height="24"
                                   // onClick={() => handleEditModal(col)}
+                                  style={{ cursor: "pointer" }}
                                 >
                                   <use xlinkHref={`${sprite}#status-icon`} />
                                 </svg>
                                 <svg
                                   width="24"
                                   height="24"
-                                  // onClick={() => handleEditModal(col)}
+                                  onClick={() =>
+                                    handleEditCardModal(card, col._id)
+                                  }
+                                  style={{ cursor: "pointer" }}
                                 >
                                   <use xlinkHref={`${sprite}#edit-icon`} />
                                 </svg>
@@ -216,6 +228,7 @@ export default function MainDashboard() {
                                   width="24"
                                   height="24"
                                   onClick={() => handleDeleteCard(card._id)}
+                                  style={{ cursor: "pointer" }}
                                 >
                                   <use xlinkHref={`${sprite}#trash-icon`} />
                                 </svg>
@@ -272,6 +285,16 @@ export default function MainDashboard() {
         <EditColumnModal
           onClose={() => setShowEditModal(false)}
           column={selectedColumn}
+        />
+      )}
+
+      {showEditCardModal && selectedCard && (
+        <EditCardModal
+          onClose={() => {
+            setshowEditCardModal(false);
+            setSelectedCard(null);
+          }}
+          card={selectedCard}
         />
       )}
     </>
