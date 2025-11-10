@@ -147,6 +147,44 @@ export const ColumnContent = styled.div`
     min-width: 40px;
   }
 `;
+
+export const CardDetails = styled.div`
+  display: flex;
+  gap: 111px;
+`;
+
+export const CardDetailsWrapper = styled.div`
+  display: flex;
+  gap: 14px;
+`;
+export const CardPriority = styled.span`
+  font-size: 8px;
+  font-weight: 400;
+  color: ${({ theme }) => theme.secondaryText};
+`;
+export const PriorityValue = styled.span`
+  font-size: 10px;
+  font-weight: 400;
+  color: ${({ theme }) => theme.text};
+`;
+export const DeadlineValue = styled.span`
+  font-size: 10px;
+  font-weight: 400;
+  color: ${({ theme }) => theme.text};
+`;
+export const CardPriorityWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+export const CardDeadlineWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+export const CardDeadline = styled.span`
+  font-size: 8px;
+  font-weight: 400;
+  color: ${({ theme }) => theme.secondaryText};
+`;
 export const AddButton = styled.button`
   width: 28px;
   height: 28px;

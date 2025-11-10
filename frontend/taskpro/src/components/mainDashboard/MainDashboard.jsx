@@ -13,6 +13,14 @@ import {
   CardTitle,
   DescriptionCard,
   CardContent,
+  CardDetails,
+  CardPriority,
+  CardDeadline,
+  CardPriorityWrapper,
+  CardDeadlineWrapper,
+  DeadlineValue,
+  PriorityValue,
+  CardDetailsWrapper,
 } from "./MainDashboard.styled";
 import sprite from "../../assets/icons/sprite.svg";
 import { FiPlus } from "react-icons/fi";
@@ -32,7 +40,7 @@ import {
 import { toast } from "react-toastify";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import EditCardModal from "../editCardModal/EditCardModal";
-
+import dayjs from "dayjs";
 export default function MainDashboard() {
   const [showColumnModal, setShowColumnModal] = useState(false);
   const [showCreateCardModal, setShowCreateCardModal] = useState(false);
@@ -199,40 +207,57 @@ export default function MainDashboard() {
                             <CardContent>
                               <CardTitle> {card.title}</CardTitle>
                               <DescriptionCard>
-                                {" "}
                                 {card.description}
                               </DescriptionCard>
                               <svg height="14">
                                 <use xlinkHref={`${sprite}#card-line`} />
                               </svg>
-                              <IconsWrapper>
-                                <svg
-                                  width="24"
-                                  height="24"
-                                  // onClick={() => handleEditModal(col)}
-                                  style={{ cursor: "pointer" }}
-                                >
-                                  <use xlinkHref={`${sprite}#status-icon`} />
-                                </svg>
-                                <svg
-                                  width="24"
-                                  height="24"
-                                  onClick={() =>
-                                    handleEditCardModal(card, col._id)
-                                  }
-                                  style={{ cursor: "pointer" }}
-                                >
-                                  <use xlinkHref={`${sprite}#edit-icon`} />
-                                </svg>
-                                <svg
-                                  width="24"
-                                  height="24"
-                                  onClick={() => handleDeleteCard(card._id)}
-                                  style={{ cursor: "pointer" }}
-                                >
-                                  <use xlinkHref={`${sprite}#trash-icon`} />
-                                </svg>
-                              </IconsWrapper>
+                              <CardDetails>
+                                <CardDetailsWrapper>
+                                  <CardPriorityWrapper>
+                                    <CardPriority>Priority</CardPriority>
+                                    <PriorityValue>
+                                      {card.priority}
+                                    </PriorityValue>
+                                  </CardPriorityWrapper>
+                                  <CardDeadlineWrapper>
+                                    <CardDeadline>Deadline</CardDeadline>
+                                    <DeadlineValue>
+                                      {dayjs(card.deadline).format(
+                                        "DD MMM YYYY"
+                                      )}
+                                    </DeadlineValue>
+                                  </CardDeadlineWrapper>
+                                </CardDetailsWrapper>
+                                <IconsWrapper>
+                                  <svg
+                                    width="24"
+                                    height="24"
+                                    // onClick={() => handleEditModal(col)}
+                                    style={{ cursor: "pointer" }}
+                                  >
+                                    <use xlinkHref={`${sprite}#status-icon`} />
+                                  </svg>
+                                  <svg
+                                    width="24"
+                                    height="24"
+                                    onClick={() =>
+                                      handleEditCardModal(card, col._id)
+                                    }
+                                    style={{ cursor: "pointer" }}
+                                  >
+                                    <use xlinkHref={`${sprite}#edit-icon`} />
+                                  </svg>
+                                  <svg
+                                    width="24"
+                                    height="24"
+                                    onClick={() => handleDeleteCard(card._id)}
+                                    style={{ cursor: "pointer" }}
+                                  >
+                                    <use xlinkHref={`${sprite}#trash-icon`} />
+                                  </svg>
+                                </IconsWrapper>
+                              </CardDetails>
                             </CardContent>
                           </Card>
                         )}

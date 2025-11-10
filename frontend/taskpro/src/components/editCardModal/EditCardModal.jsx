@@ -28,15 +28,19 @@ import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import TextField from "@mui/material/TextField";
 import { useTheme } from "styled-components";
+import dayjs from "dayjs";
 
 export default function EditCardModal({ onClose, card }) {
   const dispatch = useDispatch();
   const theme = useTheme();
-  const [currentTitle, setcurrentTitle] = useState(card?.title || "");
-  const [currentDescription, setcurrentDescription] = useState(
+  const [currentTitle, setCurrentTitle] = useState(card?.title || "");
+  const [currentDescription, setCurrentDescription] = useState(
     card?.description || ""
   );
-  const [deadline, setDeadline] = useState(card?.deadline || null);
+  const [deadline, setDeadline] = useState(
+    card?.deadline ? dayjs(card.deadline) : null
+  );
+  const [priority, setPriority] = useState(card?.priority || "none");
   const columnId = card?.columnId;
 
   const updateCards = async (e) => {
@@ -49,8 +53,9 @@ export default function EditCardModal({ onClose, card }) {
     const cardData = {
       title: currentTitle,
       description: currentDescription,
-      deadline,
+      deadline: deadline.toISOString(),
       columnId,
+      priority,
     };
 
     try {
@@ -68,7 +73,7 @@ export default function EditCardModal({ onClose, card }) {
       toast.error(error || "Update card failed");
     }
   };
-
+  console.log(deadline);
   return (
     <ModalOverlay>
       <ModalContent>
@@ -81,18 +86,25 @@ export default function EditCardModal({ onClose, card }) {
             type="text"
             placeholder="Title"
             value={currentTitle}
-            onChange={(e) => setcurrentTitle(e.target.value)}
+            onChange={(e) => setCurrentTitle(e.target.value)}
           />
           <Textarea
             placeholder="Description"
             value={currentDescription}
-            onChange={(e) => setcurrentDescription(e.target.value)}
+            onChange={(e) => setCurrentDescription(e.target.value)}
           />
 
           <LabelContainer>
             <LabelTitle>Label color</LabelTitle>
             <ColorWrapper>
-              <InputButton type="radio" id="low" name="priority" value="low" />
+              <InputButton
+                type="radio"
+                id="low"
+                name="priority"
+                value="low"
+                checked={priority === "low"}
+                onChange={(e) => setPriority(e.target.value)}
+              />
               <LabelColorLow htmlFor="low" color="labelLowPriority" />
 
               <InputButton
@@ -100,6 +112,8 @@ export default function EditCardModal({ onClose, card }) {
                 id="medium"
                 name="priority"
                 value="medium"
+                checked={priority === "medium"}
+                onChange={(e) => setPriority(e.target.value)}
               />
               <LabelColorMedium htmlFor="medium" color="labelMediumPriority" />
 
@@ -108,6 +122,8 @@ export default function EditCardModal({ onClose, card }) {
                 id="high"
                 name="priority"
                 value="high"
+                checked={priority === "high"}
+                onChange={(e) => setPriority(e.target.value)}
               />
               <LabelColorHigh htmlFor="high" color="labelHighPriority" />
 
@@ -116,6 +132,8 @@ export default function EditCardModal({ onClose, card }) {
                 id="without-priority"
                 name="priority"
                 value="none"
+                checked={priority === "none"}
+                onChange={(e) => setPriority(e.target.value)}
               />
               <LabelColorWithoutPriority
                 htmlFor="without-priority"
