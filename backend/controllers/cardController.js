@@ -2,7 +2,8 @@ import Card from "../models/Card.js";
 
 export const createCard = async (req, res) => {
   try {
-    const { title, description, columnId, order } = req.body;
+    const { title, description, columnId, order, deadline, priority } =
+      req.body;
 
     if (!title || !columnId) {
       return res
@@ -10,7 +11,14 @@ export const createCard = async (req, res) => {
         .json({ message: "Title and columnId are required" });
     }
 
-    const newCard = Card.create({ title, description, columnId, order });
+    const newCard = Card.create({
+      title,
+      description,
+      columnId,
+      order,
+      deadline,
+      priority,
+    });
     res.status(201).json({ message: "Card created", card: newCard });
   } catch (error) {
     res.status(500).json({ message: "Server error:", error: error.message });

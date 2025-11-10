@@ -10,6 +10,12 @@ const cardSchema = mongoose.Schema(
       required: true,
     },
     order: { type: Number, default: 0 },
+    deadline: { type: Date },
+    priority: {
+      type: String,
+      enum: ["low", "medium", "high", "none"],
+      default: "none",
+    },
   },
   { timestamps: true }
 );
