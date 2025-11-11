@@ -53,7 +53,7 @@ export default function EditCardModal({ onClose, card }) {
     const cardData = {
       title: currentTitle,
       description: currentDescription,
-      deadline: deadline.toISOString(),
+      deadline: deadline ? deadline.format("YYYY-MM-DD") : null,
       columnId,
       priority,
     };
@@ -146,8 +146,9 @@ export default function EditCardModal({ onClose, card }) {
             <DeadlineContainer>
               <DeadlineTitle>Deadline</DeadlineTitle>
               <DatePicker
-                value={deadline}
+                value={deadline ? dayjs(deadline) : null}
                 onChange={(newValue) => setDeadline(newValue)}
+                format="DD/MM/YYYY"
                 enableAccessibleFieldDOMStructure={false}
                 slots={{ textField: TextField }}
                 slotProps={{

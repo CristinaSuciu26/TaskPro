@@ -152,7 +152,39 @@ export const CardDetails = styled.div`
   display: flex;
   gap: 111px;
 `;
-
+export const LabelPriorityWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 2px;
+`;
+export const LabelColorHigh = styled.span`
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  background-color: ${({ theme }) => theme.labelHighPriority};
+`;
+export const LabelColorMedium = styled.span`
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  background-color: ${({ theme }) => theme.labelMediumPriroity};
+`;
+export const LabelColorWithoutPriority = styled.span`
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  background-color: ${({ theme }) => theme.labelWithoutPriority};
+`;
+export const LabelColorLow = styled.span`
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  background-color: ${({ theme }) => theme.labelLowPriority};
+`;
 export const CardDetailsWrapper = styled.div`
   display: flex;
   gap: 14px;

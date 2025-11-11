@@ -21,6 +21,11 @@ import {
   DeadlineValue,
   PriorityValue,
   CardDetailsWrapper,
+  LabelColorHigh,
+  LabelColorMedium,
+  LabelColorLow,
+  LabelColorWithoutPriority,
+  LabelPriorityWrapper,
 } from "./MainDashboard.styled";
 import sprite from "../../assets/icons/sprite.svg";
 import { FiPlus } from "react-icons/fi";
@@ -217,15 +222,49 @@ export default function MainDashboard() {
                                   <CardPriorityWrapper>
                                     <CardPriority>Priority</CardPriority>
                                     <PriorityValue>
-                                      {card.priority}
+                                      {card.priority === "high" ? (
+                                        <LabelPriorityWrapper>
+                                          <LabelColorHigh />
+                                          {card.priority
+                                            .charAt(0)
+                                            .toUpperCase() +
+                                            card.priority.slice(1)}
+                                        </LabelPriorityWrapper>
+                                      ) : card.priority === "medium" ? (
+                                        <LabelPriorityWrapper>
+                                          <LabelColorMedium />
+                                          {card.priority
+                                            .charAt(0)
+                                            .toUpperCase() +
+                                            card.priority.slice(1)}
+                                        </LabelPriorityWrapper>
+                                      ) : card.priority === "low" ? (
+                                        <LabelPriorityWrapper>
+                                          <LabelColorLow />
+                                          {card.priority
+                                            .charAt(0)
+                                            .toUpperCase() +
+                                            card.priority.slice(1)}
+                                        </LabelPriorityWrapper>
+                                      ) : (
+                                        <LabelPriorityWrapper>
+                                          <LabelColorWithoutPriority />
+                                          {card.priority
+                                            .charAt(0)
+                                            .toUpperCase() +
+                                            card.priority.slice(1)}
+                                        </LabelPriorityWrapper>
+                                      )}
                                     </PriorityValue>
                                   </CardPriorityWrapper>
                                   <CardDeadlineWrapper>
                                     <CardDeadline>Deadline</CardDeadline>
                                     <DeadlineValue>
-                                      {dayjs(card.deadline).format(
-                                        "DD MMM YYYY"
-                                      )}
+                                      {card.deadline
+                                        ? dayjs(card.deadline).format(
+                                            "DD MMM YYYY"
+                                          )
+                                        : "No deadline"}
                                     </DeadlineValue>
                                   </CardDeadlineWrapper>
                                 </CardDetailsWrapper>

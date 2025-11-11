@@ -34,6 +34,7 @@ export default function AddCardModal({ onClose, columnId }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [deadline, setDeadline] = useState(null);
+  const [priority, setPriority] = useState("");
   const cardsInColumn = useSelector(
     (state) => state.card.cardsByColumn[columnId] || []
   );
@@ -49,7 +50,9 @@ export default function AddCardModal({ onClose, columnId }) {
       title,
       description,
       columnId,
-      order: cardsInColumn.length, 
+      order: cardsInColumn.length,
+      deadline: deadline ? deadline.format("YYYY-MM-DD") : null,
+      priority,
     };
 
     try {
@@ -85,7 +88,14 @@ export default function AddCardModal({ onClose, columnId }) {
           <LabelContainer>
             <LabelTitle>Label color</LabelTitle>
             <ColorWrapper>
-              <InputButton type="radio" id="low" name="priority" value="low" />
+              <InputButton
+                type="radio"
+                id="low"
+                name="priority"
+                value="low"
+                checked={priority === "low"}
+                onChange={(e) => setPriority(e.target.value)}
+              />
               <LabelColorLow htmlFor="low" color="labelLowPriority" />
 
               <InputButton
@@ -93,6 +103,8 @@ export default function AddCardModal({ onClose, columnId }) {
                 id="medium"
                 name="priority"
                 value="medium"
+                checked={priority === "medium"}
+                onChange={(e) => setPriority(e.target.value)}
               />
               <LabelColorMedium htmlFor="medium" color="labelMediumPriority" />
 
@@ -101,6 +113,8 @@ export default function AddCardModal({ onClose, columnId }) {
                 id="high"
                 name="priority"
                 value="high"
+                checked={priority === "high"}
+                onChange={(e) => setPriority(e.target.value)}
               />
               <LabelColorHigh htmlFor="high" color="labelHighPriority" />
 
@@ -109,6 +123,8 @@ export default function AddCardModal({ onClose, columnId }) {
                 id="without-priority"
                 name="priority"
                 value="none"
+                checked={priority === "none"}
+                onChange={(e) => setPriority(e.target.value)}
               />
               <LabelColorWithoutPriority
                 htmlFor="without-priority"
