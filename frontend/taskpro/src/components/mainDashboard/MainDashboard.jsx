@@ -26,6 +26,10 @@ import {
   LabelColorLow,
   LabelColorWithoutPriority,
   LabelPriorityWrapper,
+  CardColorHigh,
+  CardColorMedium,
+  CardColorLow,
+  CardColorNone,
 } from "./MainDashboard.styled";
 import sprite from "../../assets/icons/sprite.svg";
 import { FiPlus } from "react-icons/fi";
@@ -209,6 +213,15 @@ export default function MainDashboard() {
                               ...provided.draggableProps.style,
                             }}
                           >
+                            {card.priority === "high" ? (
+                              <CardColorHigh />
+                            ) : card.priority === "medium" ? (
+                              <CardColorMedium />
+                            ) : card.priority === "low" ? (
+                              <CardColorLow />
+                            ) : (
+                              <CardColorNone />
+                            )}
                             <CardContent>
                               <CardTitle> {card.title}</CardTitle>
                               <DescriptionCard>

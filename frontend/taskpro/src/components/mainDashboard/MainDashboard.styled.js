@@ -76,9 +76,41 @@ export const CardWrapper = styled.div`
 export const CardContent = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 24px;
+  margin: 0 auto;
   padding-top: 14px;
   gap: 8px;
+`;
+export const CardColorHigh = styled.div`
+  display: flex;
+  width: 5px;
+  height: 154px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  background-color: ${({ theme }) => theme.labelHighPriority};
+`;
+export const CardColorMedium = styled.div`
+  display: flex;
+  width: 5px;
+  height: 154px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  background-color: ${({ theme }) => theme.labelMediumPriroity};
+`;
+export const CardColorLow = styled.div`
+  display: flex;
+  width: 5px;
+  height: 154px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  background-color: ${({ theme }) => theme.labelLowPriority};
+`;
+export const CardColorNone = styled.div`
+  display: flex;
+  width: 5px;
+  height: 154px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  background-color: ${({ theme }) => theme.labelWithoutPriority};
 `;
 export const CardTitle = styled.h3`
   font-size: 14px;

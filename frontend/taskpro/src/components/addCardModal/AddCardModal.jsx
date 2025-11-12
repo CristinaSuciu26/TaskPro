@@ -34,7 +34,7 @@ export default function AddCardModal({ onClose, columnId }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [deadline, setDeadline] = useState(null);
-  const [priority, setPriority] = useState("");
+  const [priority, setPriority] = useState("none");
   const cardsInColumn = useSelector(
     (state) => state.card.cardsByColumn[columnId] || []
   );
