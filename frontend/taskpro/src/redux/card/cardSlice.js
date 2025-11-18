@@ -11,7 +11,17 @@ const initialState = {
   status: "idle",
   error: null,
 };
-
+const filterSlice = createSlice({
+  name: "filters",
+  initialState: {
+    priority: "all",
+  },
+  reducers: {
+    setPriorityFilter(state, action) {
+      state.priority = action.payload;
+    },
+  },
+});
 const cardsSlice = createSlice({
   name: "cards",
   initialState,
@@ -88,5 +98,6 @@ const cardsSlice = createSlice({
       });
   },
 });
-
-export default cardsSlice.reducer;
+export const { setPriorityFilter } = filterSlice.actions;
+export const cardReducer = cardsSlice.reducer;
+export const filtersReducer = filterSlice.reducer;

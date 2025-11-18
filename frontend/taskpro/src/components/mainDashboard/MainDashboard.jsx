@@ -72,6 +72,8 @@ export default function MainDashboard() {
     [allColumns, selectedDashboardId]
   );
 
+  const filterPriority = useSelector((state) => state.filters.priority);
+
   // Refetch columns when dashboard changes
   useEffect(() => {
     if (selectedDashboardId) {
@@ -90,9 +92,12 @@ export default function MainDashboard() {
   const localColumns = useMemo(() => {
     return columns.map((col) => ({
       ...col,
-      cards: cardsByColumn[col._id] || [],
+      cards: (cardsByColumn[col._id] || []).filter((card) => {
+        if (filterPriority === "all") return true;
+        return card.priority === filterPriority;
+      }),
     }));
-  }, [columns, cardsByColumn]);
+  }, [columns, cardsByColumn, filterPriority]);
 
   // Edit column
   const handleEditModal = (col) => {

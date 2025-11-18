@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./auth/authSlice.js";
 import themeReducer from "./theme/themeSlice.js";
 import dashboardReducer from "./dashboard/dashboardSlice.js";
-import cardReducer from "./card/cardSlice.js";
+import { cardReducer, filtersReducer } from "./card/cardSlice.js";
 import columnReducer from "./column/columnSlice.js";
 
 export const store = configureStore({
@@ -12,5 +12,6 @@ export const store = configureStore({
     dashboard: dashboardReducer,
     card: cardReducer,
     column: columnReducer,
+    filters: filtersReducer,
   },
 });
