@@ -50,8 +50,10 @@ import { toast } from "react-toastify";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import EditCardModal from "../editCardModal/EditCardModal";
 import dayjs from "dayjs";
+import { ColumnListModal } from "../columnListModal/ColumnListModal";
 export default function MainDashboard() {
   const [showColumnModal, setShowColumnModal] = useState(false);
+  const [showColumnListModal, setShowColumnListModal] = useState(false);
   const [showCreateCardModal, setShowCreateCardModal] = useState(false);
   const [showEditCardModal, setshowEditCardModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -103,6 +105,11 @@ export default function MainDashboard() {
   const handleEditModal = (col) => {
     setShowEditModal(true);
     setSelectedColumn(col);
+  };
+  // List column
+  const handleColumnListModal = (card) => {
+    setSelectedCard(card);
+    setShowColumnListModal(true);
   };
 
   // Delete column
@@ -290,7 +297,7 @@ export default function MainDashboard() {
                                   <svg
                                     width="24"
                                     height="24"
-                                    // onClick={() => handleEditModal(col)}
+                                    onClick={() => handleColumnListModal(card)}
                                     style={{ cursor: "pointer" }}
                                   >
                                     <use xlinkHref={`${sprite}#status-icon`} />
@@ -375,6 +382,14 @@ export default function MainDashboard() {
           onClose={() => {
             setshowEditCardModal(false);
             setSelectedCard(null);
+          }}
+          card={selectedCard}
+        />
+      )}
+      {showColumnListModal && (
+        <ColumnListModal
+          onClose={() => {
+            setShowColumnListModal(false);
           }}
           card={selectedCard}
         />
