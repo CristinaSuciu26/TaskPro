@@ -32,7 +32,7 @@ export function HelpModal({ onClose }) {
   };
 
   return (
-    <ModalOverlay>
+    <ModalOverlay onClick={onClose}>
       <ModalContent>
         <CloseButton onClick={onClose}>
           <FiX strokeWidth={1.5} />

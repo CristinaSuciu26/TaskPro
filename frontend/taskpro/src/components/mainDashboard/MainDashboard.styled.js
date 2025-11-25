@@ -77,7 +77,8 @@ export const CardContent = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  padding-top: 14px;
+  padding: 14px;
+
   gap: 8px;
 `;
 export const CardColorHigh = styled.div`
@@ -182,12 +183,13 @@ export const ColumnContent = styled.div`
 
 export const CardDetails = styled.div`
   display: flex;
-  gap: 111px;
+  gap: 87px;
+  justify-content: space-between;
 `;
 export const LabelPriorityWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 5px;
 `;
 export const LabelColorHigh = styled.span`
   display: inline-block;

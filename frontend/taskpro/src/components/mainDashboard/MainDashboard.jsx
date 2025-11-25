@@ -294,6 +294,17 @@ export default function MainDashboard() {
                                   </CardDeadlineWrapper>
                                 </CardDetailsWrapper>
                                 <IconsWrapper>
+                                  {dayjs(card.deadline).isSame(
+                                    dayjs(),
+                                    "day"
+                                  ) && (
+                                    <svg width="24" height="24">
+                                      <use
+                                        xlinkHref={`${sprite}#deadline-icon`}
+                                      />
+                                    </svg>
+                                  )}
+
                                   <svg
                                     width="24"
                                     height="24"

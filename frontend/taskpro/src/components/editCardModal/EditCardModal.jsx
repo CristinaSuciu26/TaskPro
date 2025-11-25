@@ -73,7 +73,7 @@ export default function EditCardModal({ onClose, card }) {
       toast.error(error || "Update card failed");
     }
   };
-  console.log(deadline);
+  
   return (
     <ModalOverlay>
       <ModalContent>

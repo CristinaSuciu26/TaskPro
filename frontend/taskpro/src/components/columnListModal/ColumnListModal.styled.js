@@ -43,10 +43,14 @@ export const ColumnListWrapper = styled.div`
     height: 5px;
   }
 `;
-export const ColumnNameWrapper = styled.div`
+export const ColumnNameWrapper = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== "isCurrent",
+})`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  color: ${({ isCurrent, theme }) =>
+    isCurrent ? theme.hoverColor : theme.text};
 `;
 export const ColumnTitle = styled.h3`
   font-size: 14px;

@@ -29,7 +29,7 @@ export default function FiltersModal({ onClose }) {
   };
 
   return (
-    <ModalOverlay>
+    <ModalOverlay onClick={onClose}>
       <ModalContent>
         <CloseButton onClick={() => onClose(priority)}>
           <FiX strokeWidth={1.5} />

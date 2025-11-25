@@ -42,11 +42,14 @@ export function ColumnListModal({ card, onClose }) {
   };
 
   return (
-    <ModalOverlay>
+    <ModalOverlay onClick={onClose}>
       <ModalContent>
         <ColumnListWrapper>
           {columns.map((col) => (
-            <ColumnNameWrapper key={col._id} >
+            <ColumnNameWrapper
+              key={col._id}
+              isCurrent={col._id === card.columnId}
+            >
               <ColumnTitle>{col.title}</ColumnTitle>
               <svg
                 width="24"

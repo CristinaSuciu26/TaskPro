@@ -38,7 +38,7 @@ export default function EditColumnModal({ onClose, column }) {
     }
   };
   return (
-    <ModalOverlay>
+    <ModalOverlay onClick={onClose}>
       <ModalContent>
         <ModalTitle>Edit column</ModalTitle>
         <CloseButton onClick={onClose}>
