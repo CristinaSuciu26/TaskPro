@@ -298,7 +298,7 @@ export default function MainDashboard() {
                                     dayjs(),
                                     "day"
                                   ) && (
-                                    <svg width="24" height="24">
+                                    <svg width="24" height="22">
                                       <use
                                         xlinkHref={`${sprite}#deadline-icon`}
                                       />
