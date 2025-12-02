@@ -4,30 +4,23 @@ export const ScreensPageContent = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.background};
+  justify-content: center;
   height: 100dvh;
+  padding: 20px;
   width: 100%;
   overflow: hidden;
   @media (min-width: 768px) {
-    align-items: inherit;
+    margin-left: 120px;
+    width: 130%;
   }
 
   @media (min-width: 1240px) {
-    margin-left: 250px;
+    width: 100%;
+    margin-left: 450px;
     padding-left: 25px;
   }
 `;
 
-export const ParagraphWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 25px;
-
-  @media (min-width: 1240px) {
-    padding-right: 310px;
-  }
-  margin-top: 177px;
-`;
 export const Paragraph = styled.p`
   font-size: 12px;
   font-weight: 400;

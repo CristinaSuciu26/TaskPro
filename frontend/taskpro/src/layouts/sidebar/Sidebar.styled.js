@@ -229,7 +229,6 @@ export const NeedHelpButton = styled.button`
   display: flex;
   gap: 8px;
   cursor: pointer;
-  align-items: center;
 
   margin-top: 18px;
   background-color: transparent;
