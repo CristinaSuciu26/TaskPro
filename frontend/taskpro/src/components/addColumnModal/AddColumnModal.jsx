@@ -38,8 +38,8 @@ export default function AddColumnModal({ onClose }) {
     }
   };
   return (
-    <ModalOverlay>
-      <ModalContent>
+    <ModalOverlay onClick={onClose}>
+      <ModalContent onClick={(e) => e.stopPropagation()}>
         <ModalTitle>Add column</ModalTitle>
         <CloseButton onClick={onClose}>
           <FiX strokeWidth={1.5} />

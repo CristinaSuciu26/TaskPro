@@ -20,9 +20,6 @@ export const Icon = styled.div`
   flex-direction: row;
   gap: 8px;
   color: white;
-  &:hover {
-    color: ${({ theme }) => theme.accent};
-  }
 `;
 
 export const FilterButton = styled.button`

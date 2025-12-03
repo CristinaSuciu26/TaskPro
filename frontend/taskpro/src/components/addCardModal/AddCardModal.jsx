@@ -66,8 +66,8 @@ export default function AddCardModal({ onClose, columnId }) {
   };
 
   return (
-    <ModalOverlay>
-      <ModalContent>
+    <ModalOverlay onClick={onClose}>
+      <ModalContent onClick={(e) => e.stopPropagation()}>
         <ModalTitle>Add Card</ModalTitle>
         <CloseButton onClick={onClose}>
           <FiX strokeWidth={1.5} />

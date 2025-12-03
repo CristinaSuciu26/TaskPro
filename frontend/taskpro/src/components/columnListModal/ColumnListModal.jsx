@@ -43,7 +43,7 @@ export function ColumnListModal({ card, onClose }) {
 
   return (
     <ModalOverlay onClick={onClose}>
-      <ModalContent>
+      <ModalContent onClick={(e) => e.stopPropagation()}>
         <ColumnListWrapper>
           {columns.map((col) => (
             <ColumnNameWrapper

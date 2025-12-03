@@ -88,8 +88,8 @@ export default function CreateBoardModal({ onClose }) {
   };
 
   return (
-    <ModalOverlay>
-      <ModalContent>
+    <ModalOverlay onClick={onClose}>
+      <ModalContent onClick={(e) => e.stopPropagation()}>
         <ModalTitle>New board</ModalTitle>
         <CloseButton onClick={onClose}>
           <FiX strokeWidth={1.5} />

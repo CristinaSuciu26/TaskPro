@@ -73,10 +73,10 @@ export default function EditCardModal({ onClose, card }) {
       toast.error(error || "Update card failed");
     }
   };
-  
+
   return (
-    <ModalOverlay>
-      <ModalContent>
+    <ModalOverlay onClick={onClose}>
+      <ModalContent onClick={(e) => e.stopPropagation()}>
         <ModalTitle>Edit Card</ModalTitle>
         <CloseButton onClick={onClose}>
           <FiX strokeWidth={1.5} />

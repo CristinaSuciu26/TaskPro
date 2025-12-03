@@ -33,7 +33,7 @@ export function HelpModal({ onClose }) {
 
   return (
     <ModalOverlay onClick={onClose}>
-      <ModalContent>
+      <ModalContent onClick={(e) => e.stopPropagation()}>
         <CloseButton onClick={onClose}>
           <FiX strokeWidth={1.5} />
         </CloseButton>

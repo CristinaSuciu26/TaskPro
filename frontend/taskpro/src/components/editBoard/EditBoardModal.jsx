@@ -76,7 +76,7 @@ export default function EditBoardModal({ onClose, board }) {
       icon,
       background,
     };
- 
+
     try {
       await dispatch(updateDashboardBackground(updateDashboard)).unwrap();
 
@@ -88,8 +88,8 @@ export default function EditBoardModal({ onClose, board }) {
   };
 
   return (
-    <ModalOverlay>
-      <ModalContent>
+    <ModalOverlay onClick={onClose}>
+      <ModalContent onClick={(e) => e.stopPropagation()}>
         <ModalTitle>Edit board</ModalTitle>
         <CloseButton onClick={onClose}>
           <FiX strokeWidth={1.5} />
