@@ -5,6 +5,7 @@ import {
   BoardButton,
   Paragraph,
   ScreensPageContent,
+  ParagraphWrapper,
 } from "./ScreensPage.styled.js";
 import CreateBoardModal from "../../components/createBoard/CreateBoardModal.jsx";
 import { useSelector } from "react-redux";
@@ -38,15 +39,18 @@ export default function ScreensPage() {
         </ScreensPageContent>
       ) : (
         <ScreensPageContent>
-          <Paragraph>
-            Before starting your project, it is essential&nbsp;
-            <BoardButton onClick={() => setOpenModal(true)}>
-              to create a board
-            </BoardButton>
-            to visualize and track all the necessary tasks and milestones. This
-            board serves as a powerful tool to organize the workflow and ensure
-            effective collaboration among team members.
-          </Paragraph>
+          <ParagraphWrapper>
+            {" "}
+            <Paragraph>
+              Before starting your project, it is essential&nbsp;
+              <BoardButton onClick={() => setOpenModal(true)}>
+                to create a board
+              </BoardButton>
+              to visualize and track all the necessary tasks and milestones.
+              This board serves as a powerful tool to organize the workflow and
+              ensure effective collaboration among team members.
+            </Paragraph>
+          </ParagraphWrapper>
         </ScreensPageContent>
       )}
 
