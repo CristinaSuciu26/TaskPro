@@ -16,6 +16,7 @@ import {
   RegisterWrapper,
   StyledNavLink,
 } from "./Register.styled";
+import { Loader } from "../loader/Loader";
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Name is required"),
@@ -84,7 +85,7 @@ export default function RegisterForm() {
               </PasswordWrapper>
             </div>
             <RegisterBtn type="submit" disabled={loading}>
-              {loading ? "Registering..." : "Register Now"}
+              {loading ? <Loader /> : "Register Now"}
             </RegisterBtn>
           </FormWrapper>
         </Formik>

@@ -8,8 +8,10 @@ export const registerUser = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const res = await axios.post(`${API_URL}/register`, formData);
+      await new Promise((resolve) => setTimeout(resolve, 2500));
       return res.data;
     } catch (error) {
+      await new Promise((resolve) => setTimeout(resolve, 2500));
       return thunkAPI.rejectWithValue(
         error.response.data.message || "Registration failed"
       );
@@ -22,8 +24,10 @@ export const loginUser = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const res = await axios.post(`${API_URL}/login`, formData);
+      await new Promise((resolve) => setTimeout(resolve, 2500));
       return res.data;
     } catch (error) {
+      await new Promise((resolve) => setTimeout(resolve, 2500));
       return thunkAPI.rejectWithValue(
         error.response.data.message || "Login failed"
       );

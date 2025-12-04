@@ -16,6 +16,7 @@ import {
   PasswordWrapper,
 } from "./Login.styled";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Loader } from "../loader/Loader";
 
 const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email").required("Email is required"),
@@ -83,7 +84,7 @@ export default function LoginForm() {
           </PasswordWrapper>
 
           <LoginBtn type="submit" disabled={loading}>
-            {loading ? "Logging in..." : "Log In Now"}
+            {loading ? <Loader/> : "Log In Now"}
           </LoginBtn>
         </FormWrapper>
       </Formik>
