@@ -1,13 +1,15 @@
 import styled from "styled-components";
 
 export const LoaderOverlay = styled.div`
-  position: fixed; 
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
- background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(27, 42, 33);
+
   display: flex;
+  gap: 15px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -17,10 +19,11 @@ export const LoaderOverlay = styled.div`
 export const LoaderBarWrapper = styled.div`
   width: 60%;
   max-width: 400px;
-  height: 20px;
-  background-color: rgba(255,255,255,0.2);
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   overflow: hidden;
+  margin-bottom: 50px;
 `;
 
 export const LoaderBar = styled.div`
@@ -32,17 +35,19 @@ export const LoaderBar = styled.div`
 `;
 
 export const FactWrapper = styled.div`
-  margin-top: 20px;
-  max-width: 300px;
-  width: 80%;
-  text-align: center;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 500;
-  opacity: 0.9;
+  width: 260px;
+  height: 140px;
+  background-color: #BEDBB0;
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  transform: rotate(-3deg);
+  position: relative;
 `;
 
 export const FactText = styled.span`
   display: inline-block;
-
+  color: #032409ff;
 `;

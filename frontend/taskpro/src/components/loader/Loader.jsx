@@ -30,7 +30,7 @@ export function Loader() {
         if (prev >= 100) return 100;
         return prev + 1;
       });
-    }, 20);
+    }, 25);
 
     return () => {
       clearInterval(progressInterval);
@@ -39,12 +39,12 @@ export function Loader() {
 
   return (
     <LoaderOverlay>
-      <LoaderBarWrapper>
-        <LoaderBar progress={progress} />
-      </LoaderBarWrapper>
       <FactWrapper>
         <FactText>{fact}</FactText>
       </FactWrapper>
+      <LoaderBarWrapper>
+        <LoaderBar progress={progress} />
+      </LoaderBarWrapper>
     </LoaderOverlay>
   );
 }
