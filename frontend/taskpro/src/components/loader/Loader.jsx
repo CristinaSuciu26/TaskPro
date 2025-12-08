@@ -43,7 +43,7 @@ export function Loader() {
         <FactText>{fact}</FactText>
       </FactWrapper>
       <LoaderBarWrapper>
-        <LoaderBar progress={progress} />
+        <LoaderBar $progress={progress} />
       </LoaderBarWrapper>
     </LoaderOverlay>
   );
