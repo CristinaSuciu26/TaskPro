@@ -28,7 +28,7 @@ export const LoaderBarWrapper = styled.div`
 `;
 
 export const LoaderBar = styled.div`
-  width: ${($progress) => $progress}%;
+  width: ${({ $progress }) => $progress}%;
   height: 100%;
   background: #bedbb0;
   border-radius: 10px;
@@ -43,7 +43,7 @@ export const FactWrapper = styled.div`
   padding: 20px;
   font-size: 18px;
   font-weight: 600;
-  border: 2px rgba(22, 22, 22, 0.6);
+  border: 2px solid rgba(22, 22, 22, 0.6);
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   transform: rotate(-3deg);
   position: relative;
