@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { FiX, FiPlus } from "react-icons/fi";
+import { useNavigate } from "react-router";
 import {
   CloseButton,
   Form,
@@ -43,6 +44,7 @@ export default function CreateBoardModal({ onClose }) {
   const [icon, setIcon] = useState("icon-1");
   const [background, setBackground] = useState("none");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const backgrounds = [
     bg1,
@@ -78,7 +80,7 @@ export default function CreateBoardModal({ onClose }) {
 
     try {
       await dispatch(addDashboard(newDashboard)).unwrap();
-
+      navigate(`/home/`);
       toast.success("Created successfully!");
       console.log("succes");
       onClose();

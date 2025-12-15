@@ -43,6 +43,7 @@ const dashboardSlice = createSlice({
       .addCase(addDashboard.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.dashboards.push(action.payload);
+        state.selectedDashboardId = action.payload._id;
       })
       .addCase(addDashboard.rejected, (state, action) => {
         state.status = "failed";
