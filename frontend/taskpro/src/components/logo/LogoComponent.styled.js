@@ -7,6 +7,7 @@ export const LogoWrapper = styled.div`
   padding-left: 10px;
   margin-top: 24px;
   margin-bottom: 60px;
+  cursor: pointer;
   color: ${({ theme }) => theme.icon};
 `;
 

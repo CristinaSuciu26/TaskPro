@@ -155,7 +155,13 @@ export default function Sidebar() {
               {dashboards?.map((board) => (
                 <DashboardListItems
                   key={`${board._id}-${board.icon}`}
-                  onClick={() => dispatch(setSelectedDashboardId(board._id))}
+                  onClick={() => {
+                    dispatch(setSelectedDashboardId(board._id));
+
+                    if (window.innerWidth < 1240) {
+                      setOpen(false);
+                    }
+                  }}
                 >
                   <BoardWrapper selected={selectedId === board._id}>
                     <svg width="19" height="18">

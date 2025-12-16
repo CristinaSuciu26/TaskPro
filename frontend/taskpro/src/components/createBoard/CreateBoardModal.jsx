@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { FiX, FiPlus } from "react-icons/fi";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
+
 import {
   CloseButton,
   Form,

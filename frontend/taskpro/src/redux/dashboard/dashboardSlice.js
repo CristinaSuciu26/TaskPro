@@ -20,6 +20,9 @@ const dashboardSlice = createSlice({
     setSelectedDashboardId(state, action) {
       state.selectedDashboardId = action.payload;
     },
+    resetSelectedBoard(state) {
+      state.selectedDashboardId = null;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -84,5 +87,5 @@ const dashboardSlice = createSlice({
       });
   },
 });
-export const { setSelectedDashboardId } = dashboardSlice.actions;
+export const { setSelectedDashboardId, resetSelectedBoard } = dashboardSlice.actions;
 export default dashboardSlice.reducer;
