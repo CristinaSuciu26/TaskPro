@@ -23,7 +23,7 @@ import {
   NeedHelpSpan,
   LogoutButton,
   BoardWrapper,
-  NoBoards,
+  SidebarBody,
 } from "./Sidebar.styled";
 import { toast } from "react-toastify";
 import { useCallback, useEffect, useState } from "react";
@@ -124,32 +124,24 @@ export default function Sidebar() {
       {open && <SidebarWrapper onClick={() => setOpen(false)} />}
       <SidebarContent open={open} onClick={(e) => e.stopPropagation()}>
         <LogoComponent />
-        <CreateBoardWrapper>
-          <MyBoardsTitle> My boards</MyBoardsTitle>
-          <svg width="197" height="10">
-            <use xlinkHref={`${sprite}#icon-line`} />
-          </svg>
-          <ButtonWrapper>
-            <ButtonText> Create a new board</ButtonText>
+        <SidebarBody>
+          <CreateBoardWrapper>
+            <MyBoardsTitle> My boards</MyBoardsTitle>
+            <svg width="197" height="10">
+              <use xlinkHref={`${sprite}#icon-line`} />
+            </svg>
+            <ButtonWrapper>
+              <ButtonText> Create a new board</ButtonText>
 
-            <CreateBoardBtn onClick={handleModal}>
-              <FiPlus size={14} />
-            </CreateBoardBtn>
-          </ButtonWrapper>
-          <svg width="197" height="24">
-            <use xlinkHref={`${sprite}#icon-line`} />
-          </svg>
-        </CreateBoardWrapper>
-        {dashboards.length === 0 ? (
-          <DashboardListWrapper>
-            <DashboardList>
-              <NoBoards>
-                You don’t have any boards yet — create one to get started! Your
-                boards will show up here once you create them.
-              </NoBoards>
-            </DashboardList>
-          </DashboardListWrapper>
-        ) : (
+              <CreateBoardBtn onClick={handleModal}>
+                <FiPlus size={14} />
+              </CreateBoardBtn>
+            </ButtonWrapper>
+            <svg width="197" height="24">
+              <use xlinkHref={`${sprite}#icon-line`} />
+            </svg>
+          </CreateBoardWrapper>
+
           <DashboardListWrapper>
             <DashboardList>
               {dashboards?.map((board) => (
@@ -196,31 +188,31 @@ export default function Sidebar() {
               ))}
             </DashboardList>
           </DashboardListWrapper>
-        )}
 
-        <NeedHelp>
-          <NeedHelpWrapper>
-            <NeedHelpImg src={needHelpImg} alt="need help" />
-            <NeedHelpParagraph>
-              If you need help with <NeedHelpSpan>TaskPro</NeedHelpSpan>, check
-              out our support resources or reach out to our customer support
-              team.
-              <NeedHelpButton onClick={handleHelpModal}>
-                <Icon width="19" height="19">
-                  <use xlinkHref={`${sprite}#icon-help`} />
-                </Icon>
-                Need help?
-              </NeedHelpButton>
-            </NeedHelpParagraph>
-          </NeedHelpWrapper>
-        </NeedHelp>
+          <NeedHelp>
+            <NeedHelpButton onClick={handleHelpModal}>
+              <Icon width="19" height="19">
+                <use xlinkHref={`${sprite}#icon-help`} />
+              </Icon>
+              Need help?
+            </NeedHelpButton>
+            <NeedHelpWrapper>
+              <NeedHelpImg src={needHelpImg} alt="need help" />
+              <NeedHelpParagraph>
+                If you need help with <NeedHelpSpan>TaskPro</NeedHelpSpan>,
+                check out our support resources or reach out to our customer
+                support team.
+              </NeedHelpParagraph>
+            </NeedHelpWrapper>
+          </NeedHelp>
 
-        <LogoutButton onClick={handleLogout}>
-          <Icon width="28" height="28">
-            <use xlinkHref={`${sprite}#logout-icon`} />
-          </Icon>
-          Log out
-        </LogoutButton>
+          <LogoutButton onClick={handleLogout}>
+            <Icon width="28" height="28">
+              <use xlinkHref={`${sprite}#logout-icon`} />
+            </Icon>
+            Log out
+          </LogoutButton>
+        </SidebarBody>
       </SidebarContent>
       {openModal && (
         <CreateBoardModal

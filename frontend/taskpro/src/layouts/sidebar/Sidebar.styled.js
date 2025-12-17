@@ -13,27 +13,15 @@ export const SidebarWrapper = styled.div`
 `;
 
 export const SidebarContent = styled.div`
-  width: 225px;
+  width: clamp(225px, 20vw, 320px);
   height: 100dvh;
   max-height: 100dvh;
-  overflow-y: scroll;
 
-  &::-webkit-scrollbar {
-    width: 3px;
-  }
-  &::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.scrollbarTrack};
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.scrollbarThumb};
-    border-radius: 10px;
-    height: 5px;
-  }
   background-color: ${({ theme }) => theme.sidebar};
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
   transition: transform 0.5s ease-in-out;
   z-index: 12;
-  position: absolute;
+  position: fixed;
   top: 0;
   display: flex;
   flex-direction: column;
@@ -42,7 +30,9 @@ export const SidebarContent = styled.div`
     width: 260px;
   }
 `;
-
+export const SidebarBody = styled.div`
+  flex: 0 1 auto;
+`;
 export const MenuIcon = styled.div`
   cursor: pointer;
   width: 24px;
@@ -108,6 +98,7 @@ export const DashboardListWrapper = styled.div`
   display: flex;
   width: 100%;
   margin-top: 40px;
+  margin-bottom: 50px;
 `;
 export const DashboardList = styled.ul`
   width: 100%;
@@ -123,22 +114,6 @@ export const DashboardList = styled.ul`
   }
 `;
 
-export const NoBoards = styled.div`
-  width: 197px;
-  height: 150px;
-  border-radius: 8px;
-  margin-left: 10px;
-  font-weight: 400;
-  padding: 14px;
-  font-size: 12px;
-  background-color: ${({ theme }) => theme.needHelp};
-  color: ${({ theme }) => theme.text};
-
-  @media (min-width: 768px) {
-    width: 213px;
-    font-size: 14px;
-  }
-`;
 export const DashboardListItems = styled.li`
   width: 100%;
   height: 61px;
@@ -188,21 +163,53 @@ export const Title = styled.span`
   display: inline-block;
   vertical-align: middle;
 `;
+export const NeedHelpWrapper = styled.div`
+  position: absolute;
+  bottom: 100%;
+  right: 2px;
+  width: 212px;
+  padding: 16px;
 
-export const NeedHelp = styled.div`
-  width: 197px;
-  height: 238px;
-  border-radius: 8px;
-  margin-top: 40px;
-  margin-left: 10px;
-  background-color: ${({ theme }) => theme.needHelp};
-  color: ${({ theme }) => theme.text};
-  font-weight: 400;
-  padding: 14px;
+  background: ${({ theme }) => theme.backgroundSecondary};
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
 
   @media (min-width: 768px) {
-    width: 212px;
-    height: 272px;
+    width: 240px;
+  }
+`;
+export const NeedHelpButton = styled.button`
+  border: none;
+  display: flex;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 18px;
+  background-color: transparent;
+  color: ${({ theme }) => theme.logo};
+`;
+export const NeedHelp = styled.div`
+  width: 90%;
+  height: 70px;
+  position: relative;
+  border-radius: 8px;
+  margin-top: 0px;
+  margin-left: 10px;
+
+  color: ${({ theme }) => theme.text};
+  font-weight: 400;
+
+  @media (min-width: 1240px) {
+    margin-top: 20px;
+  }
+  &:hover ${NeedHelpWrapper} {
+    opacity: 1;
+    max-height: 300px;
   }
 `;
 
@@ -224,22 +231,6 @@ export const NeedHelpSpan = styled.span`
   color: ${({ theme }) => theme.primary};
 `;
 
-export const NeedHelpButton = styled.button`
-  border: none;
-  display: flex;
-  gap: 8px;
-  cursor: pointer;
-
-  margin-top: 18px;
-  background-color: transparent;
-  color: ${({ theme }) => theme.text};
-`;
-
-export const NeedHelpWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-`;
 export const LogoutButton = styled.button`
   background-color: transparent;
   border: none;
@@ -248,8 +239,7 @@ export const LogoutButton = styled.button`
   align-items: center;
   cursor: pointer;
   color: ${({ theme }) => theme.logo};
-  margin-top: 24px;
-  margin-bottom: 24px;
+  margin-bottom: 10px;
   font-size: 14px;
-  margin-left: 10px;
+  margin-left: 5px;
 `;

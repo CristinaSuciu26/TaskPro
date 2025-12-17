@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import {
   FactText,
   FactWrapper,
-  LoaderBar,
   LoaderBarWrapper,
   LoaderOverlay,
 } from "./Loader.styled";
@@ -21,20 +20,9 @@ const FUN_FACTS = [
 
 export function Loader() {
   const [fact, setFact] = useState("");
-  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     setFact(FUN_FACTS[Math.floor(Math.random() * FUN_FACTS.length)]);
-    const progressInterval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) return 100;
-        return prev + 1;
-      });
-    }, 25);
-
-    return () => {
-      clearInterval(progressInterval);
-    };
   }, []);
 
   return (
@@ -42,9 +30,7 @@ export function Loader() {
       <FactWrapper>
         <FactText>{fact}</FactText>
       </FactWrapper>
-      <LoaderBarWrapper>
-        <LoaderBar $progress={progress} />
-      </LoaderBarWrapper>
+      <LoaderBarWrapper />
     </LoaderOverlay>
   );
 }

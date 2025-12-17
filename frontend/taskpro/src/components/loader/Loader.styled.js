@@ -6,7 +6,7 @@ export const LoaderOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(15, 20, 17, 0.85);
+  background-color: white;
   display: flex;
   gap: 15px;
   flex-direction: column;
@@ -16,40 +16,44 @@ export const LoaderOverlay = styled.div`
 `;
 
 export const LoaderBarWrapper = styled.div`
-  width: 60%;
-  max-width: 400px;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-
-  border: 1px solid #bedbb0;
-  overflow: hidden;
-  margin-bottom: 50px;
-`;
-
-export const LoaderBar = styled.div`
-  width: ${({ $progress }) => $progress}%;
-  height: 100%;
-  background: #bedbb0;
-  border-radius: 10px;
-  transition: width 0.2s linear;
+  width: 50px;
+  --b: 8px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 1px;
+  background: conic-gradient(#0000 10%, #9dc888) content-box;
+  -webkit-mask: repeating-conic-gradient(
+      #9dc888 0deg,
+      #9dc888 1deg 20deg,
+      #0000 21deg 36deg
+    ),
+    radial-gradient(
+      farthest-side,
+      #0000 calc(100% - var(--b) - 1px),
+      #000 calc(100% - var(--b))
+    );
+  -webkit-mask-composite: destination-in;
+  mask-composite: intersect;
+  animation: l4 1s infinite steps(10);
+  @keyframes l4 {
+    to {
+      transform: rotate(1turn);
+    }
+  }
 `;
 
 export const FactWrapper = styled.div`
-  width: 260px;
-  height: 140px;
-  background-color: #bedbb0;
+  width: 400px;
+  height: 70px;
   border-radius: 10px;
   padding: 20px;
   font-size: 18px;
   font-weight: 600;
-  border: 2px solid rgba(22, 22, 22, 0.6);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-  transform: rotate(-3deg);
   position: relative;
 `;
 
 export const FactText = styled.span`
   display: inline-block;
   color: #032409ff;
+  font-weight: 900;
 `;
