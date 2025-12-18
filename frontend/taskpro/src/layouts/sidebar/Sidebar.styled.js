@@ -30,8 +30,17 @@ export const SidebarContent = styled.div`
     width: 260px;
   }
 `;
-export const SidebarBody = styled.div`
-  flex: 0 1 auto;
+
+export const LogoWrapper = styled.div`
+  padding-left: 15px;
+`;
+export const FooterBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+  bottom: 20px;
+  padding-left: 15px;
 `;
 export const MenuIcon = styled.div`
   cursor: pointer;
@@ -53,8 +62,8 @@ export const CreateBoardWrapper = styled.div`
   justify-content: center;
   align-items: baseline;
   gap: 9px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
 `;
 
 export const MyBoardsTitle = styled.h3`
@@ -63,17 +72,19 @@ export const MyBoardsTitle = styled.h3`
 `;
 export const ButtonWrapper = styled.div`
   display: flex;
-  gap: 75px;
+  gap: 55px;
   width: 100%;
   font-size: 14px;
-
+  @media (min-width: 768px) {
+    gap: 75px;
+  }
   color: ${({ theme }) => theme.logo};
 `;
 
 export const ButtonText = styled.span`
   width: 45%;
   @media (min-width: 768px) {
-    width: 35%;
+    width: 40%;
   }
 `;
 export const CreateBoardBtn = styled.button`
@@ -81,8 +92,8 @@ export const CreateBoardBtn = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  width: 40px;
-  height: 36px;
+  width: 35px;
+  height: 35px;
   border: none;
   border-radius: 6px;
   background-color: ${({ theme }) => theme.accent};
@@ -130,8 +141,9 @@ export const BoardWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 15px;
-  border-right: 3px solid red;
   height: 50px;
+  padding-left: 23px;
+  padding-right: 19px;
   justify-content: space-evenly;
   border-right: ${({ selected, theme }) =>
     selected ? `3px solid ${theme.hoverColor}` : "3px solid rgba(0,0,0,0.1)"};
@@ -165,7 +177,7 @@ export const Title = styled.span`
 `;
 export const NeedHelpWrapper = styled.div`
   position: absolute;
-  bottom: 100%;
+  bottom: 130%;
   right: 2px;
   width: 212px;
   padding: 16px;
@@ -186,12 +198,13 @@ export const NeedHelpWrapper = styled.div`
 export const NeedHelpButton = styled.button`
   border: none;
   display: flex;
-  gap: 8px;
+  gap: 15px;
   cursor: pointer;
   font-size: 14px;
   margin-top: 18px;
   background-color: transparent;
   color: ${({ theme }) => theme.logo};
+  font-weight: 500;
 `;
 export const NeedHelp = styled.div`
   width: 90%;
@@ -242,4 +255,10 @@ export const LogoutButton = styled.button`
   margin-bottom: 10px;
   font-size: 14px;
   margin-left: 5px;
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+    font-weight: 500;
+    align-items: self-start;
+  }
 `;

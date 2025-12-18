@@ -23,7 +23,8 @@ import {
   NeedHelpSpan,
   LogoutButton,
   BoardWrapper,
-  SidebarBody,
+  FooterBody,
+  LogoWrapper,
 } from "./Sidebar.styled";
 import { toast } from "react-toastify";
 import { useCallback, useEffect, useState } from "react";
@@ -123,72 +124,76 @@ export default function Sidebar() {
 
       {open && <SidebarWrapper onClick={() => setOpen(false)} />}
       <SidebarContent open={open} onClick={(e) => e.stopPropagation()}>
-        <LogoComponent />
-        <SidebarBody>
-          <CreateBoardWrapper>
-            <MyBoardsTitle> My boards</MyBoardsTitle>
-            <svg width="197" height="10">
-              <use xlinkHref={`${sprite}#icon-line`} />
-            </svg>
-            <ButtonWrapper>
-              <ButtonText> Create a new board</ButtonText>
+        <LogoWrapper>
+          {" "}
+          <LogoComponent />
+        </LogoWrapper>
 
-              <CreateBoardBtn onClick={handleModal}>
-                <FiPlus size={14} />
-              </CreateBoardBtn>
-            </ButtonWrapper>
-            <svg width="197" height="24">
-              <use xlinkHref={`${sprite}#icon-line`} />
-            </svg>
-          </CreateBoardWrapper>
+        <CreateBoardWrapper>
+          <MyBoardsTitle> My boards</MyBoardsTitle>
+          <svg width="197" height="5">
+            <use xlinkHref={`${sprite}#icon-line`} />
+          </svg>
+          <ButtonWrapper>
+            <ButtonText> Create a new board</ButtonText>
 
-          <DashboardListWrapper>
-            <DashboardList>
-              {dashboards?.map((board) => (
-                <DashboardListItems
-                  key={`${board._id}-${board.icon}`}
-                  onClick={() => {
-                    dispatch(setSelectedDashboardId(board._id));
+            <CreateBoardBtn onClick={handleModal}>
+              <FiPlus size={14} />
+            </CreateBoardBtn>
+          </ButtonWrapper>
+          <svg width="197" height="5">
+            <use xlinkHref={`${sprite}#icon-line`} />
+          </svg>
+        </CreateBoardWrapper>
 
-                    if (window.innerWidth < 1240) {
-                      setOpen(false);
-                    }
-                  }}
-                >
-                  <BoardWrapper selected={selectedId === board._id}>
-                    <svg width="19" height="18">
-                      <use xlinkHref={`${sprite}#${board.icon}`} />
-                    </svg>
-                    <Title>{board.title}</Title>
-                    <IconContainer>
-                      <Icon
-                        width="16"
-                        height="16"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleEditModal(board);
-                        }}
-                      >
-                        <use xlinkHref={`${sprite}#edit-icon`} />
-                      </Icon>
+        <DashboardListWrapper>
+          <DashboardList>
+            {dashboards?.map((board) => (
+              <DashboardListItems
+                key={`${board._id}-${board.icon}`}
+                onClick={() => {
+                  dispatch(setSelectedDashboardId(board._id));
 
-                      <Icon
-                        width="16"
-                        height="16"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleDelete(board._id);
-                        }}
-                      >
-                        <use xlinkHref={`${sprite}#trash-icon`} />
-                      </Icon>
-                    </IconContainer>
-                  </BoardWrapper>
-                </DashboardListItems>
-              ))}
-            </DashboardList>
-          </DashboardListWrapper>
+                  if (window.innerWidth < 1240) {
+                    setOpen(false);
+                  }
+                }}
+              >
+                <BoardWrapper selected={selectedId === board._id}>
+                  <svg width="19" height="18">
+                    <use xlinkHref={`${sprite}#${board.icon}`} />
+                  </svg>
+                  <Title>{board.title}</Title>
+                  <IconContainer>
+                    <Icon
+                      width="16"
+                      height="16"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleEditModal(board);
+                      }}
+                    >
+                      <use xlinkHref={`${sprite}#edit-icon`} />
+                    </Icon>
 
+                    <Icon
+                      width="16"
+                      height="16"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDelete(board._id);
+                      }}
+                    >
+                      <use xlinkHref={`${sprite}#trash-icon`} />
+                    </Icon>
+                  </IconContainer>
+                </BoardWrapper>
+              </DashboardListItems>
+            ))}
+          </DashboardList>
+        </DashboardListWrapper>
+
+        <FooterBody>
           <NeedHelp>
             <NeedHelpButton onClick={handleHelpModal}>
               <Icon width="19" height="19">
@@ -212,7 +217,7 @@ export default function Sidebar() {
             </Icon>
             Log out
           </LogoutButton>
-        </SidebarBody>
+        </FooterBody>
       </SidebarContent>
       {openModal && (
         <CreateBoardModal
