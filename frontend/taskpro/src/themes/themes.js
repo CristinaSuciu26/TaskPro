@@ -58,7 +58,7 @@ export const themes = {
     backgroundSecondary: "#FCFCFC",
     addColumnBtn: "#5255BC",
     addColumnIcon: "#FFF",
-    needHelp: "#ECEDFD66",
+    needHelp: "#7B7EDE",
     sidebar: "#5255BC",
     icon: "#B8BCFD",
     logo: "#fff",

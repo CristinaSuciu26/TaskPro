@@ -15,8 +15,6 @@ export const SidebarWrapper = styled.div`
 export const SidebarContent = styled.div`
   width: clamp(225px, 20vw, 320px);
   height: 100dvh;
-  max-height: 100dvh;
-
   background-color: ${({ theme }) => theme.sidebar};
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
   transition: transform 0.5s ease-in-out;
@@ -109,12 +107,10 @@ export const DashboardListWrapper = styled.div`
   display: flex;
   width: 100%;
   margin-top: 40px;
-  margin-bottom: 50px;
 `;
 export const DashboardList = styled.ul`
   width: 100%;
-  height: 150px;
-  max-height: 150px;
+  max-height: 35vh;
   overflow: scroll;
   overflow-x: hidden;
   display: flex;
@@ -177,22 +173,38 @@ export const Title = styled.span`
 `;
 export const NeedHelpWrapper = styled.div`
   position: absolute;
-  bottom: 130%;
-  right: 2px;
-  width: 212px;
+  bottom: 90%;
+  right: 0px;
+  width: 197px;
   padding: 16px;
-
-  background: ${({ theme }) => theme.backgroundSecondary};
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-
-  opacity: 0;
+  border-radius: 8px 8px 0 0;
+  background: ${({ theme }) => theme.needHelp};
   pointer-events: none;
-  transform: translateY(10px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-
+  opacity: 0;
+  transform: translateY(10%);
+  transition: transform 0.5s ease, opacity 0.3s ease 0.1s;
+`;
+export const NeedHelp = styled.div`
+  width: 197px;
+  height: 50px;
+  margin-bottom: 20px;
+  padding-left: 15px;
+  position: relative;
+  border-radius: 8px;
+  margin-left: 5px;
+  background: ${({ theme }) => theme.needHelp};
+  color: ${({ theme }) => theme.text};
+  font-weight: 400;
+  cursor: pointer;
   @media (min-width: 768px) {
-    width: 240px;
+    padding-left: 10px;
+  }
+  @media (min-width: 1240px) {
+    margin-top: 20px;
+  }
+  &:hover ${NeedHelpWrapper} {
+    opacity: 1;
+    transform: translateY(0);
   }
 `;
 export const NeedHelpButton = styled.button`
@@ -205,25 +217,6 @@ export const NeedHelpButton = styled.button`
   background-color: transparent;
   color: ${({ theme }) => theme.logo};
   font-weight: 500;
-`;
-export const NeedHelp = styled.div`
-  width: 90%;
-  height: 70px;
-  position: relative;
-  border-radius: 8px;
-  margin-top: 0px;
-  margin-left: 10px;
-
-  color: ${({ theme }) => theme.text};
-  font-weight: 400;
-
-  @media (min-width: 1240px) {
-    margin-top: 20px;
-  }
-  &:hover ${NeedHelpWrapper} {
-    opacity: 1;
-    max-height: 300px;
-  }
 `;
 
 export const NeedHelpImg = styled.img`
