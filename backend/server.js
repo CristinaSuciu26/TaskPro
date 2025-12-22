@@ -15,10 +15,9 @@ import path from "path";
 dotenv.config();
 
 const app = express();
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://cristinasuciu26.github.io",
-];
+const allowedOrigins = process.env.CLIENT_URL
+  ? process.env.CLIENT_URL.split(",")
+  : [];
 
 app.use(
   cors({
