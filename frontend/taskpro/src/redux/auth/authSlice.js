@@ -1,11 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { loginUser, registerUser, updateProfile } from "./authThunks.js";
-import { getUserFromToken, isTokenValid } from "../../utils/token.js";
+import { isTokenValid } from "../../utils/token.js";
 
 const storedToken = localStorage.getItem("token");
-const user = getUserFromToken(storedToken);
 const storedUser = JSON.parse(localStorage.getItem("user"));
-const isLoggedIn = !!user;
+const isLoggedIn = isTokenValid(storedToken);
 
 const initialState = {
   token: isTokenValid(storedToken) ? storedToken : null,

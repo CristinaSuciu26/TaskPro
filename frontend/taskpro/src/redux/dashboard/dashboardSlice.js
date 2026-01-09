@@ -5,6 +5,7 @@ import {
   addDashboard,
   fetchDashboards,
 } from "./dashboardThunks.js";
+import { logout } from "../auth/authSlice.js";
 
 const initialState = {
   dashboards: [],
@@ -84,8 +85,10 @@ const dashboardSlice = createSlice({
       .addCase(updateDashboardBackground.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
-      });
+      })
+      .addCase(logout, () => initialState);
   },
 });
-export const { setSelectedDashboardId, resetSelectedBoard } = dashboardSlice.actions;
+export const { setSelectedDashboardId, resetSelectedBoard } =
+  dashboardSlice.actions;
 export default dashboardSlice.reducer;

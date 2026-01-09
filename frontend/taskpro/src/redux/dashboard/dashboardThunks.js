@@ -13,7 +13,7 @@ export const fetchDashboards = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       });
-      return res.data.dashboard; // backend returnează { dashboard: [...] }
+      return res.data.dashboard; 
     } catch (error) {
       return rejectWithValue(
         error.response?.data?.message || "Failed to fetch dashboards"

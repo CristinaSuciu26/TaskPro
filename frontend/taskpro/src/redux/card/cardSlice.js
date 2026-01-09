@@ -5,6 +5,7 @@ import {
   updateCard,
   deleteCard,
 } from "./cardThunks.js";
+import { logout } from "../auth/authSlice.js";
 
 const initialState = {
   cardsByColumn: {}, // { columnId: [cards] }
@@ -95,7 +96,8 @@ const cardsSlice = createSlice({
       .addCase(deleteCard.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
-      });
+      })
+      .addCase(logout, () => initialState);
   },
 });
 export const { setPriorityFilter } = filterSlice.actions;

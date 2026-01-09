@@ -5,6 +5,7 @@ import {
   updateColumn,
   deleteColumn,
 } from "./columnThunks.js";
+import { logout } from "../auth/authSlice.js";
 
 const initialState = {
   columnsByDashboard: {}, // { dashboardId: [col1, col2, ...] }
@@ -87,7 +88,8 @@ const columnSlice = createSlice({
       .addCase(deleteColumn.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
-      });
+      })
+      .addCase(logout, () => initialState);
   },
 });
 
