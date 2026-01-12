@@ -10,9 +10,8 @@ export const SelectedBoard = styled.div`
   margin-bottom: 12px;
   padding-left: 20px;
   padding-right: 30px;
-  @media (min-width: 768px) {
-    font-size: 18px;
 
+  @media (min-width: 768px) {
     padding-right: 20px;
   }
 
@@ -23,13 +22,11 @@ export const SelectedBoard = styled.div`
 `;
 
 export const BoardName = styled.span`
-  background: ${({ theme }) => theme.boardOverlay};
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(10px);
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 2px;
-  padding-bottom: 2px;
+  background: ${({ theme }) => theme.background};
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   border-radius: 5px;
-  color: white;
+  color: ${({ theme }) => theme.text};
 `;
