@@ -8,7 +8,7 @@ import {
 import { logout } from "../auth/authSlice.js";
 
 const initialState = {
-  cardsByColumn: {}, // { columnId: [cards] }
+  cardsByColumn: {}, 
   status: "idle",
   error: null,
 };
