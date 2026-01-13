@@ -142,6 +142,26 @@ export const LabelColorLow = styled.label`
     transform: scale(1);
     box-shadow: 0 0 0 2px ${({ theme }) => theme.accent};
   }
+  &:hover span {
+    opacity: 1;
+    visibility: visible;
+  }
+`;
+export const Tooltip = styled.span`
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.labelText};
+  padding: 4px 5px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s;
+  pointer-events: none;
 `;
 export const LabelColorHigh = styled.label`
   width: 14px;
@@ -154,6 +174,10 @@ export const LabelColorHigh = styled.label`
   ${InputButton}:checked + & {
     transform: scale(1);
     box-shadow: 0 0 0 2px ${({ theme }) => theme.accent};
+  }
+  &:hover span {
+    opacity: 1;
+    visibility: visible;
   }
 `;
 export const LabelColorMedium = styled.label`
@@ -168,6 +192,10 @@ export const LabelColorMedium = styled.label`
     transform: scale(1);
     box-shadow: 0 0 0 2px ${({ theme }) => theme.accent};
   }
+  &:hover span {
+    opacity: 1;
+    visibility: visible;
+  }
 `;
 export const LabelColorWithoutPriority = styled.label`
   width: 14px;
@@ -180,6 +208,10 @@ export const LabelColorWithoutPriority = styled.label`
   ${InputButton}:checked + & {
     transform: scale(1);
     box-shadow: 0 0 0 2px ${({ theme }) => theme.accent};
+  }
+  &:hover span {
+    opacity: 1;
+    visibility: visible;
   }
 `;
 export const DeadlineContainer = styled.div`

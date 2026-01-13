@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateTheme } from "../../redux/theme/themeThunks.js";
 import {
@@ -14,17 +14,38 @@ import UserInfo from "../../components/userInfo/UserInfo.jsx";
 export default function ThemeDropdown() {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-
+  const dropdownRef = useRef(null);
   const handleThemeChange = (newTheme) => {
     dispatch(updateTheme(newTheme));
     setOpen(false);
   };
 
+  useEffect(() => {
+    if (!open) return;
+
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [open]);
+
   return (
-    <div>
+    <div ref={dropdownRef}>
       <HeaderWrapper>
         <ContentWrapper>
-          <ThemeButton onClick={() => setOpen(!open)}>
+          <ThemeButton
+            onClick={(e) => {
+              e.stopPropagation();
+              setOpen((prev) => !prev);
+            }}
+          >
             Theme {open ? <FaChevronUp /> : <FaChevronDown />}
           </ThemeButton>
 

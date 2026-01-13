@@ -18,6 +18,7 @@ import {
   LabelColorWithoutPriority,
   DeadlineContainer,
   DeadlineTitle,
+  Tooltip,
 } from "./EditCardModal.styled";
 import { FiPlus, FiX } from "react-icons/fi";
 import { toast } from "react-toastify";
@@ -105,7 +106,10 @@ export default function EditCardModal({ onClose, card }) {
                 checked={priority === "low"}
                 onChange={(e) => setPriority(e.target.value)}
               />
-              <LabelColorLow htmlFor="low" color="labelLowPriority" />
+              <LabelColorLow htmlFor="low" color="labelLowPriority">
+                {" "}
+                <Tooltip>Low Priority</Tooltip>
+              </LabelColorLow>
 
               <InputButton
                 type="radio"
@@ -115,7 +119,9 @@ export default function EditCardModal({ onClose, card }) {
                 checked={priority === "medium"}
                 onChange={(e) => setPriority(e.target.value)}
               />
-              <LabelColorMedium htmlFor="medium" color="labelMediumPriority" />
+              <LabelColorMedium htmlFor="medium" color="labelMediumPriority">
+                <Tooltip>Medium Priority</Tooltip>
+              </LabelColorMedium>
 
               <InputButton
                 type="radio"
@@ -125,7 +131,9 @@ export default function EditCardModal({ onClose, card }) {
                 checked={priority === "high"}
                 onChange={(e) => setPriority(e.target.value)}
               />
-              <LabelColorHigh htmlFor="high" color="labelHighPriority" />
+              <LabelColorHigh htmlFor="high" color="labelHighPriority">
+                <Tooltip>High Priority</Tooltip>
+              </LabelColorHigh>
 
               <InputButton
                 type="radio"
@@ -138,7 +146,10 @@ export default function EditCardModal({ onClose, card }) {
               <LabelColorWithoutPriority
                 htmlFor="without-priority"
                 color="labelWithoutPriority"
-              />
+              >
+                {" "}
+                <Tooltip>Without Priority</Tooltip>
+              </LabelColorWithoutPriority>
             </ColorWrapper>
           </LabelContainer>
 
