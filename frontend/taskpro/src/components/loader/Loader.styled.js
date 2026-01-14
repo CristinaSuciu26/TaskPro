@@ -8,7 +8,7 @@ export const LoaderOverlay = styled.div`
   height: 100%;
   background-color: white;
   display: flex;
-  gap: 15px;
+  gap: 18px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -43,17 +43,26 @@ export const LoaderBarWrapper = styled.div`
 `;
 
 export const FactWrapper = styled.div`
-  width: 400px;
-  height: 70px;
-  border-radius: 10px;
-  padding: 20px;
   font-size: 18px;
   font-weight: 600;
-  position: relative;
+  padding: 30px;
 `;
 
 export const FactText = styled.span`
-  display: inline-block;
-  color: #032409ff;
-  font-weight: 900;
+  color: #1f3d2b;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+  opacity: 0.85;
+
+  animation: fade 1.5s ease-in-out infinite alternate;
+
+  @keyframes fade {
+    from {
+      opacity: 0.6;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;
