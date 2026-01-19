@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
+  Fact,
   FactText,
   FactWrapper,
   LoaderBarWrapper,
@@ -19,18 +20,17 @@ const FUN_FACTS = [
 ];
 
 export function Loader() {
-  const [fact, setFact] = useState("");
-
-  useEffect(() => {
-    setFact(FUN_FACTS[Math.floor(Math.random() * FUN_FACTS.length)]);
-  }, []);
+  const [fact] = useState(
+    FUN_FACTS[Math.floor(Math.random() * FUN_FACTS.length)],
+  );
 
   return (
     <LoaderOverlay>
+      <LoaderBarWrapper />
       <FactWrapper>
+        <Fact>Did you know?</Fact>
         <FactText>{fact}</FactText>
       </FactWrapper>
-      <LoaderBarWrapper />
     </LoaderOverlay>
   );
 }

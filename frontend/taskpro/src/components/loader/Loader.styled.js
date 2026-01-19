@@ -22,7 +22,8 @@ export const LoaderBarWrapper = styled.div`
   border-radius: 50%;
   padding: 1px;
   background: conic-gradient(#0000 10%, #9dc888) content-box;
-  -webkit-mask: repeating-conic-gradient(
+  -webkit-mask:
+    repeating-conic-gradient(
       #9dc888 0deg,
       #9dc888 1deg 20deg,
       #0000 21deg 36deg
@@ -43,26 +44,41 @@ export const LoaderBarWrapper = styled.div`
 `;
 
 export const FactWrapper = styled.div`
-  font-size: 18px;
-  font-weight: 600;
-  padding: 30px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 `;
 
 export const FactText = styled.span`
   color: #1f3d2b;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: 380px;
+  text-align: center;
   letter-spacing: 0.3px;
   opacity: 0.85;
 
-  animation: fade 1.5s ease-in-out infinite alternate;
+  animation: fadeIn 0.25s ease-out;
 
-  @keyframes fade {
+  @keyframes fadeIn {
     from {
-      opacity: 0.6;
+      opacity: 0.85;
     }
     to {
       opacity: 1;
     }
+  }
+`;
+
+export const Fact = styled.span`
+  color: #1f3d2b;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  opacity: 0.9;
+
   }
 `;
