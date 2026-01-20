@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 import { Formik, Form, Field } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { loginUser } from "../../redux/auth/authThunks";
 import { toast } from "react-toastify";
@@ -30,12 +30,14 @@ export default function LoginForm() {
   const navigate = useNavigate();
   const { token, loading } = useSelector((state) => state.auth);
   const [show, setShow] = useState(false);
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/home";
 
   useEffect(() => {
     if (token) {
-      navigate("/home");
+      navigate(from, { replace: true });
     }
-  }, [token, navigate]);
+  }, [token, navigate, from]);
 
   const handleSubmit = async (values) => {
     try {
@@ -84,7 +86,7 @@ export default function LoginForm() {
           </PasswordWrapper>
 
           <LoginBtn type="submit" disabled={loading}>
-            {loading ? <Loader/> : "Log In Now"}
+            {loading ? <Loader /> : "Log In Now"}
           </LoginBtn>
         </FormWrapper>
       </Formik>

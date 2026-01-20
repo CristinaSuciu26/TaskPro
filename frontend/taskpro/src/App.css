@@ -1,6 +1,7 @@
 @font-face {
   font-family: "Poppins";
-  src: url("../src/assets/fonts/Poppins-Regular.woff2") format("woff2"),
+  src:
+    url("../src/assets/fonts/Poppins-Regular.woff2") format("woff2"),
     url("../src/assets/fonts/Poppins-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
@@ -8,11 +9,17 @@
 }
 @font-face {
   font-family: "Poppins";
-  src: url("../src/assets/fonts/Poppins-Regular.woff2") format("woff2"),
+  src:
+    url("../src/assets/fonts/Poppins-Regular.woff2") format("woff2"),
     url("../src/assets/fonts/Poppins-Regular.woff") format("woff");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
+}
+* {
+  transition:
+    background-color 350ms ease,
+    border-color 350ms ease;
 }
 
 * {
@@ -38,8 +45,8 @@ select {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 img,
