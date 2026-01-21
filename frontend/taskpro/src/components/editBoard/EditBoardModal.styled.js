@@ -11,6 +11,11 @@ export const ModalOverlay = styled.div`
   align-items: center;
   z-index: 14;
   background: rgba(0, 0, 0, 0.5);
+
+  opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
+  pointer-events: ${({ $isOpen }) => ($isOpen ? "auto" : "none")};
+
+  transition: opacity 250ms ease;
 `;
 
 export const ModalContent = styled.div`
@@ -26,6 +31,15 @@ export const ModalContent = styled.div`
   @media (min-width: 768px) {
     width: 350px;
   }
+
+  transform: ${({ $isOpen }) =>
+    $isOpen ? "translateY(0) scale(1)" : "translateY(20px) scale(0.95)"};
+
+  opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
+
+  transition:
+    transform 250ms ease,
+    opacity 250ms ease;
 `;
 
 export const ModalTitle = styled.h3`

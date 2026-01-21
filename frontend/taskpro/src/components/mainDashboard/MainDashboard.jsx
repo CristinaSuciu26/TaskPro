@@ -62,16 +62,16 @@ export default function MainDashboard() {
 
   const dispatch = useDispatch();
   const selectedDashboardId = useSelector(
-    (state) => state.dashboard.selectedDashboardId
+    (state) => state.dashboard.selectedDashboardId,
   );
   const allColumns = useSelector(
-    (state) => state.column.columnsByDashboard || {}
+    (state) => state.column.columnsByDashboard || {},
   );
   const cardsByColumn = useSelector((state) => state.card.cardsByColumn || {});
 
   const columns = useMemo(
     () => allColumns?.[selectedDashboardId] ?? [],
-    [allColumns, selectedDashboardId]
+    [allColumns, selectedDashboardId],
   );
 
   const filterPriority = useSelector((state) => state.filters.priority);
@@ -164,7 +164,7 @@ export default function MainDashboard() {
         updateCard({
           id: movedCard._id,
           updates: { columnId: destColId, order: destination.index },
-        })
+        }),
       ).unwrap();
 
       // Refetch affected columns
@@ -287,7 +287,7 @@ export default function MainDashboard() {
                                     <DeadlineValue>
                                       {card.deadline
                                         ? dayjs(card.deadline).format(
-                                            "DD MMM YYYY"
+                                            "DD MMM YYYY",
                                           )
                                         : "No deadline"}
                                     </DeadlineValue>
@@ -296,7 +296,7 @@ export default function MainDashboard() {
                                 <IconsWrapper>
                                   {dayjs(card.deadline).isSame(
                                     dayjs(),
-                                    "day"
+                                    "day",
                                   ) && (
                                     <svg width="24" height="22">
                                       <use

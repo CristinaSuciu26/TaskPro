@@ -48,7 +48,7 @@ export default function Sidebar() {
   const navigate = useNavigate();
   const dashboards = useSelector((state) => state.dashboard.dashboards);
   const selectedId = useSelector(
-    (state) => state.dashboard.selectedDashboardId
+    (state) => state.dashboard.selectedDashboardId,
   );
   const [openEditModal, setOpenEditModal] = useState(false);
   const [openHelpModal, setOpenHelpModal] = useState(false);
@@ -99,7 +99,7 @@ export default function Sidebar() {
         toast.error(err || "Delete failed");
       }
     },
-    [dispatch]
+    [dispatch],
   );
 
   const handleHelpModal = () => {
@@ -219,21 +219,21 @@ export default function Sidebar() {
           </LogoutButton>
         </FooterBody>
       </SidebarContent>
-      {openModal && (
-        <CreateBoardModal
-          onClose={() => {
-            setOpenModal(false);
-          }}
-        />
-      )}
-      {openEditModal && selectedBoard && (
-        <EditBoardModal
-          onClose={() => setOpenEditModal(false)}
-          board={selectedBoard}
-        />
-      )}
+      <CreateBoardModal
+        isOpen={openModal}
+        onClose={() => setOpenModal(false)}
+      />
 
-      {openHelpModal && <HelpModal onClose={() => setOpenHelpModal(false)} />}
+      <EditBoardModal
+        isOpen={openEditModal}
+        onClose={() => setOpenEditModal(false)}
+        board={selectedBoard}
+      />
+
+      <HelpModal
+        isOpen={openHelpModal}
+        onClose={() => setOpenHelpModal(false)}
+      />
     </div>
   );
 }

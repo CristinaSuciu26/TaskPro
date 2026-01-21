@@ -12,7 +12,7 @@ import {
 } from "./HelpModal.styled";
 import { toast } from "react-toastify";
 
-export function HelpModal({ onClose }) {
+export function HelpModal({ isOpen, onClose }) {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
@@ -32,8 +32,8 @@ export function HelpModal({ onClose }) {
   };
 
   return (
-    <ModalOverlay onClick={onClose}>
-      <ModalContent onClick={(e) => e.stopPropagation()}>
+    <ModalOverlay $isOpen={isOpen} onClick={onClose}>
+      <ModalContent $isOpen={isOpen} onClick={(e) => e.stopPropagation()}>
         <CloseButton onClick={onClose}>
           <FiX strokeWidth={1.5} />
         </CloseButton>

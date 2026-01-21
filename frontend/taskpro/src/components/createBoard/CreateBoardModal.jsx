@@ -40,7 +40,7 @@ import noBg from "../../assets/images/no-wallpaper.png";
 import { toast } from "react-toastify";
 import { addDashboard } from "../../redux/dashboard/dashboardThunks";
 
-export default function CreateBoardModal({ onClose }) {
+export default function CreateBoardModal({ isOpen, onClose }) {
   const [title, setTitle] = useState("");
   const [icon, setIcon] = useState("icon-1");
   const [background, setBackground] = useState("none");
@@ -91,8 +91,8 @@ export default function CreateBoardModal({ onClose }) {
   };
 
   return (
-    <ModalOverlay onClick={onClose}>
-      <ModalContent onClick={(e) => e.stopPropagation()}>
+    <ModalOverlay $isOpen={isOpen} onClick={onClose}>
+      <ModalContent $isOpen={isOpen} onClick={(e) => e.stopPropagation()}>
         <ModalTitle>New board</ModalTitle>
         <CloseButton onClick={onClose}>
           <FiX strokeWidth={1.5} />
