@@ -38,7 +38,7 @@ import noBg from "../../assets/images/no-wallpaper.png";
 import { toast } from "react-toastify";
 import { updateDashboardBackground } from "../../redux/dashboard/dashboardThunks";
 
-export default function EditBoardModal({ isOpen, onClose, board }) {
+export default function EditBoardModal({ onClose, board }) {
   const [title, setTitle] = useState(board?.title || "");
   const [icon, setIcon] = useState(board?.icon || "");
   const [background, setBackground] = useState(board?.background || "");
@@ -88,8 +88,8 @@ export default function EditBoardModal({ isOpen, onClose, board }) {
   };
 
   return (
-    <ModalOverlay $isOpen={isOpen} onClick={onClose}>
-      <ModalContent $isOpen={isOpen} onClick={(e) => e.stopPropagation()}>
+    <ModalOverlay onClick={onClose}>
+      <ModalContent onClick={(e) => e.stopPropagation()}>
         <ModalTitle>Edit board</ModalTitle>
         <CloseButton onClick={onClose}>
           <FiX strokeWidth={1.5} />

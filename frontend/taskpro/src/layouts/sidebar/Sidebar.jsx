@@ -219,16 +219,19 @@ export default function Sidebar() {
           </LogoutButton>
         </FooterBody>
       </SidebarContent>
-      <CreateBoardModal
-        isOpen={openModal}
-        onClose={() => setOpenModal(false)}
-      />
-
-      <EditBoardModal
-        isOpen={openEditModal}
-        onClose={() => setOpenEditModal(false)}
-        board={selectedBoard}
-      />
+      {openModal && (
+        <CreateBoardModal
+          onClose={() => {
+            setOpenModal(false);
+          }}
+        />
+      )}
+      {openEditModal && selectedBoard && (
+        <EditBoardModal
+          onClose={() => setOpenEditModal(false)}
+          board={selectedBoard}
+        />
+      )}
 
       <HelpModal
         isOpen={openHelpModal}
