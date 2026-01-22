@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Fact,
   FactText,
@@ -17,12 +17,22 @@ const FUN_FACTS = [
   "Daily standups reduce delays by 24%.",
   "Teams that communicate frequently complete projects 50% faster.",
   "A clear message saves an average of 4 minutes of follow-up.",
+  "Breaking a large task into smaller steps reduces overwhelm by 30%.",
+  "Planning your tasks in advance can save up to 1 hour per day.",
 ];
 
 export function Loader() {
-  const [fact] = useState(
+  const [fact, setFact] = useState(
     FUN_FACTS[Math.floor(Math.random() * FUN_FACTS.length)],
   );
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFact(FUN_FACTS[Math.floor(Math.random() * FUN_FACTS.length)]);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <LoaderOverlay>
