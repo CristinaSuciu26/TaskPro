@@ -1,13 +1,25 @@
 import styled from "styled-components";
 
-export const ScreensPageContent = styled.div`
+export const ScreensPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.background};
   height: 100dvh;
-  width: 100%;
+  width: 100vw;
   overflow: hidden;
+`;
 
+export const ParagraphContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: ${({ theme }) => theme.background};
+  height: 100dvh;
+  width: 100vw;
+  overflow: hidden;
+`;
+
+export const ScreensPageContent = styled.div`
   @media (min-width: 1240px) {
     margin-left: 250px;
     padding-left: 25px;
@@ -19,10 +31,6 @@ export const ParagraphWrapper = styled.div`
   justify-content: center;
   padding: 25px;
   width: 100%;
-  @media (min-width: 1240px) {
-    padding-right: 310px;
-  }
-  margin-top: 250px;
 `;
 
 export const Paragraph = styled.p`

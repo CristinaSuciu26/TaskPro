@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FiltersWrapper = styled.div`
+export const FiltersContent = styled.div`
   background: ${({ theme }) => theme.background};
   padding-left: 10px;
   padding-right: 10px;
@@ -11,7 +11,6 @@ export const FiltersWrapper = styled.div`
   align-items: center;
   gap: 2px;
 `;
-
 export const Icon = styled.div`
   cursor: pointer;
   display: flex;

@@ -6,6 +6,8 @@ import {
   Paragraph,
   ScreensPageContent,
   ParagraphWrapper,
+  ScreensPageWrapper,
+    ParagraphContainer,
 } from "./ScreensPage.styled.js";
 import CreateBoardModal from "../../components/createBoard/CreateBoardModal.jsx";
 import { useSelector } from "react-redux";
@@ -13,16 +15,16 @@ import { useSelector } from "react-redux";
 export default function ScreensPage() {
   const [openModal, setOpenModal] = useState(false);
   const selectedId = useSelector(
-    (state) => state.dashboard.selectedDashboardId
+    (state) => state.dashboard.selectedDashboardId,
   );
   const selectedBoard = useSelector((state) =>
-    state.dashboard.dashboards.find((b) => b._id === selectedId)
+    state.dashboard.dashboards.find((b) => b._id === selectedId),
   );
 
   return (
     <>
       {selectedBoard ? (
-        <ScreensPageContent
+        <ScreensPageWrapper
           style={{
             backgroundImage:
               selectedBoard?.background && selectedBoard.background !== "none"
@@ -34,24 +36,28 @@ export default function ScreensPage() {
             transition: "background-image 0.3s ease-in-out",
           }}
         >
-          <HeaderDashboard />
-          <MainDashboard />
-        </ScreensPageContent>
+          <ScreensPageContent>
+            <HeaderDashboard />
+            <MainDashboard />
+          </ScreensPageContent>
+        </ScreensPageWrapper>
       ) : (
-        <ScreensPageContent>
-          <ParagraphWrapper>
-            {" "}
-            <Paragraph>
-              Before starting your project, it is essential&nbsp;
-              <BoardButton onClick={() => setOpenModal(true)}>
-                to create a board
-              </BoardButton>
-              to visualize and track all the necessary tasks and milestones.
-              This board serves as a powerful tool to organize the workflow and
-              ensure effective collaboration among team members.
-            </Paragraph>
-          </ParagraphWrapper>
-        </ScreensPageContent>
+        <ParagraphContainer>
+          <ScreensPageContent>
+            <ParagraphWrapper>
+              {" "}
+              <Paragraph>
+                Before starting your project, it is essential&nbsp;
+                <BoardButton onClick={() => setOpenModal(true)}>
+                  to create a board
+                </BoardButton>
+                to visualize and track all the necessary tasks and milestones.
+                This board serves as a powerful tool to organize the workflow
+                and ensure effective collaboration among team members.
+              </Paragraph>
+            </ParagraphWrapper>
+          </ScreensPageContent>
+        </ParagraphContainer>
       )}
 
       {openModal && (
