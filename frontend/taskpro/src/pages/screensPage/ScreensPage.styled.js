@@ -19,12 +19,6 @@ export const ParagraphContainer = styled.div`
   overflow: hidden;
 `;
 
-export const ScreensPageContent = styled.div`
-  @media (min-width: 1240px) {
-    margin-left: 250px;
-    padding-left: 25px;
-  }
-`;
 export const ParagraphWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -37,11 +31,11 @@ export const Paragraph = styled.p`
   font-size: 12px;
   font-weight: 400;
   text-align: center;
-  width: 100%;
+  width: 300px;
   color: ${({ theme }) => theme.text};
   @media (min-width: 768px) {
     font-size: 14px;
-    width: 70%;
+    width: 610px;
   }
 `;
 

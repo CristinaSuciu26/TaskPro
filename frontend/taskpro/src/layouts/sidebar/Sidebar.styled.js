@@ -7,9 +7,6 @@ export const SidebarWrapper = styled.div`
   position: absolute;
   top: 0;
   z-index: 11;
-  @media (min-width: 1240px) {
-    display: none;
-  }
 `;
 
 export const SidebarContent = styled.div`
@@ -50,7 +47,7 @@ export const MenuIcon = styled.div`
   color: ${({ theme }) => theme.text};
 
   @media (min-width: 1240px) {
-    display: none;
+    // display: none;
   }
 `;
 
@@ -97,7 +94,9 @@ export const CreateBoardBtn = styled.button`
   background-color: ${({ theme }) => theme.accent};
   color: ${({ theme }) => theme.buttonText};
 
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
   &:hover {
     background-color: ${({ theme }) => theme.hoverColor};
   }
@@ -182,7 +181,9 @@ export const NeedHelpWrapper = styled.div`
   pointer-events: none;
   opacity: 0;
   transform: translateY(10%);
-  transition: transform 0.5s ease, opacity 0.3s ease 0.1s;
+  transition:
+    transform 0.5s ease,
+    opacity 0.3s ease 0.1s;
 `;
 export const NeedHelp = styled.div`
   width: 197px;

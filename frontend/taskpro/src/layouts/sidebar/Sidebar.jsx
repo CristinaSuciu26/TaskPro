@@ -56,30 +56,6 @@ export default function Sidebar() {
   const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 1240) {
-        setOpen(true);
-      } else {
-        setOpen(false);
-      }
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    if (open && window.innerWidth < 1240) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [open]);
-
-  useEffect(() => {
     if (!dashboards || dashboards.length === 0) {
       dispatch(fetchDashboards());
     }
@@ -125,7 +101,6 @@ export default function Sidebar() {
       {open && <SidebarWrapper onClick={() => setOpen(false)} />}
       <SidebarContent open={open} onClick={(e) => e.stopPropagation()}>
         <LogoWrapper>
-          {" "}
           <LogoComponent />
         </LogoWrapper>
 
@@ -154,9 +129,7 @@ export default function Sidebar() {
                 onClick={() => {
                   dispatch(setSelectedDashboardId(board._id));
 
-                  if (window.innerWidth < 1240) {
-                    setOpen(false);
-                  }
+                  setOpen(false);
                 }}
               >
                 <BoardWrapper selected={selectedId === board._id}>
@@ -182,6 +155,7 @@ export default function Sidebar() {
                       onClick={(e) => {
                         e.stopPropagation();
                         handleDelete(board._id);
+                        setOpen(false);
                       }}
                     >
                       <use xlinkHref={`${sprite}#trash-icon`} />
@@ -223,12 +197,16 @@ export default function Sidebar() {
         <CreateBoardModal
           onClose={() => {
             setOpenModal(false);
+            setOpen(false);
           }}
         />
       )}
       {openEditModal && selectedBoard && (
         <EditBoardModal
-          onClose={() => setOpenEditModal(false)}
+          onClose={() => {
+            setOpenEditModal(false);
+            setOpen(false);
+          }}
           board={selectedBoard}
         />
       )}
