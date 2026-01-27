@@ -106,7 +106,7 @@ export default function Sidebar() {
 
         <CreateBoardWrapper>
           <MyBoardsTitle> My boards</MyBoardsTitle>
-          <svg width="197" height="5">
+          <svg width="197" height="5" color="rgb(22, 22, 22)">
             <use xlinkHref={`${sprite}#icon-line`} />
           </svg>
           <ButtonWrapper>
@@ -116,7 +116,7 @@ export default function Sidebar() {
               <FiPlus size={14} />
             </CreateBoardBtn>
           </ButtonWrapper>
-          <svg width="197" height="5">
+          <svg width="197" height="5" color="rgb(22, 22, 22)">
             <use xlinkHref={`${sprite}#icon-line`} />
           </svg>
         </CreateBoardWrapper>

@@ -70,7 +70,9 @@ export const RegisterButton = styled.button`
   background-color: #161616;
   border-radius: 8px;
 
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
 
   &:hover {
     background-color: #45a049;
@@ -86,9 +88,12 @@ export const LoginButton = styled.button`
   height: 49px;
   text-decoration: none;
   border-radius: 8px;
-  color: ${({ theme }) => theme.text};
+  color: #161616;
 
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.2s ease;
 
   &:hover {
     background-color: #45a049;

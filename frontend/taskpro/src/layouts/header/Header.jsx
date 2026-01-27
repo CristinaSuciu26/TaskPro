@@ -15,6 +15,7 @@ export default function ThemeDropdown() {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
+  
   const handleThemeChange = (newTheme) => {
     dispatch(updateTheme(newTheme));
     setOpen(false);

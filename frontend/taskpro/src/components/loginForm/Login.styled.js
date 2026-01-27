@@ -72,7 +72,7 @@ export const StyledNavLink = styled(NavLink)`
   color: grey;
 
   &.active {
-    color: white; /* când e activ */
+    color: white; 
   }
 `;
 export const ErrorMessageWrapper = styled(ErrorMessage)`

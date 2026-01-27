@@ -91,6 +91,7 @@ export const StyledLabel = styled.label`
   color: ${({ selected, theme }) => (selected ? theme.text : "#808080")};
 `;
 export const BackgroundTitle = styled.span`
+  color: ${({ theme }) => theme.text};
   font-size: 14px;
 `;
 export const BackgroundWrapper = styled.div`

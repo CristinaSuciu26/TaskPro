@@ -141,6 +141,7 @@ export const Card = styled.div`
   flex-shrink: 0;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.backgroundSecondary};
+  color: ${({ theme }) => theme.text};
 `;
 
 export const ColumnContainer = styled.div`
@@ -157,7 +158,7 @@ export const ColumnContent = styled.div`
   padding-left: 21px;
   scroll-behavior: smooth;
   white-space: nowrap;
-
+    color: ${({ theme }) => theme.text};
   & > div {
     flex: 0 0 auto;
   }
