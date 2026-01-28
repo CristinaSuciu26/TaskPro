@@ -4,13 +4,14 @@ import { LogoText, LogoWrapper } from "./LogoComponent.styled";
 import { useNavigate } from "react-router-dom";
 import { resetSelectedBoard } from "../../redux/dashboard/dashboardSlice";
 
-export default function LogoComponent() {
+export default function LogoComponent({ onNavigation }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleNav = () => {
     dispatch(resetSelectedBoard());
     navigate(`/home/`);
+    onNavigation();
   };
   return (
     <div>

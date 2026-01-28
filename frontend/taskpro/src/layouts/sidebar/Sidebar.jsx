@@ -101,7 +101,7 @@ export default function Sidebar() {
       {open && <SidebarWrapper onClick={() => setOpen(false)} />}
       <SidebarContent open={open} onClick={(e) => e.stopPropagation()}>
         <LogoWrapper>
-          <LogoComponent />
+          <LogoComponent onNavigation={() => setOpen(false)} />
         </LogoWrapper>
 
         <CreateBoardWrapper>
@@ -155,7 +155,6 @@ export default function Sidebar() {
                       onClick={(e) => {
                         e.stopPropagation();
                         handleDelete(board._id);
-                        setOpen(false);
                       }}
                     >
                       <use xlinkHref={`${sprite}#trash-icon`} />
@@ -197,6 +196,9 @@ export default function Sidebar() {
         <CreateBoardModal
           onClose={() => {
             setOpenModal(false);
+          }}
+          onCreateSuccess={() => {
+            setOpenModal(false);
             setOpen(false);
           }}
         />
@@ -204,6 +206,9 @@ export default function Sidebar() {
       {openEditModal && selectedBoard && (
         <EditBoardModal
           onClose={() => {
+            setOpenEditModal(false);
+          }}
+          onEditSuccess={() => {
             setOpenEditModal(false);
             setOpen(false);
           }}

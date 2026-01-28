@@ -38,7 +38,7 @@ import noBg from "../../assets/images/no-wallpaper.png";
 import { toast } from "react-toastify";
 import { updateDashboardBackground } from "../../redux/dashboard/dashboardThunks";
 
-export default function EditBoardModal({ onClose, board }) {
+export default function EditBoardModal({ onClose, onEditSuccess, board }) {
   const [title, setTitle] = useState(board?.title || "");
   const [icon, setIcon] = useState(board?.icon || "");
   const [background, setBackground] = useState(board?.background || "");
@@ -81,6 +81,7 @@ export default function EditBoardModal({ onClose, board }) {
       await dispatch(updateDashboardBackground(updateDashboard)).unwrap();
 
       toast.success("Updated successfully!");
+      onEditSuccess();
       onClose();
     } catch (err) {
       toast.error(err || "Update dashboard failed");

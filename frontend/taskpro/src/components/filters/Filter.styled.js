@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const FiltersContent = styled.div`
   background: ${({ theme }) => theme.background};
+
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 3px;

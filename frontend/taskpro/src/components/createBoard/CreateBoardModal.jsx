@@ -40,7 +40,7 @@ import noBg from "../../assets/images/no-wallpaper.png";
 import { toast } from "react-toastify";
 import { addDashboard } from "../../redux/dashboard/dashboardThunks";
 
-export default function CreateBoardModal({ onClose }) {
+export default function CreateBoardModal({ onClose, onCreateSuccess }) {
   const [title, setTitle] = useState("");
   const [icon, setIcon] = useState("icon-1");
   const [background, setBackground] = useState("none");
@@ -83,6 +83,7 @@ export default function CreateBoardModal({ onClose }) {
       await dispatch(addDashboard(newDashboard)).unwrap();
       navigate(`/home/`);
       toast.success("Created successfully!");
+      onCreateSuccess();
       console.log("succes");
       onClose();
     } catch (err) {

@@ -65,7 +65,9 @@ export const LabelColorLow = styled.label`
   cursor: pointer;
   display: flex;
   align-items: center;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 
   ${InputButton}:checked + & {
     transform: scale(1);
@@ -80,7 +82,9 @@ export const LabelColorHigh = styled.label`
   align-items: center;
   background-color: ${({ theme }) => theme.labelHighPriority};
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 
   ${InputButton}:checked + & {
     transform: scale(1);
@@ -93,7 +97,9 @@ export const LabelColorMedium = styled.label`
   border-radius: 50%;
   background-color: ${({ theme }) => theme.labelMediumPriroity};
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
   display: flex;
   align-items: center;
   ${InputButton}:checked + & {
@@ -109,7 +115,9 @@ export const LabelColorWithoutPriority = styled.label`
   align-items: center;
   background-color: ${({ theme }) => theme.labelWithoutPriority};
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 
   ${InputButton}:checked + & {
     transform: scale(1);
@@ -125,6 +133,7 @@ export const PriorityName = styled.span`
 export const LabelContainer = styled.div`
   display: flex;
   flex-direction: column;
+  color: ${({ theme }) => theme.text};
   width: 100%;
   gap: 16px;
 `;
