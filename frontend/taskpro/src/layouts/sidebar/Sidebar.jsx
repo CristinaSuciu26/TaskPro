@@ -90,6 +90,10 @@ export default function Sidebar() {
     setOpenEditModal(true);
   }, []);
 
+  const closeSidebarAfterSuccess = () => {
+    setOpen(false);
+  };
+
   return (
     <div>
       <MenuIcon onClick={() => setOpen(true)}>
@@ -101,7 +105,7 @@ export default function Sidebar() {
       {open && <SidebarWrapper onClick={() => setOpen(false)} />}
       <SidebarContent open={open} onClick={(e) => e.stopPropagation()}>
         <LogoWrapper>
-          <LogoComponent onNavigation={() => setOpen(false)} />
+          <LogoComponent onNavigation={() => closeSidebarAfterSuccess()} />
         </LogoWrapper>
 
         <CreateBoardWrapper>
@@ -199,7 +203,7 @@ export default function Sidebar() {
           }}
           onCreateSuccess={() => {
             setOpenModal(false);
-            setOpen(false);
+            closeSidebarAfterSuccess();
           }}
         />
       )}
@@ -210,7 +214,7 @@ export default function Sidebar() {
           }}
           onEditSuccess={() => {
             setOpenEditModal(false);
-            setOpen(false);
+            closeSidebarAfterSuccess();
           }}
           board={selectedBoard}
         />

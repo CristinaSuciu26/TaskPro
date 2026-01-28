@@ -29,7 +29,7 @@ export function Loader() {
   useEffect(() => {
     const interval = setInterval(() => {
       setFact(FUN_FACTS[Math.floor(Math.random() * FUN_FACTS.length)]);
-    }, 3000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, []);
