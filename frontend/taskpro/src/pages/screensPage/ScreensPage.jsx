@@ -41,7 +41,7 @@ export default function ScreensPage() {
       ) : (
         <ParagraphContainer>
           <ParagraphWrapper>
-                <Paragraph>
+            <Paragraph>
               Before starting your project, it is essential&nbsp;
               <BoardButton onClick={() => setOpenModal(true)}>
                 to create a board
@@ -57,6 +57,9 @@ export default function ScreensPage() {
       {openModal && (
         <CreateBoardModal
           onClose={() => {
+            setOpenModal(false);
+          }}
+          onCreateSuccess={() => {
             setOpenModal(false);
           }}
         />
