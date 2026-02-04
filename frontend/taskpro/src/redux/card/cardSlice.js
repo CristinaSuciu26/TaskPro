@@ -8,7 +8,7 @@ import {
 import { logout } from "../auth/authSlice.js";
 
 const initialState = {
-  cardsByColumn: {}, 
+  cardsByColumn: {},
   status: "idle",
   error: null,
 };
@@ -89,7 +89,7 @@ const cardsSlice = createSlice({
         const deletedId = action.payload;
         for (let columnId in state.cardsByColumn) {
           state.cardsByColumn[columnId] = state.cardsByColumn[columnId].filter(
-            (card) => card._id !== deletedId
+            (card) => card._id !== deletedId,
           );
         }
       })

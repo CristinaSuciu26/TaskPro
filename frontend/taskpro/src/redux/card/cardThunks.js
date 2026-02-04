@@ -15,10 +15,10 @@ export const createCard = createAsyncThunk(
       return res.data.card;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data?.message || "Failed to create card"
+        error.response?.data?.message || "Failed to create card",
       );
     }
-  }
+  },
 );
 
 export const getCardsByColumn = createAsyncThunk(
@@ -33,10 +33,10 @@ export const getCardsByColumn = createAsyncThunk(
       return { columnId, cards: res.data.cards };
     } catch (error) {
       return rejectWithValue(
-        error.response?.data?.message || "Failed to fetch cards"
+        error.response?.data?.message || "Failed to fetch cards",
       );
     }
-  }
+  },
 );
 
 export const updateCard = createAsyncThunk(
@@ -51,10 +51,10 @@ export const updateCard = createAsyncThunk(
       return res.data.card;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data?.message || "Failed to update card"
+        error.response?.data?.message || "Failed to update card",
       );
     }
-  }
+  },
 );
 
 export const deleteCard = createAsyncThunk(
@@ -68,8 +68,8 @@ export const deleteCard = createAsyncThunk(
       return id;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data?.message || "Failed to delete card"
+        error.response?.data?.message || "Failed to delete card",
       );
     }
-  }
+  },
 );
