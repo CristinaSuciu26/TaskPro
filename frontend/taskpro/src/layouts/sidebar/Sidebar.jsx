@@ -56,10 +56,8 @@ export default function Sidebar() {
   const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
-    if (!dashboards || dashboards.length === 0) {
-      dispatch(fetchDashboards());
-    }
-  }, [dispatch, dashboards]);
+    dispatch(fetchDashboards());
+  }, [dispatch]);
 
   const handleLogout = () => {
     dispatch(logout());

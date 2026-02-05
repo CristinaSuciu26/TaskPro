@@ -1,12 +1,11 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { isTokenValid } from "../utils/token";
+import { useSelector } from "react-redux";
 
 export default function PrivateRoute({ children }) {
   const location = useLocation();
-  const token = localStorage.getItem("token");
+  const { token, isLoggedIn } = useSelector((state) => state.auth);
 
-  if (!token || !isTokenValid(token)) {
-    localStorage.removeItem("token");
+  if (!token || !isLoggedIn) {
     return <Navigate to="/auth/login" replace state={{ from: location }} />;
   }
 

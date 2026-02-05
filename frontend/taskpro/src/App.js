@@ -12,28 +12,16 @@ import PrivateRoute from "./routes/PrivateRoute";
 import HomePage from "./pages/privatePages/homePage/HomePage";
 import { ThemeProvider } from "styled-components";
 import { themes } from "./themes/themes";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { GlobalStyles } from "./themes/globalStyles";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MainDashboard from "./components/mainDashboard/MainDashboard";
-import { useEffect } from "react";
-import { logout } from "./redux/auth/authSlice";
-import { isTokenValid } from "./utils/token";
 
 function App() {
   const themeName = useSelector((state) => state.theme.theme);
   const theme = themes[themeName];
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    if (!token || !isTokenValid(token)) {
-      dispatch(logout());
-    }
-  }, [dispatch]);
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
