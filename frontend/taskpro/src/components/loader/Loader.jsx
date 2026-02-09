@@ -22,24 +22,38 @@ const FUN_FACTS = [
 ];
 
 export function Loader() {
-  const [fact, setFact] = useState(
-    FUN_FACTS[Math.floor(Math.random() * FUN_FACTS.length)],
+  const initialIndex = Math.floor(Math.random() * FUN_FACTS.length);
+  const [currentFact, setCurrentFact] = useState(FUN_FACTS[initialIndex]);
+
+  const [, setRemainingFact] = useState(
+    FUN_FACTS.filter((_, i) => i !== initialIndex),
   );
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setFact(FUN_FACTS[Math.floor(Math.random() * FUN_FACTS.length)]);
+      setRemainingFact((prev) => {
+        if (prev.length === 0) {
+          return FUN_FACTS.filter((_, f) => f !== currentFact);
+        }
+
+        const randomFact = Math.floor(Math.random() * prev.length);
+        const nextFact = prev[randomFact];
+
+        setCurrentFact(nextFact);
+
+        return prev.filter((_, i) => i !== randomFact);
+      });
     }, 4000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [currentFact]);
 
   return (
     <LoaderOverlay>
       <LoaderBarWrapper />
       <FactWrapper>
         <Fact>Did you know?</Fact>
-        <FactText>{fact}</FactText>
+        <FactText>{currentFact}</FactText>
       </FactWrapper>
     </LoaderOverlay>
   );

@@ -46,6 +46,7 @@ export const LoaderBarWrapper = styled.div`
 export const FactWrapper = styled.div`
   padding: 24px;
   display: flex;
+  height: 50px;
   flex-direction: column;
   align-items: center;
   gap: 8px;
