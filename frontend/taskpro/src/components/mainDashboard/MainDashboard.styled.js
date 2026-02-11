@@ -156,9 +156,10 @@ export const ColumnContent = styled.div`
   overflow-x: auto;
   overflow-y: hidden;
   padding-left: 21px;
+  padding-right: 21px;
   scroll-behavior: smooth;
   white-space: nowrap;
-    color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.text};
   & > div {
     flex: 0 0 auto;
   }
