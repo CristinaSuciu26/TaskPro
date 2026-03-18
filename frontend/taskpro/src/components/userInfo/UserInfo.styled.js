@@ -13,6 +13,7 @@ export const UserImg = styled.img`
   height: 40px;
   cursor: pointer;
   margin-right: 32px;
+  object-fit: cover;
 `;
 
 export const UserName = styled.span`

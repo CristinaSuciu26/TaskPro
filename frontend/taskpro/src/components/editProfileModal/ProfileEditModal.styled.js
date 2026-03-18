@@ -43,6 +43,7 @@ export const UserImg = styled.img`
   height: 68px;
   margin-top: 37px;
   margin-bottom: 10px;
+  object-fit: cover;
 `;
 
 export const FormWrapper = styled.form`
@@ -72,7 +73,9 @@ export const SaveButton = styled.button`
   cursor: pointer;
   border: none;
   font-size: 14px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
   font-weight: 500;
   &:hover {
     background-color: ${({ theme }) => theme.hoverColor};
@@ -100,7 +103,9 @@ export const Label = styled.label`
   height: 24px;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.primary};
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
   border: none;
   cursor: pointer;
   position: absolute;
